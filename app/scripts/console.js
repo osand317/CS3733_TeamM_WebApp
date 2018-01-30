@@ -1,8 +1,6 @@
-// var reportDisplay = document.querySelector("#reportDisplay");
-var queryDisplay = document.querySelector("#queryDisplay");
+var reportDisplay = document.querySelector("#reportDisplay");
+var profileDisplay = document.querySelector("#profileDisplay");
 // var searchBtn = document.querySelector("#searchBtn");
-var reportChip = document.querySelector("#reportFilterBtn");
-var profileChip = document.querySelector("#profileFilterBtn");
 // var form = document.querySelector("form");
 
 
@@ -54,39 +52,35 @@ var db = firebase.firestore();
 //     form.reset();
 // });
 
-function renderSearchResults(query){
-    query.limit(50).get()
-        .then(function(querySnapshot){
-            queryDisplay.innerHTML = "";
-            querySnapshot.forEach(function(doc){
-                console.log(doc.id, "=>", doc.data());
-                createSingleResult(doc.data());
-            });
-        })
-        .catch(function(error){
-            console.log("Error getting documents: ", error);
-        });
-}
+db.collection("reports").limit(50).onSnapshot(function(querySnapshot){
+    reportDisplay.innerHTML = "";
+    querySnapshot.forEach(function (doc) {
+        console.log(doc.id, "=>", doc.data());
+        createSingleResult(doc.data(), reportDisplay);
+    });
+});
+    // .catch(function (error) {
+    //     console.log("Error getting documents: ", error);
+    // });
 
-function createSingleResult(data){
+db.collection("profiles").limit(50).onSnapshot(function(querySnapshot){
+    profileDisplay.innerHTML = "";
+    querySnapshot.forEach(function (doc) {
+        console.log(doc.id, "=>", doc.data());
+        createSingleResult(doc.data(), profileDisplay);
+    });
+});
+    // .catch(function (error) {
+    //     console.log("Error getting documents: ", error);
+    // });
+
+
+function createSingleResult(data, displayArea){
     var li = document.createElement('li');
-    queryDisplay.appendChild(li);
+    displayArea.appendChild(li);
     li.innerHTML = "<li class=\"mdl-list__item\"><span class=\"mdl-list__item-primary-content\">"
                     + data.firstName
                     + " "
                     + data.lastName
                     + "</span></li>"
 }
-
-reportChip.addEventListener("click", function(e){
-    e.preventDefault();
-    let query = db.collection("reports");
-    renderSearchResults(query);
-});
-
-profileChip.addEventListener("click", function(e){
-    e.preventDefault();
-    let query = db.collection("profiles");
-    renderSearchResults(query)
-
-});

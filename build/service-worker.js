@@ -4,11 +4,11 @@ const workboxSW = new WorkboxSW();
 workboxSW.precache([
   {
     "url": "index.html",
-    "revision": "8215a9ee6180598698105fd0ec820473"
+    "revision": "7172156909b27134b8e83e577552b040"
   },
   {
     "url": "scripts/console.js",
-    "revision": "9c0faa6afc3196df6f5f5f7dedebf953"
+    "revision": "e523f63f478cf1923e7296b6184ef47e"
   },
   {
     "url": "scripts/material.min.js",
@@ -20,7 +20,7 @@ workboxSW.precache([
   },
   {
     "url": "console.html",
-    "revision": "2e1e28498671f21942c1323caa202855"
+    "revision": "f2911549d6319c33ed71b763287eacc1"
   },
   {
     "url": "css/main.css",
