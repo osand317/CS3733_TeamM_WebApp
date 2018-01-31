@@ -46,9 +46,6 @@ db.collection("reports").limit(50).onSnapshot(function(querySnapshot){
         createTableBody(doc.data(), reportDisplay);
     });
 });
-    // .catch(function (error) {
-    //     console.log("Error getting documents: ", error);
-    // });
 
 db.collection("profiles").limit(50).onSnapshot(function(querySnapshot){
     // reportDisplay.innerHTML = "";
@@ -59,9 +56,6 @@ db.collection("profiles").limit(50).onSnapshot(function(querySnapshot){
         createTableBody(doc.data(), profileDisplay);
     });
 });
-// .catch(function (error) {
-//     console.log("Error getting documents: ", error);
-// });
 
 function createTableRow(parent){
     var tr = document.createElement('tr');
@@ -136,7 +130,6 @@ function drawChart(eggData) {
         width: 900,
         height: 600
     };
-
     var chart = new google.charts.Line(document.getElementById('linechart_material'));
 
     chart.draw(data, google.charts.Line.convertOptions(options));
