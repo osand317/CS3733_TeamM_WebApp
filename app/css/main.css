@@ -170,3 +170,7 @@ header:hover svg#logo {
   -webkit-filter: drop-shadow(3px 3px 3px #ddd);
   filter: drop-shadow(3px 3px 3px #ddd);
 }
+
+.full-width {
+  width: 100%;
+}

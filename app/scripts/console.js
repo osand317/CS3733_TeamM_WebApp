@@ -3,7 +3,6 @@ var profileDisplay = document.querySelector("#profileDisplay");
 // var searchBtn = document.querySelector("#searchBtn");
 // var form = document.querySelector("form");
 
-
 var config = {
     apiKey: "AIzaSyCFWzxl0VLYePJ-5O8U5umWWNJLT7TG9Fo",
     authDomain: "urmatt-app.firebaseapp.com",
@@ -12,24 +11,11 @@ var config = {
     storageBucket: "urmatt-app.appspot.com",
     messagingSenderId: "523826665141"
 };
-// if(!firebase.apps.length){
-firebase.initializeApp(config);
-// }
+if(!firebase.apps.length){
+    firebase.initializeApp(config);
+}
 
 var db = firebase.firestore();
-
-// get and disp top 10 num of eggs
-// db.collection("reports").limit(10)
-//     .onSnapshot(function(snapshot) {
-//         var reports = [];
-//         snapshot.forEach(function(doc){
-//             reports.push(doc.data().eggs);
-//         });
-//         // console.log("eggs: ", reports);
-//         reportDisplay.textContent = reports;
-//     });
-
-
 
 // search for report with matching num of eggs
 // function searchDB(query){
@@ -51,12 +37,13 @@ var db = firebase.firestore();
 //     searchDB(query);
 //     form.reset();
 // });
-
 db.collection("reports").limit(50).onSnapshot(function(querySnapshot){
-    reportDisplay.innerHTML = "";
+    // reportDisplay.innerHTML = "";
+    var needsHeading = true;
     querySnapshot.forEach(function (doc) {
-        console.log(doc.id, "=>", doc.data());
-        createSingleResult(doc.data(), reportDisplay);
+        if(needsHeading){createTableHeading(doc.data(), reportDisplay)}
+        needsHeading = false;
+        createTableBody(doc.data(), reportDisplay);
     });
 });
     // .catch(function (error) {
@@ -64,23 +51,59 @@ db.collection("reports").limit(50).onSnapshot(function(querySnapshot){
     // });
 
 db.collection("profiles").limit(50).onSnapshot(function(querySnapshot){
-    profileDisplay.innerHTML = "";
+    // reportDisplay.innerHTML = "";
+    var needsHeading = true;
     querySnapshot.forEach(function (doc) {
-        console.log(doc.id, "=>", doc.data());
-        createSingleResult(doc.data(), profileDisplay);
+        if(needsHeading){createTableHeading(doc.data(), profileDisplay)}
+        needsHeading = false;
+        createTableBody(doc.data(), profileDisplay);
     });
 });
-    // .catch(function (error) {
-    //     console.log("Error getting documents: ", error);
-    // });
+// .catch(function (error) {
+//     console.log("Error getting documents: ", error);
+// });
 
+function createTableRow(parent){
+    var tr = document.createElement('tr');
+    parent.appendChild(tr);
+    return tr;
+}
 
-function createSingleResult(data, displayArea){
-    var li = document.createElement('li');
-    displayArea.appendChild(li);
-    li.innerHTML = "<li class=\"mdl-list__item\"><span class=\"mdl-list__item-primary-content\">"
-                    + data.firstName
-                    + " "
-                    + data.lastName
-                    + "</span></li>"
+function createTableEntry(value, tr){
+    var td = document.createElement('td');
+    tr.appendChild(td);
+    td.textContent = value;
+}
+
+function createTableHeading(data, displayArea){
+    if(displayArea === reportDisplay){
+        var thead = document.querySelector("#reportHeading");
+    }
+    else if(displayArea === profileDisplay){
+        var thead = document.querySelector("#profileHeading");
+    }
+    displayArea.appendChild(thead);
+    var tr = createTableRow(thead);
+    // Loops through all of the keys in the object, creating a table heading for each one
+    var keyArray = Object.keys(data);
+    keyArray.forEach(function (key) {
+        var th = document.createElement('th');
+        th.textContent = key;
+        tr.appendChild(th);
+    });
+}
+
+function createTableBody(data, displayArea){
+    if(displayArea === reportDisplay){
+        var tbody = document.querySelector("#reportBody");
+    }
+    else if(displayArea === profileDisplay){
+        var tbody = document.querySelector("#profileBody");
+    }
+    var tr = createTableRow(tbody);
+    // Loops through all of the values for the object, creating a table entry for each
+    var valueArray = Object.values(data);
+    valueArray.forEach(function(val){
+        createTableEntry(val, tr);
+    });
 }

@@ -8,7 +8,7 @@ workboxSW.precache([
   },
   {
     "url": "scripts/console.js",
-    "revision": "e523f63f478cf1923e7296b6184ef47e"
+    "revision": "269844819f9163e17885771afa119131"
   },
   {
     "url": "scripts/material.min.js",
@@ -20,11 +20,11 @@ workboxSW.precache([
   },
   {
     "url": "console.html",
-    "revision": "f2911549d6319c33ed71b763287eacc1"
+    "revision": "0fd43ea2377657b3b3656f71d24f63c5"
   },
   {
     "url": "css/main.css",
-    "revision": "3a78f101efdbf4c896cef53c323c7bb7"
+    "revision": "7e45526b624c7abfdb28f914d7d1ec26"
   },
   {
     "url": "css/material.min.css",
