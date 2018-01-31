@@ -107,3 +107,45 @@ function createTableBody(data, displayArea){
         createTableEntry(val, tr);
     });
 }
+
+google.charts.load('current', {'packages':['line']});
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart(eggData) {
+
+    var data = new google.visualization.DataTable();
+    data.addColumn('number', 'Date');
+    data.addColumn('number', 'Eggs');
+
+    var timeStampedEggs = [];
+    for(var i=0; i < eggData.length; i++){
+        var entry = [];
+        entry.push(i);
+        entry.push(eggData[i]);
+        timeStampedEggs.push(entry);
+    }
+
+    data.addRows(timeStampedEggs);
+
+    var options = {
+        chart: {
+            // title: 'Eggs'
+            // subtitle: 'in millions of dollars (USD)'
+        },
+        colors: ['#39b524'],
+        width: 900,
+        height: 600
+    };
+
+    var chart = new google.charts.Line(document.getElementById('linechart_material'));
+
+    chart.draw(data, google.charts.Line.convertOptions(options));
+}
+
+db.collection("reports").onSnapshot(function (querySnapshot) {
+    var data = [];
+    querySnapshot.forEach(function (doc) {
+        data.push(doc.data().eggs);
+    });
+    drawChart(data);
+});
