@@ -1,3 +1,4 @@
+// ------------------------- Firebase --------------------- //
 var reportDisplay = document.querySelector("#reportDisplay");
 var profileDisplay = document.querySelector("#profileDisplay");
 // var searchBtn = document.querySelector("#searchBtn");
@@ -14,7 +15,6 @@ var config = {
 if(!firebase.apps.length){
     firebase.initializeApp(config);
 }
-
 var db = firebase.firestore();
 
 // search for report with matching num of eggs
@@ -38,6 +38,7 @@ var db = firebase.firestore();
 //     form.reset();
 // });
 
+// ------------------------- Tables ---------------------- //
 // Update list of reports whenever the database changes
 db.collection("reports").limit(50).onSnapshot(function(querySnapshot){
     // reportDisplay.innerHTML = "";
@@ -102,6 +103,7 @@ function createTableBody(data, displayArea){
     });
 }
 
+// ------------------------- Graphs ---------------------- //
 // Setup for chart
 google.charts.load('current', {'packages':['line']});
 google.charts.setOnLoadCallback(drawChart);
@@ -145,6 +147,7 @@ db.collection("reports").onSnapshot(function (querySnapshot) {
     drawChart(data);
 });
 
+// ------------------------- Download ---------------------- //
 function getDataAndDownload() {
     console.log("getting data")
     db.collection("reports").get()
@@ -156,7 +159,6 @@ function getDataAndDownload() {
             downloadCSV({data: data, filename: "reports.csv"});
         })
 }
-
 function convertArrayOfObjectsToCSV(args) {
     var result, ctr, keys, columnDelimiter, lineDelimiter, data;
 
@@ -187,7 +189,6 @@ function convertArrayOfObjectsToCSV(args) {
 
     return result;
 }
-
 function downloadCSV(args) {
     var data, filename, link;
     data = args.data;

@@ -8,7 +8,7 @@ workboxSW.precache([
   },
   {
     "url": "scripts/console.js",
-    "revision": "d77cda6d339999b474f75df6e5cd44d4"
+    "revision": "07f35adf28c37c19da4d74287dd96361"
   },
   {
     "url": "scripts/export.js",
@@ -24,7 +24,7 @@ workboxSW.precache([
   },
   {
     "url": "console.html",
-    "revision": "239df545c8df33e7bdac8cabb5c40713"
+    "revision": "6122aa8885c61cc7b215f2a2dc93c02d"
   },
   {
     "url": "css/main.css",
