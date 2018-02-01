@@ -1,12 +1,12 @@
 (function () {
-    var config = {
-        apiKey: "AIzaSyAc5zOr-2Pt0dKzoU61Hv68vb4ealPgjyQ",
-        authDomain: "pwagram-82371.firebaseapp.com",
-        databaseURL: "https://pwagram-82371.firebaseio.com",
-        projectId: "pwagram-82371",
-        storageBucket: "pwagram-82371.appspot.com",
-        messagingSenderId: "953557656666"
-    };
+  var config = {
+      apiKey: "AIzaSyCFWzxl0VLYePJ-5O8U5umWWNJLT7TG9Fo",
+      authDomain: "urmatt-app.firebaseapp.com",
+      databaseURL: "https://urmatt-app.firebaseio.com",
+      projectId: "urmatt-app",
+      storageBucket: "urmatt-app.appspot.com",
+      messagingSenderId: "523826665141"
+  };
     firebase.initializeApp(config);
 
     var firestore = firebase.firestore();
