@@ -7,12 +7,20 @@ workboxSW.precache([
     "revision": "9b6da10a7064173fbfef1482fd96ac42"
   },
   {
+    "url": "scripts/app.js",
+    "revision": "272f6425d224a781fbd61bb4c498135e"
+  },
+  {
     "url": "scripts/console.js",
-    "revision": "07f35adf28c37c19da4d74287dd96361"
+    "revision": "f36241332d4a2f908539db957029f7fc"
   },
   {
     "url": "scripts/export.js",
     "revision": "089b1714b8d6f9a59e996d7e04d907b8"
+  },
+  {
+    "url": "scripts/login.js",
+    "revision": "58744592acc55577b7164f0e1e98ab39"
   },
   {
     "url": "scripts/material.min.js",
@@ -23,8 +31,20 @@ workboxSW.precache([
     "revision": "42bdee087d5f8587a4fcb8bbd4087614"
   },
   {
+    "url": "accountCreation.html",
+    "revision": "70fdb66a1ab5173754a6cdcc294b633d"
+  },
+  {
     "url": "console.html",
-    "revision": "6122aa8885c61cc7b215f2a2dc93c02d"
+    "revision": "0721915a7777f869011f31d7962edddf"
+  },
+  {
+    "url": "login.html",
+    "revision": "b7bfc4ad049d6775bea7aa62e6c76110"
+  },
+  {
+    "url": "css/Login_style.css",
+    "revision": "22a390e1a3f9c99fa9763a9000fc6e2e"
   },
   {
     "url": "css/main.css",
@@ -33,6 +53,10 @@ workboxSW.precache([
   {
     "url": "css/material.min.css",
     "revision": "9ab85b48144d24908b4e455c2afb648c"
+  },
+  {
+    "url": "css/styles.css",
+    "revision": "86fa8b61e88ff047414a8a388887f5d8"
   }
 ]);
 
