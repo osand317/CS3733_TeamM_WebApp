@@ -49,6 +49,10 @@
                         <thead id="reportHeading"></thead>
                         <tbody id="reportBody"></tbody>
                     </table>
+                    <a href='#'
+                       onclick='getDataAndDownload()'
+                    >Download CSV</a>
+                    <!--<button onclick="getDataForDownload()">gdfd</button>-->
                     <!--<ul class="demo-list-item mdl-list" id="reportDisplay"></ul>-->
                 </div>
             </section>
@@ -84,6 +88,7 @@
     <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase-firestore.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="scripts/export.js"></script>
     <script type="text/javascript" src="scripts/console.js"></script>
     <script src="scripts/material.min.js"></script>
 </body>
