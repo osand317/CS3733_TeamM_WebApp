@@ -220,3 +220,15 @@ window.onload = function() {
     };
     navigator.geolocation.getCurrentPosition(geoSuccess);
 };
+
+function getMapUrl(){
+    var url = "https://www.google.com/maps/embed/v1/view?key=AIzaSyAskkxEXqXBV0mDVQgzoT3LTWbYhNgfe2w&center=" +
+        document.getElementById('startLat').innerHTML +
+        "," +
+        document.getElementById('startLon').innerHTML +
+
+        "&zoom=18&maptype=satellite";
+    console.log(url);
+    return url;
+
+}

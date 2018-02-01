@@ -12,7 +12,7 @@ workboxSW.precache([
   },
   {
     "url": "scripts/console.js",
-    "revision": "f36241332d4a2f908539db957029f7fc"
+    "revision": "9c07e87f8ed19a70f47473933ecaa6dd"
   },
   {
     "url": "scripts/export.js",
@@ -36,7 +36,7 @@ workboxSW.precache([
   },
   {
     "url": "console.html",
-    "revision": "0721915a7777f869011f31d7962edddf"
+    "revision": "99ca4496a36c824280984adc3ac6d2f1"
   },
   {
     "url": "login.html",
