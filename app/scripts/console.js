@@ -37,6 +37,8 @@ var db = firebase.firestore();
 //     searchDB(query);
 //     form.reset();
 // });
+
+// Update list of reports whenever the database changes
 db.collection("reports").limit(50).onSnapshot(function(querySnapshot){
     // reportDisplay.innerHTML = "";
     var needsHeading = true;
@@ -47,6 +49,7 @@ db.collection("reports").limit(50).onSnapshot(function(querySnapshot){
     });
 });
 
+//Update list of profiles whenever the database changes
 db.collection("profiles").limit(50).onSnapshot(function(querySnapshot){
     // reportDisplay.innerHTML = "";
     var needsHeading = true;
@@ -62,13 +65,11 @@ function createTableRow(parent){
     parent.appendChild(tr);
     return tr;
 }
-
 function createTableEntry(value, tr){
     var td = document.createElement('td');
     tr.appendChild(td);
     td.textContent = value;
 }
-
 function createTableHeading(data, displayArea){
     if(displayArea === reportDisplay){
         var thead = document.querySelector("#reportHeading");
@@ -86,7 +87,6 @@ function createTableHeading(data, displayArea){
         tr.appendChild(th);
     });
 }
-
 function createTableBody(data, displayArea){
     if(displayArea === reportDisplay){
         var tbody = document.querySelector("#reportBody");
@@ -102,6 +102,7 @@ function createTableBody(data, displayArea){
     });
 }
 
+// Setup for chart
 google.charts.load('current', {'packages':['line']});
 google.charts.setOnLoadCallback(drawChart);
 
@@ -135,6 +136,7 @@ function drawChart(eggData) {
     chart.draw(data, google.charts.Line.convertOptions(options));
 }
 
+// Redraw chart whenever data in reports changes
 db.collection("reports").onSnapshot(function (querySnapshot) {
     var data = [];
     querySnapshot.forEach(function (doc) {
