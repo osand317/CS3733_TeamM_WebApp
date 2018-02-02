@@ -1,6 +1,7 @@
 // ------------------------- Firebase --------------------- //
 var reportDisplay = document.querySelector("#reportDisplay");
 var profileDisplay = document.querySelector("#profileDisplay");
+var map = document.querySelector("#map");
 // var searchBtn = document.querySelector("#searchBtn");
 // var form = document.querySelector("form");
 
@@ -215,8 +216,10 @@ window.onload = function() {
     var startPos;
     var geoSuccess = function(position) {
         startPos = position;
+        console.log(startPos);
         document.getElementById('startLat').innerHTML = startPos.coords.latitude;
         document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+        map.setAttribute("src", getMapUrl());
     };
     navigator.geolocation.getCurrentPosition(geoSuccess);
 };
