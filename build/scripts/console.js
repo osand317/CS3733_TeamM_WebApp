@@ -110,7 +110,6 @@ google.charts.load('current', {'packages':['line']});
 // google.charts.setOnLoadCallback(drawChart);
 
 function drawChart(eggData) {
-    // console.log("running drawChart", eggData);
     var data = new google.visualization.DataTable();
     data.addColumn('number', 'Date');
     data.addColumn('number', 'Eggs');
@@ -145,7 +144,6 @@ db.collection("reports").onSnapshot(function (querySnapshot) {
     querySnapshot.forEach(function (doc) {
         data.push(doc.data().eggs);
     });
-    console.log(data);
     drawChart(data);
 });
 
@@ -218,7 +216,6 @@ window.onload = function() {
     var startPos;
     var geoSuccess = function(position) {
         startPos = position;
-        console.log(startPos);
         document.getElementById('startLat').innerHTML = startPos.coords.latitude;
         document.getElementById('startLon').innerHTML = startPos.coords.longitude;
         map.setAttribute("src", getMapUrl());
