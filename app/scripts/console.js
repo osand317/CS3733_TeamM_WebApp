@@ -47,7 +47,7 @@ db.collection("reports").limit(50).onSnapshot(function(querySnapshot){
     });
 });
 
-db.collection("profiles").limit(50).onSnapshot(function(querySnapshot){
+db.collection("users").limit(50).onSnapshot(function(querySnapshot){
     // reportDisplay.innerHTML = "";
     var needsHeading = true;
     querySnapshot.forEach(function (doc) {
@@ -141,4 +141,30 @@ db.collection("reports").onSnapshot(function (querySnapshot) {
         data.push(doc.data().eggs);
     });
     drawChart(data);
+});
+
+function currentUserInfo(user) {
+  var usersRef = firestore.collection("users");
+  var query = usersRef.where("profileId", '==', user.uid).get()
+  .then(function (querySnapShot) {
+    querySnapShot.forEach(function(doc) {
+        const userProfileName = doc.data().firstName;
+        console.log(userProfileName);
+        document.getElementById('labelUserProfile').textContent = userProfileName;
+    });
+  })
+};
+
+btnLogOut.addEventListener('click', e=> {
+    firebase.auth().signOut();
+});
+
+firebase.auth().onAuthStateChanged(firebaseUser =>{
+    if (firebaseUser){
+        console.log(firebaseUser);
+        currentUserInfo(firebaseUser);
+    }else {
+        console.log('Not logged in');
+        window.location = 'login.html'
+    }
 });
