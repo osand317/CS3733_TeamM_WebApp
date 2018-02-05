@@ -12,7 +12,7 @@ workboxSW.precache([
   },
   {
     "url": "scripts/console.js",
-    "revision": "16e0da14c3e52a315bcf8098f3e839c0"
+    "revision": "e0d19ce415ec0bdb43d87ebd10221d8a"
   },
   {
     "url": "scripts/export.js",
@@ -36,15 +36,15 @@ workboxSW.precache([
   },
   {
     "url": "accountCreation.html",
-    "revision": "a8357b052dcc4cadeb57dad1185f5a99"
+    "revision": "6fa897a323bdd0995721c39945b485f6"
   },
   {
     "url": "console.html",
-    "revision": "be25c79fb7b3608f739902d80231313d"
+    "revision": "84d6c9a44664e55cf3f463a6062b21e8"
   },
   {
     "url": "login.html",
-    "revision": "5e61449689eccfc3abce1169b2ebfb56"
+    "revision": "44fb49c359251cbfda32d401387bc8ce"
   },
   {
     "url": "css/Login_style.css",
