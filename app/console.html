@@ -61,6 +61,10 @@
                         <thead id="reportHeading"></thead>
                         <tbody id="reportBody"></tbody>
                     </table>
+                    <a href='#'
+                       onclick='getDataAndDownload()'
+                    >Download CSV</a>
+                    <!--<button onclick="getDataForDownload()">gdfd</button>-->
                     <!--<ul class="demo-list-item mdl-list" id="reportDisplay"></ul>-->
                 </div>
             </section>
@@ -79,22 +83,25 @@
                     <!-- Your content goes here -->
                     <h4>Eggs</h4>
                     <div id="linechart_material"></div>
+                    <p id="startLat"></p>
+                    <p id="startLon"></p>
+                    <iframe
+                            width="600"
+                            height="450"
+                            frameborder="0" style="border:0"
+                            src="https://www.google.com/maps/embed/v1/view?key=AIzaSyAskkxEXqXBV0mDVQgzoT3LTWbYhNgfe2w&center=-33.8569,151.2152&zoom=18&maptype=satellite"
+                            id="map">
+                    </iframe>
+                    <p>hello</p>
+
                 </div>
             </section>
         </main>
 
     </div>
 
-    <!--<button type="button" class="mdl-chip" id="reportFilterBtn">-->
-        <!--<span class="mdl-chip__text">Reports</span>-->
-    <!--</button>-->
-    <!--<button type="button" class="mdl-chip" id="profileFilterBtn">-->
-        <!--<span class="mdl-chip__text">Profiles</span>-->
-    <!--</button>-->
+
     <script src="scripts/header.js" charset="utf-8"></script>
-    <!-- <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase-firestore.js"></script> -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="scripts/console.js"></script>
     <script src="scripts/material.min.js"></script>

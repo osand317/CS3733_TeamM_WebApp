@@ -1,5 +1,7 @@
+// ------------------------- Firebase --------------------- //
 var reportDisplay = document.querySelector("#reportDisplay");
 var profileDisplay = document.querySelector("#profileDisplay");
+var map = document.querySelector("#map");
 // var searchBtn = document.querySelector("#searchBtn");
 // var form = document.querySelector("form");
 
@@ -14,7 +16,6 @@ var config = {
 if(!firebase.apps.length){
     firebase.initializeApp(config);
 }
-
 var db = firebase.firestore();
 
 // search for report with matching num of eggs
@@ -37,6 +38,9 @@ var db = firebase.firestore();
 //     searchDB(query);
 //     form.reset();
 // });
+
+// ------------------------- Tables ---------------------- //
+// Update list of reports whenever the database changes
 db.collection("reports").limit(50).onSnapshot(function(querySnapshot){
     // reportDisplay.innerHTML = "";
     var needsHeading = true;
@@ -48,6 +52,7 @@ db.collection("reports").limit(50).onSnapshot(function(querySnapshot){
 });
 
 db.collection("users").limit(50).onSnapshot(function(querySnapshot){
+//Update list of profiles whenever the database changes
     // reportDisplay.innerHTML = "";
     var needsHeading = true;
     querySnapshot.forEach(function (doc) {
@@ -62,13 +67,11 @@ function createTableRow(parent){
     parent.appendChild(tr);
     return tr;
 }
-
 function createTableEntry(value, tr){
     var td = document.createElement('td');
     tr.appendChild(td);
     td.textContent = value;
 }
-
 function createTableHeading(data, displayArea){
     if(displayArea === reportDisplay){
         var thead = document.querySelector("#reportHeading");
@@ -86,7 +89,6 @@ function createTableHeading(data, displayArea){
         tr.appendChild(th);
     });
 }
-
 function createTableBody(data, displayArea){
     if(displayArea === reportDisplay){
         var tbody = document.querySelector("#reportBody");
@@ -102,6 +104,8 @@ function createTableBody(data, displayArea){
     });
 }
 
+// ------------------------- Graphs ---------------------- //
+// Setup for chart
 google.charts.load('current', {'packages':['line']});
 google.charts.setOnLoadCallback(drawChart);
 
@@ -135,6 +139,7 @@ function drawChart(eggData) {
     chart.draw(data, google.charts.Line.convertOptions(options));
 }
 
+// Redraw chart whenever data in reports changes
 db.collection("reports").onSnapshot(function (querySnapshot) {
     var data = [];
     querySnapshot.forEach(function (doc) {
@@ -143,28 +148,90 @@ db.collection("reports").onSnapshot(function (querySnapshot) {
     drawChart(data);
 });
 
-function currentUserInfo(user) {
-  var usersRef = firestore.collection("users");
-  var query = usersRef.where("profileId", '==', user.uid).get()
-  .then(function (querySnapShot) {
-    querySnapShot.forEach(function(doc) {
-        const userProfileName = doc.data().firstName;
-        console.log(userProfileName);
-        document.getElementById('labelUserProfile').textContent = userProfileName;
+// ------------------------- Download ---------------------- //
+function getDataAndDownload() {
+    console.log("getting data")
+    db.collection("reports").get()
+        .then(function(snapshot){
+            var data = [];
+            snapshot.forEach(function(doc){
+                data.push(doc.data());
+            })
+            downloadCSV({data: data, filename: "reports.csv"});
+        })
+}
+function convertArrayOfObjectsToCSV(args) {
+    var result, ctr, keys, columnDelimiter, lineDelimiter, data;
+
+    data = args.data || null;
+    if (data == null || !data.length) {
+        return null;
+    }
+
+    columnDelimiter = args.columnDelimiter || ',';
+    lineDelimiter = args.lineDelimiter || '\n';
+
+    keys = Object.keys(data[0]);
+
+    result = '';
+    result += keys.join(columnDelimiter);
+    result += lineDelimiter;
+
+    data.forEach(function(item) {
+        ctr = 0;
+        keys.forEach(function(key) {
+            if (ctr > 0) result += columnDelimiter;
+
+            result += item[key];
+            ctr++;
+        });
+        result += lineDelimiter;
     });
-  })
+
+    return result;
+}
+function downloadCSV(args) {
+    var data, filename, link;
+    data = args.data;
+    var csv = convertArrayOfObjectsToCSV({
+        data: data
+    });
+    if (csv == null) return;
+
+    filename = args.filename || 'export.csv';
+
+    if (!csv.match(/^data:text\/csv/i)) {
+        csv = 'data:text/csv;charset=utf-8,' + csv;
+    }
+    data = encodeURI(csv);
+
+    link = document.createElement('a');
+    link.setAttribute('href', data);
+    link.setAttribute('download', filename);
+    link.click();
+}
+
+// ------------------------- GPS ---------------------- //
+window.onload = function() {
+    var startPos;
+    var geoSuccess = function(position) {
+        startPos = position;
+        console.log(startPos);
+        document.getElementById('startLat').innerHTML = startPos.coords.latitude;
+        document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+        map.setAttribute("src", getMapUrl());
+    };
+    navigator.geolocation.getCurrentPosition(geoSuccess);
 };
 
-btnLogOut.addEventListener('click', e=> {
-    firebase.auth().signOut();
-});
+function getMapUrl(){
+    var url = "https://www.google.com/maps/embed/v1/view?key=AIzaSyAskkxEXqXBV0mDVQgzoT3LTWbYhNgfe2w&center=" +
+        document.getElementById('startLat').innerHTML +
+        "," +
+        document.getElementById('startLon').innerHTML +
 
-firebase.auth().onAuthStateChanged(firebaseUser =>{
-    if (firebaseUser){
-        console.log(firebaseUser);
-        currentUserInfo(firebaseUser);
-    }else {
-        console.log('Not logged in');
-        window.location = 'login.html'
-    }
-});
+        "&zoom=18&maptype=satellite";
+    console.log(url);
+    return url;
+
+}
