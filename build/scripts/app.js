@@ -38,15 +38,6 @@
       document.getElementById('imageName').textContent = fileImage.files[0].name;
     };
 
-    //
-    // btnLogIn.addEventListener('click', e=> {
-    //     const email = txtEmail.value;
-    //     const pass = txtPassword.value;
-    //     const auth = firebase.auth();
-    //     const promise = auth.signInWithEmailAndPassword(email, pass);
-    //     promise.catch(e=> console.log(e.message));
-    //
-    // });
 
 
     btnSignUp.addEventListener('click', e=> {
@@ -114,6 +105,7 @@
                     profileId: docRef.uid
                 }).then(function () {
                     console.log("Status saved");
+                    window.location = 'accountCreation.html'
                 }).catch(function (error) {
                     console.log(error);
                 });
@@ -133,25 +125,10 @@
             currentUserInfo(firebaseUser);
         }else {
             console.log('Not logged in');
-            window.location = 'main.html'
+            window.location = 'login.html'
         }
     });
 
-    function writeNewPost(uid, username) {
-        // A post entry.
-        var postData = {
-            author: username,
-            uid: uid
-        };
-
-        // Get a key for a new Post.
-        var newPostKey = firebase.database().ref().child('posts').push().key;
-
-        // Write the new post's data simultaneously in the posts list and the user's post list.
-        var updates = {};
-        updates['/posts/' + newPostKey] = postData;
-        return firebase.database().ref().update(updates);
-    };
 
     function currentUserInfo(user) {
       var usersRef = firestore.collection("users");

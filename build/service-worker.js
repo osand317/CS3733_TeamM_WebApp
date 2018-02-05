@@ -4,59 +4,63 @@ const workboxSW = new WorkboxSW();
 workboxSW.precache([
   {
     "url": "index.html",
-    "revision": "9b6da10a7064173fbfef1482fd96ac42"
+    "revision": "c866d424d607ea1d82759f442de41da8"
   },
   {
     "url": "scripts/app.js",
-    "revision": "272f6425d224a781fbd61bb4c498135e"
+    "revision": "ca1d86b37919ea4a94019823e66bc0b8"
   },
   {
     "url": "scripts/console.js",
-    "revision": "78f82c3747e523c7dcf507ccdb4ee8a7"
+    "revision": "16e0da14c3e52a315bcf8098f3e839c0"
   },
   {
     "url": "scripts/export.js",
-    "revision": "089b1714b8d6f9a59e996d7e04d907b8"
+    "revision": "ac2b2b1dc889bd54e667df426bc6270a"
+  },
+  {
+    "url": "scripts/header.js",
+    "revision": "43b9b8e5b0e8270108b1d47fa61e6dfc"
   },
   {
     "url": "scripts/login.js",
-    "revision": "58744592acc55577b7164f0e1e98ab39"
+    "revision": "3cb8cad8b6f22c3074382b9371078e80"
   },
   {
     "url": "scripts/material.min.js",
-    "revision": "713af0c6ce93dbbce2f00bf0a98d0541"
+    "revision": "e68511951f1285c5cbf4aa510e8a2faf"
   },
   {
     "url": "service-worker.js",
-    "revision": "42bdee087d5f8587a4fcb8bbd4087614"
+    "revision": "c256a1af9fed03d76d25e93d25833ea8"
   },
   {
     "url": "accountCreation.html",
-    "revision": "70fdb66a1ab5173754a6cdcc294b633d"
+    "revision": "a8357b052dcc4cadeb57dad1185f5a99"
   },
   {
     "url": "console.html",
-    "revision": "7ff6bdc1768ef940c738f5c11a5bf542"
+    "revision": "be25c79fb7b3608f739902d80231313d"
   },
   {
     "url": "login.html",
-    "revision": "b7bfc4ad049d6775bea7aa62e6c76110"
+    "revision": "5e61449689eccfc3abce1169b2ebfb56"
   },
   {
     "url": "css/Login_style.css",
-    "revision": "22a390e1a3f9c99fa9763a9000fc6e2e"
+    "revision": "0a3fedbad032d8e4d2e37a2969fa2a45"
   },
   {
     "url": "css/main.css",
-    "revision": "a278782305cd0214aeb66f03147e5d63"
+    "revision": "dec2eed382307a2c86d3fcdd54ed87df"
   },
   {
     "url": "css/material.min.css",
-    "revision": "9ab85b48144d24908b4e455c2afb648c"
+    "revision": "a09f24c85cb39ef5db425b71c8c98c4a"
   },
   {
     "url": "css/styles.css",
-    "revision": "86fa8b61e88ff047414a8a388887f5d8"
+    "revision": "628ea1d6d2f6d7016432010d4f8e4ae0"
   }
 ]);
 

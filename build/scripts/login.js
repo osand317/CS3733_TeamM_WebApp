@@ -23,7 +23,7 @@ btnLogIn.addEventListener('click', e=> {
     const promise = auth.signInWithEmailAndPassword(email, pass);
     promise.then(function () {
       console.log("Log In successful");
-      window.location = 'accountCreation.html'
+      window.location = 'index.html'
     });
     promise.catch(e=> console.log(e.message));
       // window.location.href='main.html';

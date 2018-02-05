@@ -51,8 +51,8 @@ db.collection("reports").limit(50).onSnapshot(function(querySnapshot){
     });
 });
 
+db.collection("users").limit(50).onSnapshot(function(querySnapshot){
 //Update list of profiles whenever the database changes
-db.collection("profiles").limit(50).onSnapshot(function(querySnapshot){
     // reportDisplay.innerHTML = "";
     var needsHeading = true;
     querySnapshot.forEach(function (doc) {
