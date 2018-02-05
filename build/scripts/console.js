@@ -107,10 +107,10 @@ function createTableBody(data, displayArea){
 // ------------------------- Graphs ---------------------- //
 // Setup for chart
 google.charts.load('current', {'packages':['line']});
-google.charts.setOnLoadCallback(drawChart);
+// google.charts.setOnLoadCallback(drawChart);
 
 function drawChart(eggData) {
-
+    // console.log("running drawChart", eggData);
     var data = new google.visualization.DataTable();
     data.addColumn('number', 'Date');
     data.addColumn('number', 'Eggs');
@@ -145,6 +145,7 @@ db.collection("reports").onSnapshot(function (querySnapshot) {
     querySnapshot.forEach(function (doc) {
         data.push(doc.data().eggs);
     });
+    console.log(data);
     drawChart(data);
 });
 
@@ -212,6 +213,7 @@ function downloadCSV(args) {
 }
 
 // ------------------------- GPS ---------------------- //
+// Gets lat and long with geolocation api, sets map center to current location
 window.onload = function() {
     var startPos;
     var geoSuccess = function(position) {
@@ -224,6 +226,7 @@ window.onload = function() {
     navigator.geolocation.getCurrentPosition(geoSuccess);
 };
 
+// Creates url to call Google Maps API
 function getMapUrl(){
     var url = "https://www.google.com/maps/embed/v1/view?key=AIzaSyAskkxEXqXBV0mDVQgzoT3LTWbYhNgfe2w&center=" +
         document.getElementById('startLat').innerHTML +

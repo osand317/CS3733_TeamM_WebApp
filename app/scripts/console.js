@@ -107,10 +107,9 @@ function createTableBody(data, displayArea){
 // ------------------------- Graphs ---------------------- //
 // Setup for chart
 google.charts.load('current', {'packages':['line']});
-google.charts.setOnLoadCallback(drawChart);
+// google.charts.setOnLoadCallback(drawChart);
 
 function drawChart(eggData) {
-
     var data = new google.visualization.DataTable();
     data.addColumn('number', 'Date');
     data.addColumn('number', 'Eggs');
@@ -212,11 +211,11 @@ function downloadCSV(args) {
 }
 
 // ------------------------- GPS ---------------------- //
+// Gets lat and long with geolocation api, sets map center to current location
 window.onload = function() {
     var startPos;
     var geoSuccess = function(position) {
         startPos = position;
-        console.log(startPos);
         document.getElementById('startLat').innerHTML = startPos.coords.latitude;
         document.getElementById('startLon').innerHTML = startPos.coords.longitude;
         map.setAttribute("src", getMapUrl());
@@ -224,6 +223,7 @@ window.onload = function() {
     navigator.geolocation.getCurrentPosition(geoSuccess);
 };
 
+// Creates url to call Google Maps API
 function getMapUrl(){
     var url = "https://www.google.com/maps/embed/v1/view?key=AIzaSyAskkxEXqXBV0mDVQgzoT3LTWbYhNgfe2w&center=" +
         document.getElementById('startLat').innerHTML +
