@@ -2,11 +2,7 @@ var form = document.querySelector("#form");
 var submitBtn = document.querySelector("#submitBtn");
 
 function submitReport(data){
-    // db.collection("reports").add({
-    //     eggs: data.eggs,
-    //     firstName: data.firstName,
-    //     lastName: data.lastName
-    // });
+    firestore.collection("reports").add(data);
 }
 
 form.addEventListener("submit", function(e) {
@@ -18,6 +14,6 @@ form.addEventListener("submit", function(e) {
         data[key] = val;
     }
     console.log(data);
-    // submitReport(data);
+    submitReport(data);
     form.reset();
 });
