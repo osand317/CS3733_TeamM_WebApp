@@ -215,6 +215,7 @@ function downloadCSV(args) {
 window.onload = function() {
     var startPos;
     var geoOptions = {
+        maximumAge: 5 * 60 * 1000,
         timeout: 10 * 1000
     };
     var geoSuccess = function(position) {
