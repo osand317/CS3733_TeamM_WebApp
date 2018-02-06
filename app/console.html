@@ -6,6 +6,7 @@
 
     <title>Consoles</title>
 
+    <link rel="stylesheet" href="css/console.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.green-light_green.min.css" />
     <link rel="stylesheet" href="css/main.css">
@@ -44,6 +45,7 @@
                 <a href="#fixed-tab-1" class="mdl-layout__tab is-active">Reports</a>
                 <a href="#fixed-tab-2" class="mdl-layout__tab">Profiles</a>
                 <a href="#fixed-tab-3" class="mdl-layout__tab">Analytics</a>
+                <a href="#fixed-tab-4" class="mdl-layout__tab">Test Tab</a>
             </div>
         </header>
         <div class="mdl-layout__drawer">
@@ -59,6 +61,11 @@
             <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
                 <div class="page-content">
                     <!-- Your content goes here -->
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" id="myInput" onkeyup="filterTable()" placeholder="Search for farmers">
+                        <label class="mdl-textfield__label" for="myInput">Text...</label>
+                    </div>
+
                     <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id="reportDisplay">
                         <thead id="reportHeading"></thead>
                         <tbody id="reportBody"></tbody>
@@ -96,6 +103,38 @@
                     </iframe>
 
                     <input type="file" accept="image/*" capture="camera">
+                </div>
+            </section>
+            <section class="mdl-layout__tab-panel" id="fixed-tab-4">
+                <div class="page-content">
+                    <!-- Your content goes here -->
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" id="searchFilter" onkeyup="filterTable()" placeholder="Search for farmers">
+                        <label class="mdl-textfield__label" for="myInput">Text...</label>
+                    </div>
+
+                    <table id="myTable">
+                        <tr class="header">
+                            <th style="width:60%;">Name</th>
+                            <th style="width:40%;">Country</th>
+                        </tr>
+                        <tr>
+                            <td>Alfreds Futterkiste</td>
+                            <td>Germany</td>
+                        </tr>
+                        <tr>
+                            <td>Berglunds snabbkop</td>
+                            <td>Sweden</td>
+                        </tr>
+                        <tr>
+                            <td>Island Trading</td>
+                            <td>UK</td>
+                        </tr>
+                        <tr>
+                            <td>Koniglich Essen</td>
+                            <td>Germany</td>
+                        </tr>
+                    </table>
                 </div>
             </section>
         </main>
