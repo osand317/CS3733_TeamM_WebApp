@@ -49,6 +49,7 @@ db.collection("reports").limit(50).onSnapshot(function(querySnapshot){
         needsHeading = false;
         createTableBody(doc.data(), reportDisplay);
     });
+    populateFilters();
 });
 
 db.collection("users").limit(50).onSnapshot(function(querySnapshot){
@@ -248,6 +249,24 @@ function getMapUrl(){
 
 }
 // ------------------------- List Stuff ---------------------- //
+var searchBy = document.getElementById("searchByUL");
+
+function populateFilters() {
+    var tableHeadings = document.querySelectorAll("th");
+    // console.log(tableHeadings);
+    tableHeadings.forEach(function(th) {
+        var li = document.createElement("li");
+        li.textContent = th.textContent;
+        li.setAttribute("class", "mdl-menu__item");
+        searchBy.appendChild(li);
+        // console.log(li);
+    });
+}
+
+function filterSearch() {
+
+}
+
 function filterTable() {
     // Declare variables
     var input, filter, table, tr, td, i, j;

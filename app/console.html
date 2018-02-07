@@ -62,8 +62,15 @@
                 <div class="page-content">
                     <!-- Your content goes here -->
                     <div class="mdl-textfield mdl-js-textfield">
-                        <input class="mdl-textfield__input" type="text" id="searchFilter" onkeyup="filterTable()" placeholder="Search for farmers">
+                        <input class="mdl-textfield__input" type="text" id="searchFilter" onkeyup="filterTable()" placeholder="Search">
                         <label class="mdl-textfield__label" for="searchFilter">Text...</label>
+                    </div>
+                    <!-- Select with floating label -->
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
+                        <input type="text" value="" class="mdl-textfield__input" id="searchBy" readonly>
+                        <input type="hidden" value="" name="searchBy">
+                        <label for="searchBy" class="mdl-textfield__label">Search by...</label>
+                        <ul for="searchBy" id="searchByUL" class="mdl-menu mdl-menu--bottom-left mdl-js-menu"></ul>
                     </div>
 
                     <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id="reportDisplay">
@@ -108,33 +115,7 @@
             <section class="mdl-layout__tab-panel" id="fixed-tab-4">
                 <div class="page-content">
                     <!-- Your content goes here -->
-                    <div class="mdl-textfield mdl-js-textfield">
-                        <input class="mdl-textfield__input" type="text" id="searchFilter" onkeyup="filterTable()" placeholder="Search for farmers">
-                        <label class="mdl-textfield__label" for="myInput">Text...</label>
-                    </div>
 
-                    <table id="myTable">
-                        <tr class="header">
-                            <th style="width:60%;">Name</th>
-                            <th style="width:40%;">Country</th>
-                        </tr>
-                        <tr>
-                            <td>Alfreds Futterkiste</td>
-                            <td>Germany</td>
-                        </tr>
-                        <tr>
-                            <td>Berglunds snabbkop</td>
-                            <td>Sweden</td>
-                        </tr>
-                        <tr>
-                            <td>Island Trading</td>
-                            <td>UK</td>
-                        </tr>
-                        <tr>
-                            <td>Koniglich Essen</td>
-                            <td>Germany</td>
-                        </tr>
-                    </table>
                 </div>
             </section>
         </main>
