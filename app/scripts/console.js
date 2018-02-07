@@ -5,6 +5,8 @@ var map = document.querySelector("#map");
 // var searchBtn = document.querySelector("#searchBtn");
 // var form = document.querySelector("form");
 
+var filtersInitialized = false;
+
 var config = {
     apiKey: "AIzaSyCFWzxl0VLYePJ-5O8U5umWWNJLT7TG9Fo",
     authDomain: "urmatt-app.firebaseapp.com",
@@ -252,19 +254,49 @@ function getMapUrl(){
 var searchBy = document.getElementById("searchByUL");
 
 function populateFilters() {
-    var tableHeadings = document.querySelectorAll("th");
+    var tableHeadings = document.querySelectorAll("th"); // Needs specificity
     // console.log(tableHeadings);
     tableHeadings.forEach(function(th) {
         var li = document.createElement("li");
         li.textContent = th.textContent;
         li.setAttribute("class", "mdl-menu__item");
+        li.setAttribute("onclick", 'filterSearch(this.textContent);');
         searchBy.appendChild(li);
+        if(!filtersInitialized){
+            if (currentSearchFilters.indexOf(th.textContent) === -1){
+                currentSearchFilters.push(th.textContent);
+            }
+            // console.log(currentSearchFilters);
+        }
+
+
         // console.log(li);
     });
+    filtersInitialized = true;
+
+}
+var currentSearchFilters = [];
+
+
+
+function filterSearch(filterName) {
+    if(currentSearchFilters.indexOf(filterName) === -1){
+        currentSearchFilters.push(filterName);
+    }
+    else {
+        currentSearchFilters.splice(currentSearchFilters.indexOf(filterName), 1);
+    }
+    // console.log(currentSearchFilters);
+    filterTable();
 }
 
-function filterSearch() {
-
+function isFiltered(currentCell, j){
+    var table = currentCell.closest('table');
+    // console.log(table.rows[0].cells[j].textContent);
+    var currentName = table.rows[0].cells[j].textContent;
+    var filtered = currentSearchFilters.indexOf(currentName) > -1;
+    // console.log(filtered);
+    return filtered;
 }
 
 function filterTable() {
@@ -280,7 +312,7 @@ function filterTable() {
         td = tr[i].getElementsByTagName("td");
         for (j = 0; j < td.length; j++) {
             if (td[j]) {
-                if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1 && isFiltered(td[j], j)) {
                     tr[i].style.display = "";
                     j = td.length; // If row should be shown, stop checking
                 } else {
