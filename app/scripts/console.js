@@ -253,6 +253,7 @@ function getMapUrl(){
 // ------------------------- List Stuff ---------------------- //
 var searchBy = document.getElementById("searchByUL");
 
+// Create list of filters in dropdown
 function populateFilters() {
     var tableHeadings = document.querySelectorAll("th"); // Needs specificity
     // console.log(tableHeadings);
@@ -260,7 +261,7 @@ function populateFilters() {
         var li = document.createElement("li");
         li.textContent = th.textContent;
         li.setAttribute("class", "mdl-menu__item");
-        li.setAttribute("onclick", 'filterSearch(this.textContent);');
+        li.setAttribute("onclick", 'toggleFilter(this.textContent);');
         var cb = document.createElement('input');
         cb.type = 'checkbox';
         cb.checked = true;
@@ -292,8 +293,9 @@ function populateFilters() {
 //
 // }
 
+// Callback function to toggle a filter when it is clicked
 var currentSearchFilters = [];
-function filterSearch(filterName) {
+function toggleFilter(filterName) {
     if(currentSearchFilters.indexOf(filterName) === -1){
         currentSearchFilters.push(filterName);
     }
@@ -304,6 +306,7 @@ function filterSearch(filterName) {
     filterTable();
 }
 
+// Check if a result should be shown based on whether or not its filter is currently active
 function isFiltered(currentCell, j){
     var table = currentCell.closest('table');
     // console.log(table.rows[0].cells[j].textContent);
@@ -313,7 +316,8 @@ function isFiltered(currentCell, j){
     return filtered;
 }
 
-function filterTable() {
+// Iterates through table and hides those that shouldn't be shown, based on search term and filters
+function searchCallback() {
     // Declare variables
     var input, filter, table, tr, td, i, j;
     input = document.getElementById("searchFilter");
