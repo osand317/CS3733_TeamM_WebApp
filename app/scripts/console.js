@@ -261,7 +261,12 @@ function populateFilters() {
         li.textContent = th.textContent;
         li.setAttribute("class", "mdl-menu__item");
         li.setAttribute("onclick", 'filterSearch(this.textContent);');
+        var cb = document.createElement('input');
+        cb.type = 'checkbox';
+        cb.checked = true;
+        li.appendChild(cb);
         searchBy.appendChild(li);
+
         if(!filtersInitialized){
             if (currentSearchFilters.indexOf(th.textContent) === -1){
                 currentSearchFilters.push(th.textContent);
@@ -275,10 +280,19 @@ function populateFilters() {
     filtersInitialized = true;
 
 }
+
+// function createSingleFilter(idNum){
+//     var cb = document.createElement('input');
+//     cb.type = 'checkbox';
+//     cb.checked = true;
+//     cb.id = 'checkbox' + idNum;
+//
+//
+//     var label = document.createElement('label');
+//
+// }
+
 var currentSearchFilters = [];
-
-
-
 function filterSearch(filterName) {
     if(currentSearchFilters.indexOf(filterName) === -1){
         currentSearchFilters.push(filterName);
