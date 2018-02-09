@@ -43,13 +43,17 @@ var db = firebase.firestore();
 
 // ------------------------- Tables ---------------------- //
 // Update list of reports whenever the database changes
+var currentReports = [];
+var allReports = [];
 db.collection("reports").limit(50).onSnapshot(function(querySnapshot){
     // reportDisplay.innerHTML = "";
     var needsHeading = true;
     querySnapshot.forEach(function (doc) {
         if(needsHeading){createTableHeading(doc.data(), reportDisplay)}
         needsHeading = false;
-        createTableBody(doc.data(), reportDisplay);
+        createTableBody(doc.data(), reportDisplay, doc.id);
+        currentReports.push(doc);
+        allReports.push(doc);
     });
     populateFilters();
 });
@@ -91,8 +95,12 @@ function createTableHeading(data, displayArea){
         th.textContent = key;
         tr.appendChild(th);
     });
+    var th = document.createElement('th');
+    th.textContent = 'ID';
+    tr.appendChild(th);
+
 }
-function createTableBody(data, displayArea){
+function createTableBody(data, displayArea, id){
     if(displayArea === reportDisplay){
         var tbody = document.querySelector("#reportBody");
     }
@@ -102,6 +110,7 @@ function createTableBody(data, displayArea){
     var tr = createTableRow(tbody);
     // Loops through all of the values for the object, creating a table entry for each
     var valueArray = Object.values(data);
+    valueArray.push(id);
     valueArray.forEach(function(val){
         createTableEntry(val, tr);
     });
@@ -152,15 +161,21 @@ db.collection("reports").onSnapshot(function (querySnapshot) {
 
 // ------------------------- Download ---------------------- //
 function getDataAndDownload() {
-    console.log("getting data")
-    db.collection("reports").get()
-        .then(function(snapshot){
-            var data = [];
-            snapshot.forEach(function(doc){
-                data.push(doc.data());
-            })
-            downloadCSV({data: data, filename: "reports.csv"});
-        })
+    console.log("getting data");
+    // db.collection("reports").get()
+    //     .then(function(snapshot){
+    //         var data = [];
+    //         snapshot.forEach(function(doc){
+    //             data.push(doc.data());
+    //             // console.log(doc.data());
+    //         });
+    //         downloadCSV({data: data, filename: "reports.csv"});
+    //     })
+    var data = [];
+    currentReports.forEach(function(doc){
+        data.push(doc.data());
+    })
+    downloadCSV({data: data, filename: "reports.csv"});
 }
 function convertArrayOfObjectsToCSV(args) {
     var result, ctr, keys, columnDelimiter, lineDelimiter, data;
@@ -246,7 +261,7 @@ function getMapUrl(){
         document.getElementById('startLon').innerHTML +
 
         "&zoom=18&maptype=satellite";
-    console.log(url);
+    // console.log(url);
     return url;
 
 }
@@ -303,7 +318,7 @@ function toggleFilter(filterName) {
         currentSearchFilters.splice(currentSearchFilters.indexOf(filterName), 1);
     }
     // console.log(currentSearchFilters);
-    filterTable();
+    searchCallback();
 }
 
 // Check if a result should be shown based on whether or not its filter is currently active
@@ -311,9 +326,9 @@ function isFiltered(currentCell, j){
     var table = currentCell.closest('table');
     // console.log(table.rows[0].cells[j].textContent);
     var currentName = table.rows[0].cells[j].textContent;
-    var filtered = currentSearchFilters.indexOf(currentName) > -1;
+    var shouldBeShown = !(currentSearchFilters.indexOf(currentName) > -1);
     // console.log(filtered);
-    return filtered;
+    return shouldBeShown;
 }
 
 // Iterates through table and hides those that shouldn't be shown, based on search term and filters
@@ -325,18 +340,30 @@ function searchCallback() {
     table = document.getElementById("reportDisplay");
     tr = table.getElementsByTagName("tr");
 
+    // currentReports = allReports;
+
     // Loop through all table rows, and hide those who don't match the search query
     for (i = 0; i < tr.length; i++) {
         td = tr[i].getElementsByTagName("td");
         for (j = 0; j < td.length; j++) {
             if (td[j]) {
-                if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1 && isFiltered(td[j], j)) {
+                if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1 && !isFiltered(td[j], j)) {
                     tr[i].style.display = "";
+                    var report = allReports.find(o => o.id === td[td.length-1].innerHTML);
+                    if(currentReports.indexOf(report) === -1){
+                        currentReports.push(report);
+                    }
                     j = td.length; // If row should be shown, stop checking
                 } else {
                     tr[i].style.display = "none";
+                    var report = allReports.find(o => o.id === td[td.length-1].innerHTML);
+                    var index = currentReports.indexOf(report);
+                    if(index > -1){
+                        currentReports.splice(index, 1);
+                    }
                 }
             }
         }
     }
+    // console.log(currentReports);
 }
