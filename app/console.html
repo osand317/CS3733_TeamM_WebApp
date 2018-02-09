@@ -72,14 +72,14 @@
                         <label for="searchBy" class="mdl-textfield__label">Filters</label>
                         <ul for="searchBy" id="searchByUL" class="mdl-menu mdl-menu--bottom-left mdl-js-menu"></ul>
                     </div>
+                    <button onclick="getDataAndDownload()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Download as CSV</button>
 
-                    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id="reportDisplay">
+
+                    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width" id="reportDisplay">
                         <thead id="reportHeading"></thead>
                         <tbody id="reportBody"></tbody>
                     </table>
-                    <a href='#'
-                       onclick='getDataAndDownload()'
-                    >Download CSV</a>
+
                     <!--<button onclick="getDataForDownload()">gdfd</button>-->
                     <!--<ul class="demo-list-item mdl-list" id="reportDisplay"></ul>-->
                 </div>

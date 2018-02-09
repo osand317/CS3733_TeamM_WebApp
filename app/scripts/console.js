@@ -76,6 +76,7 @@ function createTableRow(parent){
 }
 function createTableEntry(value, tr){
     var td = document.createElement('td');
+    td.classList.add("mdl-data-table__cell--center");
     tr.appendChild(td);
     td.textContent = value;
 }
@@ -93,6 +94,7 @@ function createTableHeading(data, displayArea){
     keyArray.forEach(function (key) {
         var th = document.createElement('th');
         th.textContent = key;
+        th.classList.add("full-width");
         tr.appendChild(th);
     });
     var th = document.createElement('th');
@@ -265,7 +267,7 @@ function getMapUrl(){
     return url;
 
 }
-// ------------------------- List Stuff ---------------------- //
+// ------------------------- Search Stuff ---------------------- //
 var searchBy = document.getElementById("searchByUL");
 
 // Create list of filters in dropdown
@@ -279,13 +281,13 @@ function populateFilters() {
         li.setAttribute("onclick", 'toggleFilter(this.textContent);');
         var cb = document.createElement('input');
         cb.type = 'checkbox';
-        cb.checked = true;
+        if (li.textContent !== 'ID') cb.checked = true;
         li.appendChild(cb);
         searchBy.appendChild(li);
 
         if(!filtersInitialized){
             if (currentSearchFilters.indexOf(th.textContent) === -1){
-                currentSearchFilters.push(th.textContent);
+                if (th.textContent !== 'ID') currentSearchFilters.push(th.textContent);
             }
             // console.log(currentSearchFilters);
         }
@@ -293,6 +295,7 @@ function populateFilters() {
 
         // console.log(li);
     });
+
     filtersInitialized = true;
 
 }
@@ -339,8 +342,6 @@ function searchCallback() {
     filter = input.value.toUpperCase();
     table = document.getElementById("reportDisplay");
     tr = table.getElementsByTagName("tr");
-
-    // currentReports = allReports;
 
     // Loop through all table rows, and hide those who don't match the search query
     for (i = 0; i < tr.length; i++) {
