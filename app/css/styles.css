@@ -15,3 +15,15 @@
 .accountForm_Content_Hide {
 	display: none;
 }
+
+.disabled {
+		 pointer-events: none;
+		 cursor: default;
+	}
+
+.buttonFormat {
+	display: block;
+	margin: 0 auto;
+	width: 80%;
+	text-align: center;
+}
