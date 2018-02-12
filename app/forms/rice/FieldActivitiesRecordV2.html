@@ -5,6 +5,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.green-light_green.min.css">
   <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase-firestore.js"></script>
 
 </head>
 <body>
@@ -26,7 +29,6 @@
       </div>
     </header>
     <div class="mdl-layout__drawer">
-      <span class="mdl-layout-title">
         <span class="mdl-layout-title">Menu</span>
       <nav class="mdl-navigation">
         <a class="mdl-navigation__link" href="">Link</a>
@@ -43,7 +45,7 @@
         </nav>
         <h5>Production activities</h5>
 	
-        <form action="/Field-activities-record-doc" method="post">
+        <form>
           <div class="mdl-textfield mdl-js-textfield">
             <input class="mdl-textfield__input" type="text" id="year">
             <label class="mdl-textfield__label" for="year">Year</label>
@@ -123,7 +125,7 @@
             <span class="mdl-checkbox__label">Cutting Grass</span></label>
           </div>
           <div>
-            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="Irrigation-">
+            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="Irrigation">
             <input type="checkbox" id="Irrigation" class="mdl-checkbox__input">
             <span class="mdl-checkbox__label">Irrigation</span></label>
           </div>
@@ -133,7 +135,7 @@
             <span class="mdl-checkbox__label">Compost Applied</span></label>
           </div>
           <div>
-	         Date <input type="date" name="date">
+	         Date <input type="date" id="date">
           </div>
 
           <h5>Pest & Disease</h5>
@@ -189,7 +191,7 @@
               <label class="mdl-textfield__label" for="Inspector">Inspector</label>
             </div>
             <div>
-              <input type="date" name="visit date">
+              <input type="date" id="visitDate">
             </div>
 
             <h5>Notes</h5>
@@ -197,10 +199,16 @@
 	          <div class="mdl-textfield mdl-js-textfield">
               <input class="mdl-textfield__input" type="text" id="Notes">
               <label class="mdl-textfield__label" for="Notes">Notes</label>
+              </div>
+            <div>
+              <input type="submit">
             </div>
           </form>
         </div>
       </main>
     </div>
+
+    <script src="../../scripts/input.js"></script>
+
   </body>
 </html>
