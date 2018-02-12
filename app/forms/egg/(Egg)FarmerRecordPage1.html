@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>แบบบันทึกเกษตรกร</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.green-light_green.min.css">
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+</head>
+<body>
+
+<!-- Always shows a header, even in smaller screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title">Forms</span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation. We hide it in small screens. -->
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
+        <a class="mdl-navigation__link" href="">Link</a>
+        <a class="mdl-navigation__link" href="">Link</a>
+        <a class="mdl-navigation__link" href="">Link</a>
+        <a class="mdl-navigation__link" href="">Link</a>
+      </nav>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">Title</span>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="">Link</a>
+      <a class="mdl-navigation__link" href="">Link</a>
+      <a class="mdl-navigation__link" href="">Link</a>
+      <a class="mdl-navigation__link" href="">Link</a>
+    </nav>
+  </div>
+  <main class="mdl-layout__content">
+    <div class="page-content"><!-- Your content goes here -->
+<!-- ************************************************************************** -->
+    <h3>แบบบันทึกเกษตรกร</h3>
+    <!-- Farmer's Record -->
+    <h5>ข้อมูลทั่วไป</h5>
+	<!-- General Information -->
+	<form action="/Farmer-general-info" method="post">
+	<ol>
+	<b><li>ชื่อ-สกุลเกษตรกร</li></b>
+	<!-- 1. Farmer Name-Surname -->
+			<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="NameSurname">ชื่อ-นามสกุล </label>
+			<input class="mdl-textfield__input" id="NameSurname" type="text">	
+			</div>
+			<!-- Name-surname -->
+			<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="FarmerCode">รหัสเกษตรกร</label>
+			<input class="mdl-textfield__input" id="FarmerCode" type="text">
+			</div>
+			<!-- farmer code -->
+		</form>
+
+	<b><li>สถานที่ติดต่อ</li></b>
+	<!-- 2. Address -->
+		<form>
+			<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="HoueseNo">บ้านเลขที่</label>
+			<input class="mdl-textfield__input" id="HouseNo" type="text">	
+			</div>
+			<!-- House no -->
+			<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="Moo">หมู่ที่ </label>
+			<input class="mdl-textfield__input" id="Moo" type="text">	
+			</div>
+			<!-- Moo -->
+		</form>
+		<form>
+			<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="Road">ถนน</label>
+			<input class="mdl-textfield__input" id="Road" type="text">	
+			</div>
+			<!-- Road -->
+			<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="Trok-Soi">ตรอก/ซอย</label>
+			<input class="mdl-textfield__input" id="Trok-Soi" type="text">	
+			</div>
+			<!-- Trok/Soi -->
+		</form>
+		<form>
+			<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="District">แขวง/ตำบล</label>
+			<input class="mdl-textfield__input" id="District" type="text">	
+			</div>
+			<!-- District -->
+			<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="AreaName">เขต/อำเภอ</label>
+			<input class="mdl-textfield__input" id="AreaName" type="text">	
+			</div>
+			<!-- Area -->
+		</form>
+		<form>
+			<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="Province">จังหวัด</label>
+			<input class="mdl-textfield__input" id="Province" type="text">	
+			</div>
+			<!-- Province -->
+			<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="ZipCode">รหัสไปรษณีย์</label>
+			<input class="mdl-textfield__input" id="ZipCode" type="text">	
+			</div>
+			<!-- Zip code -->
+		</form>
+		<form>
+			<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="TelephoneNo">โทรศัพท์</label>
+			<input class="mdl-textfield__input" id="TelephoneNo" type="text">	
+			</div>
+			<!-- Tel. no. -->
+			<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="Fax">โทรสาร</label>
+			<input class="mdl-textfield__input" id="Fax" type="text">	
+			</div>
+			<!-- Fax -->
+		</form>
+		<form>
+			<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="Email">อีเมล์</label>
+			<input class="mdl-textfield__input" id="Email" type="text">	
+			</div>
+			<!-- Email -->
+		</form>
+	<b>สถานที่ตั้งแปลง</b>(กรณีที่อยู่อาศัยไม่ใช่ที่เดียวกันกับที่ตั้งแปลง)
+	<!-- Farm's Location (if different from address) -->
+		<form>
+			<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="HoueseNo">บ้านเลขที่</label>
+			<input class="mdl-textfield__input" id="HouseNo" type="text">	
+			</div>
+			<!-- House no -->
+			<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="Moo">หมู่ที่ </label>
+			<input class="mdl-textfield__input" id="Moo" type="text">	
+			</div>
+			<!-- Moo -->
+		</form>
+		<form>
+			<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="Road">ถนน</label>
+			<input class="mdl-textfield__input" id="Road" type="text">	
+			</div>
+			<!-- Road -->
+			<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="Trok-Soi">ตรอก/ซอย</label>
+			<input class="mdl-textfield__input" id="Trok-Soi" type="text">	
+			</div>
+			<!-- Trok/Soi -->
+		</form>
+		<form>
+			<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="District">แขวง/ตำบล</label>
+			<input class="mdl-textfield__input" id="District" type="text">	
+			</div>
+			<!-- District -->
+			<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="AreaName">เขต/อำเภอ</label>
+			<input class="mdl-textfield__input" id="AreaName" type="text">	
+			</div>
+			<!-- Area -->
+		</form>
+		<form>
+			<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="Province">จังหวัด</label>
+			<input class="mdl-textfield__input" id="Province" type="text">	
+			</div>
+			<!-- Province -->
+			<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="ZipCode">รหัสไปรษณีย์</label>
+			<input class="mdl-textfield__input" id="ZipCode" type="text">	
+			</div>
+			<!-- Zip code -->
+		</form>
+		<form>
+			<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="TelephoneNo">โทรศัพท์</label>
+			<input class="mdl-textfield__input" id="TelephoneNo" type="text">	
+			</div>
+			<!-- Tel. no. -->
+			<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="Fax">โทรสาร</label>
+			<input class="mdl-textfield__input" id="Fax" type="text">	
+			</div>
+			<!-- Fax -->
+		</form>
+
+	<b><li>ชนิดพืชที่ปลูก</li></b>
+	<!-- 3. Types of plant -->
+		<ol>
+			<li>แปลงที่ 1</li>
+				<form>
+					<div class="mdl-textfield mdl-js-textfield">
+					<label class="mdl-textfield__label" for="PlantType1">ชนิดพืชที่ปลูก</label>
+					<input class="mdl-textfield__input" id="PlantType1" type="text">	
+					</div>
+					<!-- Plot1 -->
+				</form>
+				<form>
+					<div class="mdl-textfield mdl-js-textfield">
+					<label class="mdl-textfield__label" for="Area1">พื้นที่</label>
+					<input class="mdl-textfield__input" id="Area1" type="text">	
+					</div>
+					<!-- Area1 -->
+					<div class="mdl-textfield mdl-js-textfield">
+					<label class="mdl-textfield__label" for="Rai1">ไร่</label>
+					<input class="mdl-textfield__input" id="Rai1" type="text">	
+					</div>
+					<!-- Rai1 -->
+					<div class="mdl-textfield mdl-js-textfield">
+					<label class="mdl-textfield__label" for="Ngan1">งาน</label>
+					<input class="mdl-textfield__input" id="Ngan1" type="text">	
+					</div>
+					<!-- Ngan1 -->
+				</form>
+			<li>แปลงที่ 2</li>
+				<form>
+					<div class="mdl-textfield mdl-js-textfield">
+					<label class="mdl-textfield__label" for="PlantType2">ชนิดพืชที่ปลูก</label>
+					<input class="mdl-textfield__input" id="PlantType2" type="text">	
+					</div>
+					<!-- Plot2 -->
+				</form>
+				<form>
+					<div class="mdl-textfield mdl-js-textfield">
+					<label class="mdl-textfield__label" for="Area2">พื้นที่</label>
+					<input class="mdl-textfield__input" id="Area2" type="text">	
+					</div>
+					<!-- Area2 -->
+					<div class="mdl-textfield mdl-js-textfield">
+					<label class="mdl-textfield__label" for="Rai2">ไร่</label>
+					<input class="mdl-textfield__input" id="Rai2" type="text">	
+					</div>
+					<!-- Rai2 -->
+					<div class="mdl-textfield mdl-js-textfield">
+					<label class="mdl-textfield__label" for="Ngan2">งาน</label>
+					<input class="mdl-textfield__input" id="Ngan2" type="text">	
+					</div>
+					<!-- Ngan2 -->
+				</form>
+			<li>แปลงที่ 3</li>
+				<form>
+					<div class="mdl-textfield mdl-js-textfield">
+					<label class="mdl-textfield__label" for="PlantType3">ชนิดพืชที่ปลูก</label>
+					<input class="mdl-textfield__input" id="PlantType3" type="text">	
+					</div>
+					<!-- Plot3 -->
+				</form>
+				<form>
+					<div class="mdl-textfield mdl-js-textfield">
+					<label class="mdl-textfield__label" for="Area3">พื้นที่</label>
+					<input class="mdl-textfield__input" id="Area3" type="text">	
+					</div>
+					<!-- Area3 -->
+					<div class="mdl-textfield mdl-js-textfield">
+					<label class="mdl-textfield__label" for="Rai3">ไร่</label>
+					<input class="mdl-textfield__input" id="Rai3" type="text">	
+					</div>
+					<!-- Rai3 -->
+					<div class="mdl-textfield mdl-js-textfield">
+					<label class="mdl-textfield__label" for="Ngan3">งาน</label>
+					<input class="mdl-textfield__input" id="Ngan3" type="text">	
+					</div>
+					<!-- Ngan3 -->
+				</form>
+			<li>แปลงที่ 4</li>
+				<form>
+					<div class="mdl-textfield mdl-js-textfield">
+					<label class="mdl-textfield__label" for="PlantType4">ชนิดพืชที่ปลูก</label>
+					<input class="mdl-textfield__input" id="PlantType4" type="text">	
+					</div>
+					<!-- Plot4 -->
+				</form>
+				<form>
+					<div class="mdl-textfield mdl-js-textfield">
+					<label class="mdl-textfield__label" for="Area4">พื้นที่</label>
+					<input class="mdl-textfield__input" id="Area4" type="text">	
+					</div>
+					<!-- Area4 -->
+					<div class="mdl-textfield mdl-js-textfield">
+					<label class="mdl-textfield__label" for="Rai4">ไร่</label>
+					<input class="mdl-textfield__input" id="Rai4" type="text">	
+					</div>
+					<!-- Rai4 -->
+					<div class="mdl-textfield mdl-js-textfield">
+					<label class="mdl-textfield__label" for="Ngan4">งาน</label>
+					<input class="mdl-textfield__input" id="Ngan4" type="text">	
+					</div>
+					<!-- Ngan4 -->
+				</form>
+			<li>แปลงที่ 5</li>
+				<form>
+					<div class="mdl-textfield mdl-js-textfield">
+					<label class="mdl-textfield__label" for="PlantType5">ชนิดพืชที่ปลูก</label>
+					<input class="mdl-textfield__input" id="PlantType5" type="text">	
+					</div>
+					<!-- Plot5 -->
+				</form>
+				<form>
+					<div class="mdl-textfield mdl-js-textfield">
+					<label class="mdl-textfield__label" for="Area5">พื้นที่</label>
+					<input class="mdl-textfield__input" id="Area5" type="text">	
+					</div>
+					<!-- Area5 -->
+					<div class="mdl-textfield mdl-js-textfield">
+					<label class="mdl-textfield__label" for="Rai5">ไร่</label>
+					<input class="mdl-textfield__input" id="Rai5" type="text">	
+					</div>
+					<!-- Rai5 -->
+					<div class="mdl-textfield mdl-js-textfield">
+					<label class="mdl-textfield__label" for="Ngan5">งาน</label>
+					<input class="mdl-textfield__input" id="Ngan5" type="text">	
+					</div>
+					<!-- Ngan5 -->
+				</form>
+		</ol>
+
+	<b><li>พื้นที่ปลูกทั้งหมด</li></b>
+	<!-- 4. Total Growing Area -->
+		<form>
+				<div class="mdl-textfield mdl-js-textfield">
+				<label class="mdl-textfield__label" for="TotalArea">พื้นที่</label>
+				<input class="mdl-textfield__input" id="TotalArea" type="text">	
+				</div>
+				<!-- TotalArea -->
+				<div class="mdl-textfield mdl-js-textfield">
+				<label class="mdl-textfield__label" for="TotalRai">ไร่</label>
+				<input class="mdl-textfield__input" id="TotalRai" type="text">	
+				</div>
+				<!-- TotalRai -->
+				<div class="mdl-textfield mdl-js-textfield">
+				<label class="mdl-textfield__label" for="TotalNgan">งาน</label>
+				<input class="mdl-textfield__input" id="TotalNgan" type="text">	
+				</div>
+				<!-- TotalNgan -->
+		</form>
+
+	<b><li>ระบบการให้น้ำ</li></b>
+	<!-- 5. Irrigation System -->
+		<form>
+			<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox">
+  			<input type="checkbox" id="checkbox" class="mdl-checkbox__input">
+  			<span class="mdl-checkbox__label">น้ำฝน</span>
+			</label>
+			<!-- Rain -->
+			<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-2">
+  			<input type="checkbox" id="checkbox-2" class="mdl-checkbox__input">
+  			<span class="mdl-checkbox__label">สูบน้ำ</span>
+			</label>
+			<!-- Pump -->
+			<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-3">
+  			<input type="checkbox" id="checkbox-3" class="mdl-checkbox__input">
+  			<span class="mdl-checkbox__label">อื่นๆ</span>
+  				<input type="text" id="etc">
+			</label>
+			<!-- etc -->
+		</form> 
+		<form>
+			<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="TimesPerMonth">จำนวนครั้งต่อเดือน</label>
+			<input class="mdl-textfield__input" id="TimesPerMonth" type="text">	
+			</div>
+			<!-- TimesPerMonth -->
+			ทุก <input type="text" id="Every_Days"> วัน
+			<!-- Every_____days -->
+		</form>
+
+
+	</ol>
+
+	</div>
+  </main>
+</div>
+</body>
+</html>

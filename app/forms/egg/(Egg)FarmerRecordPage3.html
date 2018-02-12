@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>รายละเอียดการเตรียมดิน การปลูกดิน</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.green-light_green.min.css">
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+</head>
+<body>
+
+<!-- Always shows a header, even in smaller screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title">Forms</span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation. We hide it in small screens. -->
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
+        <a class="mdl-navigation__link" href="">Link</a>
+        <a class="mdl-navigation__link" href="">Link</a>
+        <a class="mdl-navigation__link" href="">Link</a>
+        <a class="mdl-navigation__link" href="">Link</a>
+      </nav>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">Title</span>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="">Link</a>
+      <a class="mdl-navigation__link" href="">Link</a>
+      <a class="mdl-navigation__link" href="">Link</a>
+      <a class="mdl-navigation__link" href="">Link</a>
+    </nav>
+  </div>
+  <main class="mdl-layout__content">
+    <div class="page-content"><!-- Your content goes here -->
+<!-- ************************************************************************** -->
+	<h3>แบบบันทึกเกษตรกร</h3>
+    <!-- Farmer's Record -->
+	<h5>รายละเอียดการเตรียมดิน การปลูกดิน</h5>
+	<!-- Soil preparation amd maintanance detail -->
+
+	<table class="mdl-data-table mdl-js-data-table" border="1">
+		<thead>
+			<tr>
+				<th class="mdl-data-table__cell--non-numeric">ชนิดพืช <br> <input type="text"></th>
+				<!-- Type of plant -->
+				<th class="mdl-data-table__cell--non-numeric" colspan="12">กิจกรรมที่ปฏิบัติ</th>
+				<!-- Activities -->
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th class="mdl-data-table__cell--non-numeric">แปลงที่ <br> <input type="text"></th>
+				<!-- Plot no. -->
+				<th rowspan="2" class="mdl-data-table__cell--non-numeric">เตรียม <br> แปลง</th>
+				<!-- Plot preparation -->
+				<th rowspan="2" class="mdl-data-table__cell--non-numeric">หยอด <br> เมล็ด</th>
+				<!-- Sow seed -->
+				<th rowspan="2" class="mdl-data-table__cell--non-numeric">สำรวจโรค <br> และแมลง</th>
+				<!-- Disease and insect investigation -->
+				<th rowspan="2" class="mdl-data-table__cell--non-numeric">ตัดหญ้า</th>
+				<!-- Cut the grass -->
+				<th rowspan="2" class="mdl-data-table__cell--non-numeric">ถอนหญ้า</th>
+				<!-- Pull out the grass -->
+				<th class="mdl-data-table__cell--non-numeric" colspan="7">การใช้ปุ๋ย สารบำรุงดิน สารเคมี</th>
+				<!-- Uses of fertilizer, soil nutrient, chemical -->
+			</tr>
+			<tr>
+				<th class="mdl-data-table__cell--non-numeric">วัน/เดือน/ปี</th>
+				<!-- Day/month/year -->
+				<th class="mdl-data-table__cell--non-numeric">ปุ๋ยคอก <br> (กก/ไร่)</th>
+				<!-- Manure (kg/rai) -->
+				<th class="mdl-data-table__cell--non-numeric">ปุ๋ยหมัก <br> (กก/ไร่)</th>
+				<!-- Compost (kg/rai) -->
+				<th class="mdl-data-table__cell--non-numeric">น้ำหมัก <br> (กก/ไร่)</th>
+				<!-- fermented water -->
+				<th class="mdl-data-table__cell--non-numeric">ขี้ไก่ <br> (กก/ไร่)</th>
+				<!-- Chicken fences -->
+				<th class="mdl-data-table__cell--non-numeric">ปุ๋ยขี้ค้างคาว <br> (กก/ไร่)</th>
+				<!-- Bush manure -->
+				<th class="mdl-data-table__cell--non-numeric">อื่นๆ <br> <input type="text" name="etc">
+				</th>
+				<th class="mdl-data-table__cell--non-numeric">เหตุผลที่ใช้</th>
+			</tr>
+			<tr>
+				<td class="mdl-data-table__cell--non-numeric" ><input class="mdl-textfield__input" type="date"><label class="mdl-textfield__label"></label></td>
+				<td class="mdl-data-table__cell--non-numeric"><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+					<input type="checkbox" class="mdl-checkbox__input"></td>
+				<td class="mdl-data-table__cell--non-numeric"><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+					<input type="checkbox" class="mdl-checkbox__input"></td>
+				<td class="mdl-data-table__cell--non-numeric"><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+					<input type="checkbox" class="mdl-checkbox__input"></td>
+				<td class="mdl-data-table__cell--non-numeric"><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+					<input type="checkbox" class="mdl-checkbox__input"></td>
+				<td class="mdl-data-table__cell--non-numeric"><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+					<input type="checkbox" class="mdl-checkbox__input"></td>
+				<td class="mdl-data-table__cell--non-numeric" ><input class="mdl-textfield__input" type="text"><label class="mdl-textfield__label"></label></td>
+				<td class="mdl-data-table__cell--non-numeric" ><input class="mdl-textfield__input" type="text"><label class="mdl-textfield__label"></label></td>
+				<td class="mdl-data-table__cell--non-numeric" ><input class="mdl-textfield__input" type="text"><label class="mdl-textfield__label"></label></td>
+				<td class="mdl-data-table__cell--non-numeric" ><input class="mdl-textfield__input" type="text"><label class="mdl-textfield__label"></label></td>
+				<td class="mdl-data-table__cell--non-numeric" ><input class="mdl-textfield__input" type="text"><label class="mdl-textfield__label"></label></td>
+				<td class="mdl-data-table__cell--non-numeric" ><input class="mdl-textfield__input" type="text"><label class="mdl-textfield__label"></label></td>
+				<td class="mdl-data-table__cell--non-numeric" ><input class="mdl-textfield__input" type="text"><label class="mdl-textfield__label"></label></td>
+			</tr>
+			<tr>
+				<td class="mdl-data-table__cell--non-numeric" ><input class="mdl-textfield__input" type="date"><label class="mdl-textfield__label"></label></td>
+				<td class="mdl-data-table__cell--non-numeric"><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+					<input type="checkbox" class="mdl-checkbox__input"></td>
+				<td class="mdl-data-table__cell--non-numeric"><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+					<input type="checkbox" class="mdl-checkbox__input"></td>
+				<td class="mdl-data-table__cell--non-numeric"><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+					<input type="checkbox" class="mdl-checkbox__input"></td>
+				<td class="mdl-data-table__cell--non-numeric"><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+					<input type="checkbox" class="mdl-checkbox__input"></td>
+				<td class="mdl-data-table__cell--non-numeric"><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+					<input type="checkbox" class="mdl-checkbox__input"></td>
+				<td class="mdl-data-table__cell--non-numeric" ><input class="mdl-textfield__input" type="text"><label class="mdl-textfield__label"></label></td>
+				<td class="mdl-data-table__cell--non-numeric" ><input class="mdl-textfield__input" type="text"><label class="mdl-textfield__label"></label></td>
+				<td class="mdl-data-table__cell--non-numeric" ><input class="mdl-textfield__input" type="text"><label class="mdl-textfield__label"></label></td>
+				<td class="mdl-data-table__cell--non-numeric" ><input class="mdl-textfield__input" type="text"><label class="mdl-textfield__label"></label></td>
+				<td class="mdl-data-table__cell--non-numeric" ><input class="mdl-textfield__input" type="text"><label class="mdl-textfield__label"></label></td>
+				<td class="mdl-data-table__cell--non-numeric" ><input class="mdl-textfield__input" type="text"><label class="mdl-textfield__label"></label></td>
+				<td class="mdl-data-table__cell--non-numeric" ><input class="mdl-textfield__input" type="text"><label class="mdl-textfield__label"></label></td>
+			</tr>
+			<tr>
+				<td class="mdl-data-table__cell--non-numeric" ><input class="mdl-textfield__input" type="date"><label class="mdl-textfield__label"></label></td>
+				<td class="mdl-data-table__cell--non-numeric"><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+					<input type="checkbox" class="mdl-checkbox__input"></td>
+				<td class="mdl-data-table__cell--non-numeric"><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+					<input type="checkbox" class="mdl-checkbox__input"></td>
+				<td class="mdl-data-table__cell--non-numeric"><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+					<input type="checkbox" class="mdl-checkbox__input"></td>
+				<td class="mdl-data-table__cell--non-numeric"><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+					<input type="checkbox" class="mdl-checkbox__input"></td>
+				<td class="mdl-data-table__cell--non-numeric"><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+					<input type="checkbox" class="mdl-checkbox__input"></td>
+				<td class="mdl-data-table__cell--non-numeric" ><input class="mdl-textfield__input" type="text"><label class="mdl-textfield__label"></label></td>
+				<td class="mdl-data-table__cell--non-numeric" ><input class="mdl-textfield__input" type="text"><label class="mdl-textfield__label"></label></td>
+				<td class="mdl-data-table__cell--non-numeric" ><input class="mdl-textfield__input" type="text"><label class="mdl-textfield__label"></label></td>
+				<td class="mdl-data-table__cell--non-numeric" ><input class="mdl-textfield__input" type="text"><label class="mdl-textfield__label"></label></td>
+				<td class="mdl-data-table__cell--non-numeric" ><input class="mdl-textfield__input" type="text"><label class="mdl-textfield__label"></label></td>
+				<td class="mdl-data-table__cell--non-numeric" ><input class="mdl-textfield__input" type="text"><label class="mdl-textfield__label"></label></td>
+				<td class="mdl-data-table__cell--non-numeric" ><input class="mdl-textfield__input" type="text"><label class="mdl-textfield__label"></label></td>
+			</tr>
+			<tr>
+				<td class="mdl-data-table__cell--non-numeric" ><input class="mdl-textfield__input" type="date"><label class="mdl-textfield__label"></label></td>
+				<td class="mdl-data-table__cell--non-numeric"><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+					<input type="checkbox" class="mdl-checkbox__input"></td>
+				<td class="mdl-data-table__cell--non-numeric"><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+					<input type="checkbox" class="mdl-checkbox__input"></td>
+				<td class="mdl-data-table__cell--non-numeric"><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+					<input type="checkbox" class="mdl-checkbox__input"></td>
+				<td class="mdl-data-table__cell--non-numeric"><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+					<input type="checkbox" class="mdl-checkbox__input"></td>
+				<td class="mdl-data-table__cell--non-numeric"><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+					<input type="checkbox" class="mdl-checkbox__input"></td>
+				<td class="mdl-data-table__cell--non-numeric" ><input class="mdl-textfield__input" type="text"><label class="mdl-textfield__label"></label></td>
+				<td class="mdl-data-table__cell--non-numeric" ><input class="mdl-textfield__input" type="text"><label class="mdl-textfield__label"></label></td>
+				<td class="mdl-data-table__cell--non-numeric" ><input class="mdl-textfield__input" type="text"><label class="mdl-textfield__label"></label></td>
+				<td class="mdl-data-table__cell--non-numeric" ><input class="mdl-textfield__input" type="text"><label class="mdl-textfield__label"></label></td>
+				<td class="mdl-data-table__cell--non-numeric" ><input class="mdl-textfield__input" type="text"><label class="mdl-textfield__label"></label></td>
+				<td class="mdl-data-table__cell--non-numeric" ><input class="mdl-textfield__input" type="text"><label class="mdl-textfield__label"></label></td>
+				<td class="mdl-data-table__cell--non-numeric" ><input class="mdl-textfield__input" type="text"><label class="mdl-textfield__label"></label></td>
+			</tr>
+			
+		</tbody>
+	</table>
+
+	</div>
+  </main>
+</div>
+</body>
+</html>
