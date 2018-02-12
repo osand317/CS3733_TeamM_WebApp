@@ -4,15 +4,31 @@ const workboxSW = new WorkboxSW();
 workboxSW.precache([
   {
     "url": "index.html",
-    "revision": "c866d424d607ea1d82759f442de41da8"
+    "revision": "fa7a9f1fe8c6ce815deb367a4db607f6"
+  },
+  {
+    "url": "scripts/admin.js",
+    "revision": "7e76253dd3d0021d602c0ed5e09f68ca"
   },
   {
     "url": "scripts/app.js",
-    "revision": "ca1d86b37919ea4a94019823e66bc0b8"
+    "revision": "9212f605c7535af2f7dedc383f56e5c6"
   },
   {
     "url": "scripts/console.js",
     "revision": "e0d19ce415ec0bdb43d87ebd10221d8a"
+  },
+  {
+    "url": "scripts/createFarmer.js",
+    "revision": "6e416b7e39d4138919f3298ed8e4ebc4"
+  },
+  {
+    "url": "scripts/createInspector.js",
+    "revision": "d70fb7bde73ad7b13c54c5bd318ffece"
+  },
+  {
+    "url": "scripts/database.js",
+    "revision": "eae7cbdd822162bcc54ba012e46efcc6"
   },
   {
     "url": "scripts/export.js",
@@ -20,7 +36,7 @@ workboxSW.precache([
   },
   {
     "url": "scripts/header.js",
-    "revision": "43b9b8e5b0e8270108b1d47fa61e6dfc"
+    "revision": "a2c1e3c426285c14ac222635290fafbd"
   },
   {
     "url": "scripts/login.js",
@@ -31,20 +47,48 @@ workboxSW.precache([
     "revision": "e68511951f1285c5cbf4aa510e8a2faf"
   },
   {
+    "url": "scripts/profileSelection.js",
+    "revision": "5ad6cf31224bff9ffad1da284aa0d6e1"
+  },
+  {
+    "url": "scripts/profileView.js",
+    "revision": "24dfa4781769c1575af7ea5c2d7eecbe"
+  },
+  {
     "url": "service-worker.js",
     "revision": "c256a1af9fed03d76d25e93d25833ea8"
   },
   {
-    "url": "accountCreation.html",
-    "revision": "6fa897a323bdd0995721c39945b485f6"
+    "url": "assignFarmer.html",
+    "revision": "11ffad418c059dee3a317687fecb51f9"
   },
   {
     "url": "console.html",
-    "revision": "84d6c9a44664e55cf3f463a6062b21e8"
+    "revision": "5973ecbed7354dcbfcb25f81b1f809b5"
+  },
+  {
+    "url": "employeeAccountCreation.html",
+    "revision": "9d64270ae84f890a3f5c03a71b8997e2"
+  },
+  {
+    "url": "farmerAccountCreation.html",
+    "revision": "a1c77d5e457be214e7a3243ce00547c3"
+  },
+  {
+    "url": "inspectorAccountCreation.html",
+    "revision": "608c6080c818e4277c85fb6803d93c3b"
   },
   {
     "url": "login.html",
-    "revision": "44fb49c359251cbfda32d401387bc8ce"
+    "revision": "5a9da506f285e9474d2e1e6b4b48b1c0"
+  },
+  {
+    "url": "profileCreation.html",
+    "revision": "0f1aac4b29d71ef5105d9441cbe3ded5"
+  },
+  {
+    "url": "profileView.html",
+    "revision": "e39fdb84b140c00bbadd2b6cee7b3562"
   },
   {
     "url": "css/Login_style.css",
@@ -59,8 +103,12 @@ workboxSW.precache([
     "revision": "a09f24c85cb39ef5db425b71c8c98c4a"
   },
   {
+    "url": "css/profile.css",
+    "revision": "2272b3be1c2f7966b1bb1ff8eb5ee342"
+  },
+  {
     "url": "css/styles.css",
-    "revision": "628ea1d6d2f6d7016432010d4f8e4ae0"
+    "revision": "bd1b351f79d328d298a59519d0dac078"
   }
 ]);
 

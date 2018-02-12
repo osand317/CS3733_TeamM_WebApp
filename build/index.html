@@ -65,10 +65,22 @@ limitations under the License.
         <!-- Add spacer, to align navigation to the right -->
         <div class="mdl-layout-spacer"></div>
         <!-- Navigation. We hide it in small screens. -->
-        <nav class="mdl-navigation mdl-layout--large-screen-only">
-          <a class="mdl-navigation__link" href="" id="btnLogOut">Log Out</a>
+        <nav class="mdl-navigation">
           <a id='labelUserProfile'> </a>
-          <a id='activeUserProfile'><i class="material-icons">account_circle</i></a>
+          <a id='activeUserProfile'>
+            <button id="demo-menu-lower-right"
+                    class="mdl-button mdl-js-button mdl-button--icon">
+                    <i class="material-icons">account_circle</i>
+            </button>
+            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+                for="demo-menu-lower-right">
+              <li class="mdl-menu__item" id="btnLogOut">Log Out</li>
+              <li class="mdl-menu__item" id="showProfile">Show Profile</li>
+              <li disabled class="mdl-menu__item">Disabled Action</li>
+              <li class="mdl-menu__item">Yet Another Action</li>
+            </ul>
+          </a>
+          <!-- Right aligned menu below button -->
         </nav>
       </div>
     </header>
@@ -77,7 +89,7 @@ limitations under the License.
       <nav class="mdl-navigation">
         <a class="mdl-navigation__link" href="/index.html">Home</a>
         <!-- <a class="mdl-navigation__link" href="/input.html">Data Entry</a> -->
-        <a class="mdl-navigation__link" href="/accountCreation.html">Create Account</a>
+        <a class="mdl-navigation__link" href="/profileCreation.html">Create Account</a>
         <a class="mdl-navigation__link" href="/console.html">Console</a>
       </nav>
     </div>
@@ -106,6 +118,7 @@ limitations under the License.
   <!-- <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script> -->
   <!-- <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase-app.js"></script> -->
   <!-- <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase-firestore.js"></script> -->
+  <script src="scripts/database.js" charset="utf-8"></script>
   <script src="scripts/material.min.js"></script>
   <script src="scripts/header.js" charset="utf-8"></script>
 

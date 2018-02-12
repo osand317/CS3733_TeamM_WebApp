@@ -1,0 +1,13 @@
+.wrapper {
+  padding: 50px;
+}
+
+.image--cover {
+  display: block;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right:auto;
+  object-fit: cover;
+}
