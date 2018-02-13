@@ -23,7 +23,7 @@ form.addEventListener("submit", function(e) {
     var data = {};
     for(var i = 0; i < form.elements.length; i++){
         let key = form.elements[i].id;
-        let val = form.elements[i].value;
+        let val = getValue(form.elements[i]);
         if (val != null && key != null && key) data[key] = val;
 
     }
@@ -31,3 +31,13 @@ form.addEventListener("submit", function(e) {
     submitReport(data);
     form.reset();
 });
+
+function getValue(el){
+    // console.log(el.type);
+    if(el.type === 'checkbox' || el.type === 'radio'){
+        return el.checked;
+    }
+    else {
+        return el.value;
+    }
+}
