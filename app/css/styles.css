@@ -27,3 +27,9 @@
 	width: 80%;
 	text-align: center;
 }
+
+table {
+	display: block;
+	overflow-x: auto;
+	overflow-y: auto;
+}
