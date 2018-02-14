@@ -182,27 +182,25 @@ function getTableHeaders(doc){
 //     });
 // }
 
-
-
 // ------------------------- Graphs ---------------------- //
 // Setup for chart
 google.charts.load('current', {'packages':['line']});
 // google.charts.setOnLoadCallback(drawChart);
 
-function drawChart(eggData) {
+function drawChart(inputData) {
     var data = new google.visualization.DataTable();
     data.addColumn('number', 'Date');
-    data.addColumn('number', 'Eggs');
+    data.addColumn('number', 'Yield');
 
-    var timeStampedEggs = [];
-    for(var i=0; i < eggData.length; i++){
+    var timeStampedData = [];
+    for(var i=0; i < inputData.length; i++){
         var entry = [];
         entry.push(i);
-        entry.push(eggData[i]);
-        timeStampedEggs.push(entry);
+        entry.push(inputData[i]);
+        timeStampedData.push(entry);
     }
 
-    data.addRows(timeStampedEggs);
+    data.addRows(timeStampedData);
 
     var options = {
         chart: {
@@ -222,7 +220,7 @@ function drawChart(eggData) {
 db.collection("reports").onSnapshot(function (querySnapshot) {
     var data = [];
     querySnapshot.forEach(function (doc) {
-        data.push(doc.data().eggs);
+        data.push(doc.data().Yield);
     });
     drawChart(data);
 });
