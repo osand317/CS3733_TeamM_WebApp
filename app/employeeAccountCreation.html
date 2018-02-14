@@ -13,43 +13,44 @@
   </head>
   <body>
 
-    <!-- Always shows a header, even in smaller screens. -->
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-  <header class="mdl-layout__header">
-    <div class="mdl-layout__header-row">
-      <!-- Title -->
-      <span class="mdl-layout-title">New Employee</span>
-      <!-- Add spacer, to align navigation to the right -->
-      <div class="mdl-layout-spacer"></div>
-      <!-- Navigation. We hide it in small screens. -->
-      <nav class="mdl-navigation">
-        <a id='labelUserProfile'> </a>
-        <a id='activeUserProfile'>
-          <button id="demo-menu-lower-right"
-                  class="mdl-button mdl-js-button mdl-button--icon">
-                  <i class="material-icons">account_circle</i>
-          </button>
-          <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
-              for="demo-menu-lower-right">
-            <li class="mdl-menu__item" id="btnLogOut">Log Out</li>
-            <li class="mdl-menu__item" id="showProfile">Show Profile</li>
-            <li disabled class="mdl-menu__item">Disabled Action</li>
-            <li class="mdl-menu__item">Yet Another Action</li>
-          </ul>
-        </a>
-        <!-- Right aligned menu below button -->
-      </nav>
-    </div>
-  </header>
-  <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">Title</span>
-    <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="/index.html">Home</a>
-      <!-- <a class="mdl-navigation__link" href="/input.html">Data Entry</a> -->
-      <a class="mdl-navigation__link" href="/profileCreation.html">Create Account</a>
-      <a class="mdl-navigation__link" href="/console.html">Console</a>
-    </nav>
-  </div>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  		<header class="mdl-layout__header">
+  			<div class="mdl-layout__header-row">
+  				<!-- Title -->
+  				<span class="mdl-layout-title">New Employee</span>
+  				<!-- Add spacer, to align navigation to the right -->
+  				<div class="mdl-layout-spacer"></div>
+  				<!-- Navigation. We hide it in small screens. -->
+  				<nav class="mdl-navigation">
+  					<a id='labelUserProfile'> </a>
+  					<a id='activeUserProfile'>
+  						<button id="demo-menu-lower-right"
+  										class="mdl-button mdl-js-button mdl-button--icon">
+  										<i class="material-icons">account_circle</i>
+  						</button>
+  						<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+  								for="demo-menu-lower-right">
+  							<li class="mdl-menu__item" id="btnLogOut">Log Out</li>
+  							<li class="mdl-menu__item" id="showProfile">Show Profile</li>
+  							<li disabled class="mdl-menu__item">Disabled Action</li>
+  							<li class="mdl-menu__item">Yet Another Action</li>
+  						</ul>
+  					</a>
+  					<!-- Right aligned menu below button -->
+  				</nav>
+  			</div>
+  		</header>
+  		<!-- Navigation menu on the left  -->
+  		<div class="mdl-layout__drawer">
+  			<span class="mdl-layout-title">Urmatt App</span>
+  			<nav class="mdl-navigation">
+  				<a class="mdl-navigation__link" href="/index.html">Home</a>
+  				 <a class="mdl-navigation__link" href="forms/rice/FieldActivitiesRecord.html">Data Entry</a>
+  				<!-- <a class="mdl-navigation__link" href="/input.html">Data Entry</a> -->
+  				<a class="mdl-navigation__link" href="/profileCreation.html">Create Account</a>
+  				<a class="mdl-navigation__link" href="/console.html">Console</a>
+  			</nav>
+  		</div>
   <main class="mdl-layout__content">
     <div class="page-content">
         <div>
