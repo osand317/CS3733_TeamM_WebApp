@@ -51,7 +51,7 @@ db.collection("reports").limit(50).onSnapshot(function(querySnapshot){
     // var needsHeading = true;
     querySnapshot.forEach(function (doc) {
         getTableHeaders(doc);
-        createTableRow(reportDisplay, doc.data());
+        createTableRow(reportDisplay, doc.data(), doc.id);
         // if(needsHeading){createTableHeading(doc.data(), reportDisplay)}
         // needsHeading = false;
         // createTableBody(doc.data(), reportDisplay, doc.id);
@@ -59,8 +59,8 @@ db.collection("reports").limit(50).onSnapshot(function(querySnapshot){
         allReports.push(doc);
     });
     createTableHeading(reportDisplay);
-    console.log(allTableHeaders);
-    // populateFilters();
+    // console.log(allTableHeaders);
+    populateFilters();
 });
 
 // db.collection("users").limit(50).onSnapshot(function(querySnapshot){
@@ -75,7 +75,7 @@ db.collection("reports").limit(50).onSnapshot(function(querySnapshot){
 // });
 
 
-function createTableRow(displayArea, data){
+function createTableRow(displayArea, data, id){
     if(displayArea === reportDisplay){
         var tbody = document.querySelector("#reportBody");
     }
@@ -98,6 +98,9 @@ function createTableRow(displayArea, data){
             tr.appendChild(td);
         }
     });
+    let td = document.createElement('td');
+    td.textContent = id;
+    tr.appendChild(td);
     tbody.appendChild(tr);
 }
 
