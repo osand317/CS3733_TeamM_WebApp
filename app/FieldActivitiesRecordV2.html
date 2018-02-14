@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Field activities record </title>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.green-light_green.min.css">
+  <!-- Font Awesome CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Material Design icon font -->
+  <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.green-light_green.min.css">
-  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase-firestore.js"></script>
-
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-firestore.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
 
@@ -20,31 +24,44 @@
         <!-- Add spacer, to align navigation to the right -->
         <div class="mdl-layout-spacer"></div>
         <!-- Navigation. We hide it in small screens. -->
-        <nav class="mdl-navigation mdl-layout--large-screen-only">
-          <a class="mdl-navigation__link" href="">Menu</a>
-          <a class="mdl-navigation__link" href="">Link</a>
-          <a class="mdl-navigation__link" href="">Link</a>
-          <a class="mdl-navigation__link" href="">Link</a>
+        <nav class="mdl-navigation">
+          <a id='labelUserProfile'> </a>
+          <a id='activeUserProfile'>
+            <button id="demo-menu-lower-right"
+                    class="mdl-button mdl-js-button mdl-button--icon">
+                    <i class="material-icons">account_circle</i>
+            </button>
+            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+                for="demo-menu-lower-right">
+              <li class="mdl-menu__item" id="btnLogOut">Log Out</li>
+              <li class="mdl-menu__item" id="showProfile">Show Profile</li>
+              <li disabled class="mdl-menu__item">Disabled Action</li>
+              <li class="mdl-menu__item">Yet Another Action</li>
+            </ul>
+          </a>
+          <!-- Right aligned menu below button -->
         </nav>
       </div>
     </header>
+    <!-- Navigation menu on the left  -->
     <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title">Menu</span>
+      <span class="mdl-layout-title">Urmatt App</span>
       <nav class="mdl-navigation">
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
+        <a class="mdl-navigation__link" href="/index.html">Home</a>
+         <a class="mdl-navigation__link" href="/FieldActivitiesRecordV2.html">Data Entry</a>
+        <!-- <a class="mdl-navigation__link" href="/input.html">Data Entry</a> -->
+        <a class="mdl-navigation__link" href="/profileCreation.html">Create Account</a>
+        <a class="mdl-navigation__link" href="/console.html">Console</a>
       </nav>
     </div>
     <main class="mdl-layout__content">
       <div class="page-content">
- 
+
  	      <nav class="mdl-navigation mdl-layout--large-screen-only">
 		      <h3>Field activities record </h3>
         </nav>
         <h5>Production activities</h5>
-	
+
         <form>
           <div class="mdl-textfield mdl-js-textfield">
             <input class="mdl-textfield__input" type="text" id="year">
@@ -95,8 +112,8 @@
             <span class="mdl-checkbox__label">Compost Applied</span></label>
           </div>
           <div >
-            <input type="date" id="Visit-Date">
             <label >Date</label>
+            <input type="date" id="Visit-Date">
           </div>
           <h5>Cultural Practice</h5>
           <div>
@@ -139,7 +156,7 @@
           </div>
 
           <h5>Pest & Disease</h5>
-          
+
           <div>Monitoring</div>
           <div class="mdl-textfield mdl-js-textfield getmdl-select">
             <input type="text" value="" class="mdl-textfield__input" id="Monitoring" readonly>
@@ -191,6 +208,7 @@
               <label class="mdl-textfield__label" for="Inspector">Inspector</label>
             </div>
             <div>
+              Date
               <input type="date" id="visitDate">
             </div>
 
@@ -207,8 +225,10 @@
         </div>
       </main>
     </div>
-
-    <script src="../../scripts/input.js"></script>
+    <script src="scripts/database.js" charset="utf-8"></script>
+    <script src="scripts/material.min.js"></script>
+    <script src="scripts/header.js" charset="utf-8"></script>
+    <script src="scripts/input.js"></script>
 
   </body>
 </html>
