@@ -45,127 +45,139 @@ var db = firebase.firestore();
 // Update list of reports whenever the database changes
 var currentReports = [];
 var allReports = [];
+var allTableHeaders = [];
 db.collection("reports").limit(50).onSnapshot(function(querySnapshot){
+    allTableHeaders = [];
     // var needsHeading = true;
-    var allTableHeaders = [];
     querySnapshot.forEach(function (doc) {
-
+        getTableHeaders(doc);
+        createTableRow(reportDisplay, doc.data());
         // if(needsHeading){createTableHeading(doc.data(), reportDisplay)}
         // needsHeading = false;
         // createTableBody(doc.data(), reportDisplay, doc.id);
-        // currentReports.push(doc);
-        // allReports.push(doc);
+        currentReports.push(doc);
+        allReports.push(doc);
     });
+    createTableHeading(reportDisplay);
+    console.log(allTableHeaders);
     // populateFilters();
 });
 
-db.collection("users").limit(50).onSnapshot(function(querySnapshot){
-//Update list of profiles whenever the database changes
-    // reportDisplay.innerHTML = "";
-    var needsHeading = true;
-    querySnapshot.forEach(function (doc) {
-        if(needsHeading){createTableHeading(doc.data(), profileDisplay)}
-        needsHeading = false;
-        createTableBody(doc.data(), profileDisplay);
-    });
-});
+// db.collection("users").limit(50).onSnapshot(function(querySnapshot){
+// //Update list of profiles whenever the database changes
+//     // reportDisplay.innerHTML = "";
+//     var needsHeading = true;
+//     querySnapshot.forEach(function (doc) {
+//         if(needsHeading){createTableHeading(doc.data(), profileDisplay)}
+//         needsHeading = false;
+//         createTableBody(doc.data(), profileDisplay);
+//     });
+// });
 
 
-function createTable(){
-    var table;
-    table += '<table>';
-    table += '<thead>';
-
-    table += '<tr>';
-
-    // var headers = getTableHeaders();
-    // headers.forEach(function(headerText){
-    //     var header;
-    //     header += '<th>';
-    //     header += headerText;
-    //     header += '</th>';
-    //
-    //     table += header;
-    // });
-
-    table += '</tr>';
-
-    table += '</thead>';
-    table += '<body>';
-
-    // var numRows = getNumTableRows();
-    // for(var i = 0; i < numRows; i++){
-    //     var elements = getRowElements();
-    //     elements.forEach(function(elementText){
-    //         // var element;
-    //         // element += '<td>';
-    //         // element += elementText;
-    //         // element += '</td>';
-    //         //
-    //         // table += element;
-    //     });
-    // }
-
-    table += '</body>';
-    table += '</table>';
-
-}
-
-function getTableHeaders(doc){
-    let data = doc.data();
-    let headers = Object.keys(data);
-    console.log(headers);
-    return headers;
-}
-
-function createTableRow(parent){
-    var tr = document.createElement('tr');
-    parent.appendChild(tr);
-    return tr;
-}
-function createTableEntry(value, tr){
-    var td = document.createElement('td');
-    td.classList.add("mdl-data-table__cell--center");
-    tr.appendChild(td);
-    td.textContent = value;
-}
-function createTableHeading(data, displayArea){
-    if(displayArea === reportDisplay){
-        var thead = document.querySelector("#reportHeading");
-    }
-    else if(displayArea === profileDisplay){
-        var thead = document.querySelector("#profileHeading");
-    }
-    displayArea.appendChild(thead);
-    var tr = createTableRow(thead);
-    // Loops through all of the keys in the object, creating a table heading for each one
-    var keyArray = Object.keys(data);
-    keyArray.forEach(function (key) {
-        var th = document.createElement('th');
-        th.textContent = key;
-        th.classList.add("full-width");
-        tr.appendChild(th);
-    });
-    var th = document.createElement('th');
-    th.textContent = 'ID';
-    tr.appendChild(th);
-
-}
-function createTableBody(data, displayArea, id){
+function createTableRow(displayArea, data){
     if(displayArea === reportDisplay){
         var tbody = document.querySelector("#reportBody");
     }
     else if(displayArea === profileDisplay){
         var tbody = document.querySelector("#profileBody");
     }
-    var tr = createTableRow(tbody);
-    // Loops through all of the values for the object, creating a table entry for each
-    var valueArray = Object.values(data);
-    valueArray.push(id);
-    valueArray.forEach(function(val){
-        createTableEntry(val, tr);
+    // let data = doc.data();
+    let tr = document.createElement('tr');
+
+    allTableHeaders.forEach(function(header){
+        if (data) {
+            let td = document.createElement('td');
+            td.classList.add("mdl-data-table__cell--center");
+            if (Object.keys(data).indexOf(header) > -1) {
+                td.textContent = data[header];
+            }
+            else {
+                td.textContent = "";
+            }
+            tr.appendChild(td);
+        }
     });
+    tbody.appendChild(tr);
 }
+
+function createTableHeading(displayArea) {
+    if(displayArea === reportDisplay){
+        var thead = document.querySelector("#reportHeading");
+    }
+    else if(displayArea === profileDisplay){
+        var thead = document.querySelector("#profileHeading");
+    }
+    let tr = document.createElement('tr');
+    allTableHeaders.forEach(function(header){
+        let th = document.createElement('th');
+        th.textContent = header;
+        // th.classList.add("full-width");
+        tr.appendChild(th);
+    });
+    let th = document.createElement('th');
+    th.textContent = 'ID';
+    tr.appendChild(th);
+    thead.appendChild(tr);
+}
+
+function getTableHeaders(doc){
+    let data = doc.data();
+    let headers = Object.keys(data);
+    headers.forEach(function(header){
+        if (allTableHeaders.indexOf(header) === -1) allTableHeaders.push(header);
+        // if (header in allTableHeaders) allTableHeaders.push(header);
+    })
+}
+
+// function createTableRow(parent){
+//     var tr = document.createElement('tr');
+//     parent.appendChild(tr);
+//     return tr;
+// }
+// function createTableEntry(value, tr){
+//     var td = document.createElement('td');
+//     td.classList.add("mdl-data-table__cell--center");
+//     tr.appendChild(td);
+//     td.textContent = value;
+// }
+// function createTableHeading(data, displayArea){
+//     if(displayArea === reportDisplay){
+//         var thead = document.querySelector("#reportHeading");
+//     }
+//     else if(displayArea === profileDisplay){
+//         var thead = document.querySelector("#profileHeading");
+//     }
+//     displayArea.appendChild(thead);
+//     var tr = createTableRow(thead);
+//     // Loops through all of the keys in the object, creating a table heading for each one
+//     var keyArray = Object.keys(data);
+//     keyArray.forEach(function (key) {
+//         var th = document.createElement('th');
+//         th.textContent = key;
+//         th.classList.add("full-width");
+//         tr.appendChild(th);
+//     });
+//     var th = document.createElement('th');
+//     th.textContent = 'ID';
+//     tr.appendChild(th);
+//
+// }
+// function createTableBody(data, displayArea, id){
+//     if(displayArea === reportDisplay){
+//         var tbody = document.querySelector("#reportBody");
+//     }
+//     else if(displayArea === profileDisplay){
+//         var tbody = document.querySelector("#profileBody");
+//     }
+//     var tr = createTableRow(tbody);
+//     // Loops through all of the values for the object, creating a table entry for each
+//     var valueArray = Object.values(data);
+//     valueArray.push(id);
+//     valueArray.forEach(function(val){
+//         createTableEntry(val, tr);
+//     });
+// }
 
 
 
