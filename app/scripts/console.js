@@ -46,16 +46,17 @@ var db = firebase.firestore();
 var currentReports = [];
 var allReports = [];
 db.collection("reports").limit(50).onSnapshot(function(querySnapshot){
-    // reportDisplay.innerHTML = "";
-    var needsHeading = true;
+    // var needsHeading = true;
+    var allTableHeaders = [];
     querySnapshot.forEach(function (doc) {
-        if(needsHeading){createTableHeading(doc.data(), reportDisplay)}
-        needsHeading = false;
-        createTableBody(doc.data(), reportDisplay, doc.id);
-        currentReports.push(doc);
-        allReports.push(doc);
+
+        // if(needsHeading){createTableHeading(doc.data(), reportDisplay)}
+        // needsHeading = false;
+        // createTableBody(doc.data(), reportDisplay, doc.id);
+        // currentReports.push(doc);
+        // allReports.push(doc);
     });
-    populateFilters();
+    // populateFilters();
 });
 
 db.collection("users").limit(50).onSnapshot(function(querySnapshot){
@@ -68,6 +69,54 @@ db.collection("users").limit(50).onSnapshot(function(querySnapshot){
         createTableBody(doc.data(), profileDisplay);
     });
 });
+
+
+function createTable(){
+    var table;
+    table += '<table>';
+    table += '<thead>';
+
+    table += '<tr>';
+
+    // var headers = getTableHeaders();
+    // headers.forEach(function(headerText){
+    //     var header;
+    //     header += '<th>';
+    //     header += headerText;
+    //     header += '</th>';
+    //
+    //     table += header;
+    // });
+
+    table += '</tr>';
+
+    table += '</thead>';
+    table += '<body>';
+
+    // var numRows = getNumTableRows();
+    // for(var i = 0; i < numRows; i++){
+    //     var elements = getRowElements();
+    //     elements.forEach(function(elementText){
+    //         // var element;
+    //         // element += '<td>';
+    //         // element += elementText;
+    //         // element += '</td>';
+    //         //
+    //         // table += element;
+    //     });
+    // }
+
+    table += '</body>';
+    table += '</table>';
+
+}
+
+function getTableHeaders(doc){
+    let data = doc.data();
+    let headers = Object.keys(data);
+    console.log(headers);
+    return headers;
+}
 
 function createTableRow(parent){
     var tr = document.createElement('tr');
@@ -117,6 +166,8 @@ function createTableBody(data, displayArea, id){
         createTableEntry(val, tr);
     });
 }
+
+
 
 // ------------------------- Graphs ---------------------- //
 // Setup for chart
