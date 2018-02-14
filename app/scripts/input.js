@@ -15,7 +15,7 @@ form.addEventListener("submit", function(e) {
 
     }
     console.log(data);
-    // submitReport(data);
+    submitReport(data);
     form.reset();
     document.querySelectorAll('.mdl-js-radio').forEach(el => el.MaterialRadio.checkToggleState());
     document.querySelectorAll('.mdl-js-checkbox').forEach(el => el.MaterialCheckbox.checkToggleState());

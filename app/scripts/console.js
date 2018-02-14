@@ -1,5 +1,7 @@
 // ------------------------- Firebase --------------------- //
 var reportDisplay = document.querySelector("#reportDisplay");
+var reportBody = document.querySelector("#reportBody");
+var reportHeading = document.querySelector("#reportHeading");
 var profileDisplay = document.querySelector("#profileDisplay");
 var map = document.querySelector("#map");
 // var searchBtn = document.querySelector("#searchBtn");
@@ -48,6 +50,9 @@ var allReports = [];
 var allTableHeaders = [];
 db.collection("reports").limit(50).onSnapshot(function(querySnapshot){
     allTableHeaders = [];
+    reportBody.innerHTML = "";
+    reportHeading.innerHTML = "";
+
     // var needsHeading = true;
     querySnapshot.forEach(function (doc) {
         getTableHeaders(doc);
