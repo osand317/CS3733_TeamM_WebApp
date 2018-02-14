@@ -188,46 +188,41 @@ function getTableHeaders(doc){
 // }
 
 // ------------------------- Graphs ---------------------- //
-// Setup for chart
-google.charts.load('current', {'packages':['line']});
-// google.charts.setOnLoadCallback(drawChart);
-
-function drawChart(inputData) {
-    var data = new google.visualization.DataTable();
-    data.addColumn('number', 'Date');
-    data.addColumn('number', 'Yield');
-
-    var timeStampedData = [];
-    for(var i=0; i < inputData.length; i++){
-        var entry = [];
-        entry.push(i);
-        entry.push(inputData[i]);
-        timeStampedData.push(entry);
-    }
-
-    data.addRows(timeStampedData);
-
-    var options = {
-        chart: {
-            // title: 'Eggs'
-            // subtitle: 'in millions of dollars (USD)'
-        },
-        colors: ['#39b524'],
-        width: 900,
-        height: 600
-    };
-    var chart = new google.charts.Line(document.getElementById('linechart_material'));
-
-    chart.draw(data, google.charts.Line.convertOptions(options));
-}
-
-// Redraw chart whenever data in reports changes
-db.collection("reports").onSnapshot(function (querySnapshot) {
-    var data = [];
-    querySnapshot.forEach(function (doc) {
-        data.push(doc.data().Yield);
+var ctx = document.getElementById('chart').getContext('2d');
+var dates = [];
+var points = [];
+db.collection("reports").get()
+    .then(function(snapshot){
+        dates.length = 0;
+        points.length = 0;
+        snapshot.forEach(function (doc) {
+            dates.push(doc.data().date);
+            points.push(Number(doc.data().Yield));
+        });
+        dates.sort(function(a,b){
+            return new Date(a) - new Date(b);
+        });
     });
-    drawChart(data);
+
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        // labels: ["January", "February", "March", "April", "May", "June", "July"],
+        labels: dates,
+        datasets: [{
+            label: "Yield",
+            // backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            // data: [0, 10, 5, 2, 20, 30, 45],
+            data: points,
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
 });
 
 // ------------------------- Download ---------------------- //
