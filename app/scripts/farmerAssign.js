@@ -42,23 +42,20 @@ function generateTable() {
 function checkForSelection() {
   for (var i = 0; i < farmers.length; i++) {
     if (document.getElementById('box'+i).checked) {
-      usersRef.where("profileId", '==', farmers[i][5])
-      .get()
-      .then(function (querySnapShot) {
-        querySnapShot.forEach(function (doc) {
-          doc.update({
-            inspectorID: currentUser.uid
-          });
-          console.log("Success");
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-      // selectedFarmers.push(farmers[i][5]);
-    });
+      selectedFarmers.push(farmers[i][5]);
   }
+
   // console.log(selectedFarmers);
 }
+var documentRef = usersRef.doc(userDocument);
+documentRef.update({
+      farmersID: selectedFarmers
+    }).then(function () {
+      console.log("Saved");
+    })
+    .catch(function (error) {
+    console.log(error);
+  });
 };
 
 btn.addEventListener('click', e=>{
