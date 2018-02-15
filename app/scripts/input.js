@@ -12,6 +12,7 @@ form.addEventListener("submit", function(e) {
         let key = form.elements[i].id;
         let val = getValue(form.elements[i]);
         if (val != null && key != null && key) data[key] = val;
+        data['timestamp'] = Date.now();
 
     }
     console.log(data);

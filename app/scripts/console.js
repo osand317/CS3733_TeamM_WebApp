@@ -189,20 +189,34 @@ function getTableHeaders(doc){
 
 // ------------------------- Graphs ---------------------- //
 var ctx = document.getElementById('chart').getContext('2d');
-var dates = [];
+var times = [];
 var points = [];
-db.collection("reports").get()
-    .then(function(snapshot){
-        dates.length = 0;
-        points.length = 0;
-        snapshot.forEach(function (doc) {
-            dates.push(doc.data().date);
-            points.push(Number(doc.data().Yield));
+var dates = [];
+function getChartData(fieldToPlot) {
+    db.collection("reports").orderBy('timestamp').get()
+        .then(function (snapshot) {
+            times.length = 0;
+            points.length = 0;
+            dates.length = 0;
+            snapshot.forEach(function (doc) {
+                times.push(doc.data().timestamp);
+                console.log("going to push: ", Number(doc.data()[fieldToPlot]));
+                points.push(Number(doc.data()[fieldToPlot]));
+                console.log("points array: ", points);
+            });
+            times.forEach(t => dates.push(new Date(t * 1000)));
+            console.log(fieldToPlot);
+            console.log(dates);
+            console.log(points);
+            // dates.sort(function(a,b){
+            //     return new Date(a) - new Date(b);
+            // });
+            removeData(chart);
+            addData(chart, dates, points);
         });
-        dates.sort(function(a,b){
-            return new Date(a) - new Date(b);
-        });
-    });
+}
+
+getChartData('Block-No');
 
 var chart = new Chart(ctx, {
     // The type of chart we want to create
@@ -224,6 +238,27 @@ var chart = new Chart(ctx, {
     // Configuration options go here
     options: {}
 });
+
+document.querySelector("#Yield").addEventListener("click", function(){
+    getChartData('Yield');
+    // addData(chart, dates, points);
+});
+document.querySelector("#Block-No").addEventListener("click", function(){
+    getChartData('Block-No');
+    // addData(chart, dates, points);
+});
+
+function addData(chart, labels, newData) {
+    // chart.data.labels.push(labels);
+    // console.log(chart.data.datasets[0].data);
+    // chart.data.datasets[0].data.push(newData);
+    chart.update();
+}
+function removeData(chart) {
+    // chart.data.labels.pop();
+    // chart.data.datasets[0].data.pop();
+    chart.update();
+}
 
 // ------------------------- Download ---------------------- //
 function getDataAndDownload() {
