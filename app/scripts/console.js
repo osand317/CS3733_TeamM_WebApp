@@ -53,31 +53,30 @@ db.collection("reports").limit(50).onSnapshot(function(querySnapshot){
     reportBody.innerHTML = "";
     reportHeading.innerHTML = "";
 
-    // var needsHeading = true;
     querySnapshot.forEach(function (doc) {
         getTableHeaders(doc);
         createTableRow(reportDisplay, doc.data(), doc.id);
-        // if(needsHeading){createTableHeading(doc.data(), reportDisplay)}
-        // needsHeading = false;
-        // createTableBody(doc.data(), reportDisplay, doc.id);
         currentReports.push(doc);
         allReports.push(doc);
     });
     createTableHeading(reportDisplay);
-    // console.log(allTableHeaders);
     populateFilters();
 });
 
-// db.collection("users").limit(50).onSnapshot(function(querySnapshot){
-// //Update list of profiles whenever the database changes
-//     // reportDisplay.innerHTML = "";
-//     var needsHeading = true;
-//     querySnapshot.forEach(function (doc) {
-//         if(needsHeading){createTableHeading(doc.data(), profileDisplay)}
-//         needsHeading = false;
-//         createTableBody(doc.data(), profileDisplay);
-//     });
-// });
+db.collection("users").limit(50).onSnapshot(function(querySnapshot){
+    allTableHeaders = [];
+    profileBody.innerHTML = "";
+    profileHeading.innerHTML = "";
+
+    querySnapshot.forEach(function (doc) {
+        getTableHeaders(doc);
+        createTableRow(profileDisplay, doc.data(), doc.id);
+        // currentReports.push(doc);
+        // allReports.push(doc);
+    });
+    createTableHeading(profileDisplay);
+    // populateFilters();
+});
 
 
 function createTableRow(displayArea, data, id){
