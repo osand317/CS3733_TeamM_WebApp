@@ -28,7 +28,7 @@
 	text-align: center;
 }
 
-table {
+.tableContainer {
 	display: block;
 	overflow-x: auto;
 	overflow-y: auto;

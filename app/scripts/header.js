@@ -1,6 +1,9 @@
     const btnLogOut = document.getElementById("btnLogOut");
     const btnProfile = document.getElementById('showProfile');
     var currentUser = '';
+    var userDocument = '';
+    var userType = '';
+    var userID = '';
 
     btnProfile.addEventListener('click', e=>{
       window.location = 'profileView.html';
@@ -24,10 +27,13 @@
 
     function currentUserInfo(user) {
       var usersRef = firestore.collection("users");
+      userID = user.uid;
       var query = usersRef.where("profileId", '==', user.uid).get()
       .then(function (querySnapShot) {
         querySnapShot.forEach(function(doc) {
             const userProfileName = doc.data().firstName;
+            userDocument = doc.id;
+            userType = doc.data().profileType;
             // console.log(userProfileName);
             document.getElementById('labelUserProfile').textContent = userProfileName + '  ';
         });
