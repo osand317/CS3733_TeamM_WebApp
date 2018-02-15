@@ -3,7 +3,7 @@ var long = 0;
 document.querySelector('#checkInBtn').addEventListener('click', function () {
     var startPos;
     var geoOptions = {
-        maximumAge: 5 * 60 * 1000,
+        // maximumAge: 5 * 60 * 1000,
         timeout: 10 * 1000
     };
     var geoSuccess = function(position) {
@@ -12,7 +12,7 @@ document.querySelector('#checkInBtn').addEventListener('click', function () {
         long = startPos.coords.longitude;
         // map.setAttribute("src", getMapUrl());
         console.log(lat,long);
-
+        storeLocation(lat, long);
     };
     var geoError = function(error) {
         console.log('Error occurred. Error code: ' + error.code);
@@ -26,6 +26,27 @@ document.querySelector('#checkInBtn').addEventListener('click', function () {
 });
 
 function storeLocation(lat, long){
-    let obj = {};
+    let obj = {
+        uid: userID,
+        timestamp: Date.now(),
+        latitude: lat,
+        longitude: long
+    };
+    firestore.collection("checkIns").add(obj).catch(function(error){
+        console.log(error);
+    });
+    output(obj);
+}
 
+function output(obj){
+    let message = '';
+    message += 'Success! Checked in at: ';
+    message += "\r\n";
+    message += obj.latitude;
+    message += ', ';
+    message += obj.latitude;
+    message += '\r\n';
+    message += ' on ';
+    message += new Date(obj.timestamp * 1000);
+    document.querySelector('#output').textContent = message;
 }
