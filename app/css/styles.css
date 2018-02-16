@@ -33,13 +33,3 @@
 	overflow-x: auto;
 	overflow-y: auto;
 }
-
-.homeButton {
-	width: 40vh;
-	height: 40vh;
-	min-width: initial;
-	min-height: initial;
-}
-
-.mdl-cell--6-col {
-}

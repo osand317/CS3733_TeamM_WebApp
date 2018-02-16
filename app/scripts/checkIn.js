@@ -44,7 +44,7 @@ function output(obj){
     message += "\r\n";
     message += obj.latitude;
     message += ', ';
-    message += obj.longitude;
+    message += obj.latitude;
     message += '\r\n';
     message += ' on ';
     message += new Date(obj.timestamp * 1000);
