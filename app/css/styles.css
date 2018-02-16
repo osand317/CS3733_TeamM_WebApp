@@ -39,6 +39,7 @@
 	height: 40vh;
 	min-width: initial;
 	min-height: initial;
+	/*float: right;*/
 }
 
 .mdl-cell--6-col {
