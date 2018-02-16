@@ -28,7 +28,7 @@ document.querySelector('#checkInBtn').addEventListener('click', function () {
 function storeLocation(lat, long){
     let obj = {
         uid: userID,
-        timestamp: Date.now(),
+        timestamp: Date(),
         latitude: lat,
         longitude: long
     };
@@ -47,6 +47,7 @@ function output(obj){
     message += obj.longitude;
     message += '\r\n';
     message += ' on ';
-    message += new Date(obj.timestamp * 1000);
+    // message += new Date(obj.timestamp * 1000);
+    message += obj.timestamp;
     document.querySelector('#output').textContent = message;
 }

@@ -188,22 +188,22 @@ function getTableHeaders(doc){
 
 // ------------------------- Graphs ---------------------- //
 var ctx = document.getElementById('chart').getContext('2d');
-var times = [];
+// var times = [];
 var points = [];
 var dates = [];
 function getChartData(fieldToPlot) {
     db.collection("reports").orderBy('timestamp').get()
         .then(function (snapshot) {
-            times.length = 0;
+            // times.length = 0;
             points.length = 0;
             dates.length = 0;
             snapshot.forEach(function (doc) {
-                times.push(doc.data().timestamp);
+                dates.push(doc.data().timestamp);
                 console.log("going to push: ", Number(doc.data()[fieldToPlot]));
                 points.push(Number(doc.data()[fieldToPlot]));
                 console.log("points array: ", points);
             });
-            times.forEach(t => dates.push(new Date(t * 1000)));
+            // times.forEach(t => dates.push(new Date(t * 1000)));
             console.log(fieldToPlot);
             console.log(dates);
             console.log(points);
