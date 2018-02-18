@@ -1,9 +1,15 @@
     const btnLogOut = document.getElementById("btnLogOut");
     const btnProfile = document.getElementById('showProfile');
+    const btnFarmerAssign = document.getElementById('farmerAssign');
+    const btnAccountCreate = document.getElementById('accountCreate');
     var currentUser = '';
     var userDocument = '';
     var userType = '';
     var userID = '';
+    var eggFarmer = [];
+    var chiaFarmer = [];
+    var coconutFarmer = [];
+    var riceFarmer = [];
 
     btnProfile.addEventListener('click', e=>{
       window.location = 'profileView.html';
@@ -34,8 +40,21 @@
             const userProfileName = doc.data().firstName;
             userDocument = doc.id;
             userType = doc.data().profileType;
+            displayOption();
             // console.log(userProfileName);
             document.getElementById('labelUserProfile').textContent = userProfileName + '  ';
         });
       })
     };
+
+function displayOption() {
+  if (userType == 'Farmer') {
+    btnFarmerAssign.classList.add('disabled');
+    btnFarmerAssign.style.display = "none";
+    btnAccountCreate.classList.add('disabled');
+    btnAccountCreate.style.display = "none";
+  } else if (userType == 'Inspector') {
+    btnAccountCreate.classList.add('disabled');
+    btnAccountCreate.style.display = "none";
+  }
+};
