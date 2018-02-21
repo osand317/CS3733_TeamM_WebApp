@@ -12,9 +12,10 @@ form.addEventListener("submit", function(e) {
         let key = form.elements[i].id;
         let val = getValue(form.elements[i]);
         if (val != null && key != null && key) data[key] = val;
-        data['timestamp'] = Date();
-
     }
+    data['timestamp'] = Date();
+    let reportName = location.href.split("/").slice(-1).toString().split(".", 1).toString();
+    data['reportType'] = reportName;
     console.log(data);
     submitReport(data);
     form.reset();
