@@ -1,30 +1,30 @@
 var usersRef = firestore.collection("users");
-var inspector = [];
+var farmer = [];
 var profile = [];
 var boxNum = 0;
 var profileuserID;
 
 // var btn = document.getElementById('addFarmer');
-var selectedInspectors =[];
+var selectedFarmers =[];
 var content = "<table id='table' class='mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp'><thead><tr><th class='mdl-data-table__cell--non-numeric'>Name</th><th>Email</th><th>Product</th><th>Mobile</th><th>Profile</th></tr></thead>";
-usersRef.where("profileType", "==", "Inspector")
+usersRef.where("profileType", "==", "Farmer")
   .get()
   .then(function (querySnapShot) {
     querySnapShot.forEach(function (doc) {
       profile.push(doc.data().firstName);
       profile.push(doc.data().lastName);
       profile.push(doc.data().userEmail);
-      profile.push(doc.data().inspectorType);
+      profile.push(doc.data().farmerType);
       profile.push(doc.data().mobile);
       profile.push(doc.data().profileId);
       generateTable();
       boxNum++;
-      inspector.push(profile);
+      farmer.push(profile);
       profile = [];
     });
-    // console.log(inspector);
+    // console.log(farmer);
     document.getElementById('table').innerHTML = "<tbody>" + content + "</tbody></table>";
-  })
+    })
   .catch(function (error) {
     console.log(error);
   });
@@ -51,17 +51,17 @@ function assignValue(info){
 
 // function checkForSelection() {
 //   var j =0;
-//   for (var i = 0; i < inspector.length; i++) {
+//   for (var i = 0; i < farmer.length; i++) {
 //     document.getElementById('box'+i).addEventListener('click', e=>{
-//       // profileuserID = inspector[i][5];
+//       // profileuserID = farmer[i][5];
 //       console.log(e);
 //     });
 //     j++;
-  // console.log(selectedInspectors);
+  // console.log(selectedFarmers);
 // }
 // var documentRef = usersRef.doc(userDocument);
 // documentRef.update({
-//       inspectorID: selectedInspectors
+//       inspectorID: selectedFarmers
 //     }).then(function () {
 //       console.log("Saved");
 //     })
