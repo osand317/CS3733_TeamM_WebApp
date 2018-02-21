@@ -6,12 +6,12 @@
     var userDocument = '';
     var userType = '';
     var userID = '';
-    var eggFarmer = [];
-    var chiaFarmer = [];
-    var coconutFarmer = [];
-    var riceFarmer = [];
+    var productType = '';
+    var waitingVariable = false;
+
 
     btnProfile.addEventListener('click', e=>{
+      localStorage.setItem('Page', '1');
       window.location = 'profileView.html';
     });
 
@@ -40,7 +40,14 @@
             const userProfileName = doc.data().firstName;
             userDocument = doc.id;
             userType = doc.data().profileType;
+            if (userType == 'Farmer') {
+              console.log('Farmer');
+              productType = doc.data().farmerType;
+            }else if (userType == 'Inspector') {
+              productType = doc.data().inspectorType;
+            }
             displayOption();
+            waitingVariable = true;
             // console.log(userProfileName);
             document.getElementById('labelUserProfile').textContent = userProfileName + '  ';
         });
