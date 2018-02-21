@@ -95,6 +95,9 @@ function createTableRow(displayArea, data, id){
             td.classList.add("mdl-data-table__cell--center");
             if (Object.keys(data).indexOf(header) > -1) {
                 td.textContent = data[header];
+                if (header === 'reportType' && currentSearchFilters.indexOf(data[header].toString()) === -1){
+                    currentSearchFilters.push(data[header].toString());
+                }
             }
             else {
                 td.textContent = "";
@@ -199,14 +202,14 @@ function getChartData(fieldToPlot) {
             dates.length = 0;
             snapshot.forEach(function (doc) {
                 dates.push(doc.data().timestamp);
-                console.log("going to push: ", Number(doc.data()[fieldToPlot]));
+                // console.log("going to push: ", Number(doc.data()[fieldToPlot]));
                 points.push(Number(doc.data()[fieldToPlot]));
-                console.log("points array: ", points);
+                // console.log("points array: ", points);
             });
             // times.forEach(t => dates.push(new Date(t * 1000)));
-            console.log(fieldToPlot);
-            console.log(dates);
-            console.log(points);
+            // console.log(fieldToPlot);
+            // console.log(dates);
+            // console.log(points);
             // dates.sort(function(a,b){
             //     return new Date(a) - new Date(b);
             // });
@@ -370,22 +373,22 @@ var searchBy = document.getElementById("searchByUL");
 
 // Create list of filters in dropdown
 function populateFilters() {
-    var tableHeadings = document.querySelectorAll("th"); // Needs specificity
+    // var tableHeadings = document.querySelectorAll("th"); // Needs specificity
     // console.log(tableHeadings);
-    tableHeadings.forEach(function(th) {
+    currentSearchFilters.forEach(function(sf) {
         var li = document.createElement("li");
-        li.textContent = th.textContent;
+        li.textContent = sf;
         li.setAttribute("class", "mdl-menu__item");
         li.setAttribute("onclick", 'toggleFilter(this.textContent);');
         var cb = document.createElement('input');
         cb.type = 'checkbox';
-        if (li.textContent !== 'ID') cb.checked = true;
+        // if (li.textContent !== 'ID') cb.checked = true;
         li.appendChild(cb);
         searchBy.appendChild(li);
 
         if(!filtersInitialized){
-            if (currentSearchFilters.indexOf(th.textContent) === -1){
-                if (th.textContent !== 'ID') currentSearchFilters.push(th.textContent);
+            if (currentSearchFilters.indexOf(sf) === -1){
+                // if (th.textContent !== 'ID') currentSearchFilters.push(th.textContent);
             }
             // console.log(currentSearchFilters);
         }
