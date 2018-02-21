@@ -1,9 +1,13 @@
-
+var previousPage = localStorage.getItem('Page');
 
 firebase.auth().onAuthStateChanged(firebaseUser =>{
     if (firebaseUser){
-        // console.log(firebaseUser);
-        profileViewUserInfo(firebaseUser);
+        if (previousPage == '2') {
+          profileuserID = localStorage.getItem("userID");
+          profileViewUserInfo(profileuserID);
+        } else {
+          profileViewUserInfo(firebaseUser.uid);
+        }
     }else {
         console.log('Not logged in');
         window.location = 'login.html'
@@ -11,9 +15,10 @@ firebase.auth().onAuthStateChanged(firebaseUser =>{
 });
 
 
-function profileViewUserInfo(user) {
+function profileViewUserInfo(userID) {
+  console.log(userID);
   var usersRef = firestore.collection("users");
-  var query = usersRef.where("profileId", '==', user.uid).get()
+  var query = usersRef.where("profileId", '==', userID).get()
   .then(function (querySnapShot) {
     querySnapShot.forEach(function(doc) {
         const userProfileName = doc.data().firstName;
