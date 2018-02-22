@@ -374,8 +374,8 @@ function populateFilters() {
         var li = document.createElement("li");
         li.textContent = filterName;
         li.setAttribute("class", "mdl-menu__item");
-        li.setAttribute("onclick", 'toggleFilter(this.textContent);');
         var cb = document.createElement('input');
+        cb.setAttribute("onclick", 'toggleFilter(this.textContent);');
         cb.type = 'checkbox';
         cb.checked = true;
         li.appendChild(cb);
