@@ -190,8 +190,9 @@ var ctx = document.getElementById('chart').getContext('2d');
 // var times = [];
 var points = [];
 var dates = [];
-function getChartData(fieldToPlot) {
-    db.collection("reports").orderBy('timestamp').get()
+function getChartData(fieldToPlot, startDate, endDate) {
+    console.log(startDate);
+    db.collection("reports").where('timestamp', '>=', startDate).where('timestamp', '<=', endDate).orderBy('timestamp').get()
         .then(function (snapshot) {
             // times.length = 0;
             points.length = 0;
@@ -199,25 +200,26 @@ function getChartData(fieldToPlot) {
             snapshot.forEach(function (doc) {
                 let date = doc.data().timestamp.toString();
                 date = date.split(':')[0] + ':' + date.split(':')[1];
-                console.log(date);
+                // console.log(date);
                 dates.push(date);
                 // console.log("going to push: ", Number(doc.data()[fieldToPlot]));
                 points.push(Number(doc.data()[fieldToPlot]));
                 // console.log("points array: ", points);
             });
-            // times.forEach(t => dates.push(new Date(t * 1000)));
-            // console.log(fieldToPlot);
-            // console.log(dates);
-            // console.log(points);
-            // dates.sort(function(a,b){
-            //     return new Date(a) - new Date(b);
-            // });
-            removeData(chart);
-            addData(chart, dates, points);
+            chart.update();
         });
 }
-
-getChartData('Block-No');
+var startDate;
+var endDate;
+document.querySelector('#startDate').addEventListener('change', function(){
+    startDate = new Date(this.value);
+});
+document.querySelector('#endDate').addEventListener('change', function(){
+    endDate = new Date(this.value);
+});
+document.querySelector('#dateRangeBtn').addEventListener('click', function(){
+    getChartData('Height', startDate, endDate);
+});
 
 var chart = new Chart(ctx, {
     // The type of chart we want to create
@@ -249,21 +251,9 @@ document.querySelector("#Block-No").addEventListener("click", function(){
     // addData(chart, dates, points);
 });
 
-function addData(chart, labels, newData) {
-    // chart.data.labels.push(labels);
-    // console.log(chart.data.datasets[0].data);
-    // chart.data.datasets[0].data.push(newData);
-    chart.update();
-}
-function removeData(chart) {
-    // chart.data.labels.pop();
-    // chart.data.datasets[0].data.pop();
-    chart.update();
-}
-
 // ------------------------- Download ---------------------- //
 function getDataAndDownload() {
-    console.log("getting data");
+    // console.log("getting data");
     // db.collection("reports").get()
     //     .then(function(snapshot){
     //         var data = [];
