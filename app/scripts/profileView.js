@@ -1,4 +1,5 @@
 var previousPage = localStorage.getItem('Page');
+var btnCheckIn = document.getElementById('checkIn');
 
 firebase.auth().onAuthStateChanged(firebaseUser =>{
     if (firebaseUser){
@@ -6,7 +7,8 @@ firebase.auth().onAuthStateChanged(firebaseUser =>{
           profileuserID = localStorage.getItem("userID");
           profileViewUserInfo(profileuserID);
         } else {
-          profileViewUserInfo(firebaseUser.uid);
+          profileuserID = firebaseUser.uid;
+          profileViewUserInfo(profileuserID);
         }
     }else {
         console.log('Not logged in');
@@ -27,13 +29,21 @@ function profileViewUserInfo(userID) {
         const email = doc.data().userEmail;
         const mobile = doc.data().mobile;
         const profileType = doc.data().profileType;
-        console.log(userProfileName);
         document.getElementById('userImage').src = userImage;
         document.getElementById('profileType').textContent = profileType;
         document.getElementById('firstName').textContent = userProfileName;
         document.getElementById('lastName').textContent = lastName;
         document.getElementById('email').textContent = email;
         document.getElementById('mobile').textContent = mobile;
+        if ((profileType == 'Inspector') && (userType == 'Employee')) {
+          btnCheckIn.innerHTML = "<input class='mdl-button mdl-js-button mdl-button--raised mdl-button--colored' onclick='viewCheckIn();' type=button value='Show Check-in'>";
+        }
     });
-  })
+  });
+};
+
+function viewCheckIn() {
+  console.log("working");
+  localStorage.setItem('Page', 'CheckIn');
+  window.location = "checkInWindow.html";
 };
