@@ -107,6 +107,7 @@ function createTableRow(displayArea, data, id){
     // td.textContent = id;
     // tr.appendChild(td);
     tr.setAttribute("id", id);
+    console.log(tr.getAttribute('id'));
     tbody.appendChild(tr);
 }
 
@@ -424,33 +425,36 @@ function shouldBeShown(i){
 // Iterates through table and hides those that shouldn't be shown, based on search term and filters
 function searchCallback() {
     // Declare variables
-    var input, filter, table, tr, td, i, j;
+    var input, filter, table, tr, td;
     input = document.getElementById("searchFilter");
     filter = input.value.toUpperCase();
     table = document.getElementById("reportDisplay");
     tr = table.getElementsByTagName("tr");
 
     // Loop through all table rows, and hide those who don't match the search query
-    for (i = 0; i < tr.length; i++) {
+    for (var i = 0; i < tr.length; i++) {
         td = tr[i].getElementsByTagName("td");
-        for (j = 0; j < td.length; j++) {
-            if (td[j]) {
+        for (var j = 0; j < td.length; j++) {
+            // if (td[j]) {
                 if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1 && shouldBeShown(i)) {
                     tr[i].style.display = "";
-                    var report = allReports.find(o => o.id === td.id);
+                    let reportID = tr[i].getAttribute('id');
+                    let report = allReports.find(o => o.id === reportID);
                     if(currentReports.indexOf(report) === -1){
                         currentReports.push(report);
                     }
                     j = td.length; // If row should be shown, stop checking
                 } else {
                     tr[i].style.display = "none";
-                    var report = allReports.find(o => o.id === td.id);
-                    var index = currentReports.indexOf(report);
+                    let reportID = tr[i].getAttribute('id');
+                    let report = allReports.find(o => o.id === reportID);
+                    // console.log(td[j].getAttribute('id'));
+                    let index = currentReports.indexOf(report);
                     if(index > -1){
                         currentReports.splice(index, 1);
                     }
                 }
-            }
+            // }
         }
     }
     // console.log(currentReports);
