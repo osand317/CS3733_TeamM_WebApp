@@ -22,7 +22,7 @@ function initMap() {
             icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
             map: map
           });
-          // addMarker(initialLocation);
+          addMarker(initialLocation);
 
       });
     }
@@ -100,13 +100,13 @@ function drawCheckins() {
       doc.forEach(function (coordinates) {
         console.log(coordinates.data().timestamp);
         if (Date.now() - Date.parse(coordinates.data().timestamp) <= 2419200000 && document.getElementById('monthBox').checked) {
-          counter++;
-          console.log(counter);
+          // counter++;
+          // console.log(counter);
           var latLng = new google.maps.LatLng(coordinates.data().latitude, coordinates.data().longitude);
           addPoint(latLng);
         } else if(Date.now() - Date.parse(coordinates.data().timestamp) <= 604800000 && document.getElementById('weekBox').checked){
-          counter++;
-          console.log(counter);
+          // counter++;
+          // console.log(counter);
           var latLng = new google.maps.LatLng(coordinates.data().latitude, coordinates.data().longitude);
           addPoint(latLng);
         }
