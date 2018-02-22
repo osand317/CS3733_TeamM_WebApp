@@ -107,7 +107,6 @@ function createTableRow(displayArea, data, id){
     // td.textContent = id;
     // tr.appendChild(td);
     tr.setAttribute("id", id);
-    console.log(tr.getAttribute('id'));
     tbody.appendChild(tr);
 }
 
@@ -198,7 +197,10 @@ function getChartData(fieldToPlot) {
             points.length = 0;
             dates.length = 0;
             snapshot.forEach(function (doc) {
-                dates.push(doc.data().timestamp);
+                let date = doc.data().timestamp.toString();
+                date = date.split(':')[0] + ':' + date.split(':')[1];
+                console.log(date);
+                dates.push(date);
                 // console.log("going to push: ", Number(doc.data()[fieldToPlot]));
                 points.push(Number(doc.data()[fieldToPlot]));
                 // console.log("points array: ", points);
