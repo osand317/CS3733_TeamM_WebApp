@@ -1,9 +1,16 @@
+var previousPage = localStorage.getItem('Page');
+var btnCheckIn = document.getElementById('checkIn');
 
 
 firebase.auth().onAuthStateChanged(firebaseUser =>{
     if (firebaseUser){
-        // console.log(firebaseUser);
-        profileViewUserInfo(firebaseUser);
+        if (previousPage == '2') {
+          profileuserID = localStorage.getItem("userID");
+          profileViewUserInfo(profileuserID);
+        } else {
+          profileuserID = firebaseUser.uid;
+          profileViewUserInfo(profileuserID);
+        }
     }else {
         console.log('Not logged in');
         window.location = 'login.html'
@@ -11,9 +18,10 @@ firebase.auth().onAuthStateChanged(firebaseUser =>{
 });
 
 
-function profileViewUserInfo(user) {
+function profileViewUserInfo(userID) {
+  console.log(userID);
   var usersRef = firestore.collection("users");
-  var query = usersRef.where("profileId", '==', user.uid).get()
+  var query = usersRef.where("profileId", '==', userID).get()
   .then(function (querySnapShot) {
     querySnapShot.forEach(function(doc) {
         const userProfileName = doc.data().firstName;
@@ -22,13 +30,21 @@ function profileViewUserInfo(user) {
         const email = doc.data().userEmail;
         const mobile = doc.data().mobile;
         const profileType = doc.data().profileType;
-        console.log(userProfileName);
         document.getElementById('userImage').src = userImage;
         document.getElementById('profileType').textContent = profileType;
         document.getElementById('firstName').textContent = userProfileName;
         document.getElementById('lastName').textContent = lastName;
         document.getElementById('email').textContent = email;
         document.getElementById('mobile').textContent = mobile;
+        if ((profileType == 'Inspector') && (userType == 'Employee')) {
+          btnCheckIn.innerHTML = "<input class='mdl-button mdl-js-button mdl-button--raised mdl-button--colored' onclick='viewCheckIn();' type=button value='Show Check-in'>";
+        }
     });
-  })
+  });
+};
+
+function viewCheckIn() {
+  console.log("working");
+  localStorage.setItem('Page', 'CheckIn');
+  window.location = "checkInWindow.html";
 };

@@ -16,7 +16,11 @@
     const area = document.getElementById('txtArea');
     const btnSignUpFarmer = document.getElementById("btnSignUpFarmer");
     const txtPosition = document.getElementById("txtPosition");
-
+    const latitude = localStorage.getItem('latitude');
+    const longitude = localStorage.getItem('longitude');
+    localStorage.setItem('latitude', null);
+    localStorage.setItem('longitude', null);
+    
     fileImage.onchange = function() {
       document.getElementById('imageName').textContent = fileImage.files[0].name;
     };
@@ -94,6 +98,8 @@
                         province: userProvince,
                         mobile: userMobile,
                         area: userArea,
+                        latitude: latitude,
+                        longitude: longitude,
                         profileId: docRef.uid
                     }).then(function () {
                         console.log("Status saved");

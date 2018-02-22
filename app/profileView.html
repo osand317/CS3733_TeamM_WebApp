@@ -48,8 +48,8 @@
   			<nav class="mdl-navigation">
   				<a class="mdl-navigation__link" href="/index.html">Home</a>
   				 <a class="mdl-navigation__link" href="/FieldActivitiesRecordV2.html">Data Entry</a>
-           <a class="mdl-navigation__link" href="/assignFarmer.html">Assign Farmer</a>
-  				<a class="mdl-navigation__link" href="/profileCreation.html">Create Account</a>
+           <a id="farmerAssign" class="mdl-navigation__link" href="/assignFarmer.html">Assign Farmer</a>
+           <a id="accountCreate" class="mdl-navigation__link" href="/profileCreation.html">Create Account</a>
   				<a class="mdl-navigation__link" href="/console.html">Console</a>
   			</nav>
   		</div>
@@ -59,7 +59,7 @@
       <div>
         <label for="profileType">Account type:</label>
         <p id="profileType" ></p>
-        <label for="lastName">Last name:</label>
+        <label for="firstName">First name:</label>
         <p id="firstName" ></p>
         <label for="lastName">Last name:</label>
         <p id="lastName" ></p>
@@ -68,12 +68,15 @@
         <label for="mobile">Mobile:</label>
         <p id="mobile" ></p>
       </div>
+      <div id="checkIn">
+
+      </div>
 
   </div>
   <script src="scripts/database.js" charset="utf-8"></script>
+  <script src="scripts/header.js" charset="utf-8"></script>
   <script src="scripts/profileView.js" charset="utf-8"></script>
   <script src="scripts/material.min.js"></script>
-  <script src="scripts/header.js" charset="utf-8"></script>
 
   </body>
 </html>

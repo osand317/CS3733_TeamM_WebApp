@@ -45,14 +45,18 @@
       <nav class="mdl-navigation">
         <a class="mdl-navigation__link" href="/index.html">Home</a>
          <a class="mdl-navigation__link" href="/FieldActivitiesRecordV2.html">Data Entry</a>
-         <a class="mdl-navigation__link" href="/assignFarmer.html">Assign Farmer</a>
-        <a class="mdl-navigation__link" href="/profileCreation.html">Create Account</a>
+         <a id="farmerAssign" class="mdl-navigation__link" href="/assignFarmer.html">Assign Farmer</a>
+         <a id="accountCreate" class="mdl-navigation__link" href="/profileCreation.html">Create Account</a>
         <a class="mdl-navigation__link" href="/console.html">Console</a>
       </nav>
     </div>
       <main class="mdl-layout__content">
         <div class="page-content">
           <!-- Your content goes here -->
+          <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" type="text" id="searchFilter" onkeyup="searchCallback()" placeholder="Search">
+            <label class="mdl-textfield__label" for="searchFilter">Text...</label>
+          </div>
           <div class='tableContainer'>
             <table id='table' class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
             </table>
