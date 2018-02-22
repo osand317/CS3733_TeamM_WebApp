@@ -62,19 +62,19 @@ db.collection("reports").limit(50).onSnapshot(function(querySnapshot){
     searchCallback();
 });
 
-db.collection("users").limit(50).onSnapshot(function(querySnapshot){
-    allTableHeaders = [];
-    profileBody.innerHTML = "";
-    profileHeading.innerHTML = "";
-
-    querySnapshot.forEach(function (doc) {
-        getTableHeaders(doc);
-        createTableRow(profileDisplay, doc.data(), doc.id);
-        // currentReports.push(doc);
-        // allReports.push(doc);
-    });
-    createTableHeading(profileDisplay);
-});
+// db.collection("users").limit(50).onSnapshot(function(querySnapshot){
+//     allTableHeaders = [];
+//     profileBody.innerHTML = "";
+//     profileHeading.innerHTML = "";
+//
+//     querySnapshot.forEach(function (doc) {
+//         getTableHeaders(doc);
+//         createTableRow(profileDisplay, doc.data(), doc.id);
+//         // currentReports.push(doc);
+//         // allReports.push(doc);
+//     });
+//     createTableHeading(profileDisplay);
+// });
 
 
 function createTableRow(displayArea, data, id){
@@ -329,41 +329,41 @@ function downloadCSV(args) {
 
 // ------------------------- GPS ---------------------- //
 // Gets lat and long with geolocation api, sets map center to current location
-window.onload = function() {
-    var startPos;
-    var geoOptions = {
-        maximumAge: 5 * 60 * 1000,
-        timeout: 10 * 1000
-    };
-    var geoSuccess = function(position) {
-        startPos = position;
-        document.getElementById('startLat').innerHTML = startPos.coords.latitude;
-        document.getElementById('startLon').innerHTML = startPos.coords.longitude;
-        map.setAttribute("src", getMapUrl());
-    };
-    var geoError = function(error) {
-        console.log('Error occurred. Error code: ' + error.code);
-        // error.code can be:
-        //   0: unknown error
-        //   1: permission denied
-        //   2: position unavailable (error response from location provider)
-        //   3: timed out
-    };
-    navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
-};
-
-// Creates url to call Google Maps API
-function getMapUrl(){
-    var url = "https://www.google.com/maps/embed/v1/view?key=AIzaSyAskkxEXqXBV0mDVQgzoT3LTWbYhNgfe2w&center=" +
-        document.getElementById('startLat').innerHTML +
-        "," +
-        document.getElementById('startLon').innerHTML +
-
-        "&zoom=18&maptype=satellite";
-    // console.log(url);
-    return url;
-
-}
+// window.onload = function() {
+//     var startPos;
+//     var geoOptions = {
+//         maximumAge: 5 * 60 * 1000,
+//         timeout: 10 * 1000
+//     };
+//     var geoSuccess = function(position) {
+//         startPos = position;
+//         document.getElementById('startLat').innerHTML = startPos.coords.latitude;
+//         document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+//         map.setAttribute("src", getMapUrl());
+//     };
+//     var geoError = function(error) {
+//         console.log('Error occurred. Error code: ' + error.code);
+//         // error.code can be:
+//         //   0: unknown error
+//         //   1: permission denied
+//         //   2: position unavailable (error response from location provider)
+//         //   3: timed out
+//     };
+//     navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
+// };
+//
+// // Creates url to call Google Maps API
+// function getMapUrl(){
+//     var url = "https://www.google.com/maps/embed/v1/view?key=AIzaSyAskkxEXqXBV0mDVQgzoT3LTWbYhNgfe2w&center=" +
+//         document.getElementById('startLat').innerHTML +
+//         "," +
+//         document.getElementById('startLon').innerHTML +
+//
+//         "&zoom=18&maptype=satellite";
+//     // console.log(url);
+//     return url;
+//
+// }
 // ------------------------- Search Stuff ---------------------- //
 var searchBy = document.getElementById("searchByUL");
 

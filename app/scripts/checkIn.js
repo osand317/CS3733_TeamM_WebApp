@@ -1,41 +1,45 @@
 var lat = 0;
 var long = 0;
 document.querySelector('#checkInBtn').addEventListener('click', function () {
-    var startPos;
-    var geoOptions = {
-        // maximumAge: 5 * 60 * 1000,
-        timeout: 10 * 1000
-    };
-    var geoSuccess = function(position) {
-        startPos = position;
-        lat = startPos.coords.latitude;
-        long = startPos.coords.longitude;
-        // map.setAttribute("src", getMapUrl());
-        console.log(lat,long);
-        storeLocation(lat, long);
-    };
-    var geoError = function(error) {
-        console.log('Error occurred. Error code: ' + error.code);
-        // error.code can be:
-        //   0: unknown error
-        //   1: permission denied
-        //   2: position unavailable (error response from location provider)
-        //   3: timed out
-    };
-    navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
+    if (navigator.onLine) {
+        var startPos;
+        var geoOptions = {
+            // maximumAge: 5 * 60 * 1000,
+            timeout: 10 * 1000
+        };
+        var geoSuccess = function (position) {
+            startPos = position;
+            lat = startPos.coords.latitude;
+            long = startPos.coords.longitude;
+            // map.setAttribute("src", getMapUrl());
+            let loc = {
+                uid: userID,
+                timestamp: Date(),
+                latitude: lat,
+                longitude: long
+            };
+            submitLocation(loc);
+        };
+        var geoError = function (error) {
+            console.log('Error occurred. Error code: ' + error.code);
+            // error.code can be:
+            //   0: unknown error
+            //   1: permission denied
+            //   2: position unavailable (error response from location provider)
+            //   3: timed out
+        };
+        navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
+    }
+    else {
+        document.querySelector('#output').textContent = 'Sorry, you\'re offline. Please take a picture to record your location.';
+    }
 });
 
-function storeLocation(lat, long){
-    let obj = {
-        uid: userID,
-        timestamp: Date(),
-        latitude: lat,
-        longitude: long
-    };
-    firestore.collection("checkIns").add(obj).catch(function(error){
+function submitLocation(data){
+    firestore.collection("checkIns").add(data).catch(function(error){
         console.log(error);
     });
-    output(obj);
+    output(data);
 }
 
 function output(obj){
@@ -51,3 +55,15 @@ function output(obj){
     message += obj.timestamp;
     document.querySelector('#output').textContent = message;
 }
+
+// window.addEventListener("online", function(){
+//     let data = JSON.parse(localStorage.getItem('toSubmit'));
+//     submitLocation(data);
+//     localStorage.removeItem('toSubmit');
+//     alert('submitted');
+// });
+//
+// function store(data){
+//     console.log(data);
+//     localStorage.setItem('toSubmit', JSON.stringify(data));
+// }
