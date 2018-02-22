@@ -7,8 +7,6 @@ var map = document.querySelector("#map");
 // var searchBtn = document.querySelector("#searchBtn");
 // var form = document.querySelector("form");
 
-var filtersInitialized = false;
-
 var config = {
     apiKey: "AIzaSyCFWzxl0VLYePJ-5O8U5umWWNJLT7TG9Fo",
     authDomain: "urmatt-app.firebaseapp.com",
@@ -61,6 +59,7 @@ db.collection("reports").limit(50).onSnapshot(function(querySnapshot){
     });
     createTableHeading(reportDisplay);
     populateFilters();
+    searchCallback();
 });
 
 db.collection("users").limit(50).onSnapshot(function(querySnapshot){
@@ -75,7 +74,6 @@ db.collection("users").limit(50).onSnapshot(function(querySnapshot){
         // allReports.push(doc);
     });
     createTableHeading(profileDisplay);
-    // populateFilters();
 });
 
 
@@ -105,9 +103,10 @@ function createTableRow(displayArea, data, id){
             tr.appendChild(td);
         }
     });
-    let td = document.createElement('td');
-    td.textContent = id;
-    tr.appendChild(td);
+    // let td = document.createElement('td');
+    // td.textContent = id;
+    // tr.appendChild(td);
+    tr.setAttribute("id", id);
     tbody.appendChild(tr);
 }
 
@@ -125,9 +124,6 @@ function createTableHeading(displayArea) {
         // th.classList.add("full-width");
         tr.appendChild(th);
     });
-    let th = document.createElement('th');
-    th.textContent = 'ID';
-    tr.appendChild(th);
     thead.appendChild(tr);
 }
 
@@ -373,31 +369,18 @@ var searchBy = document.getElementById("searchByUL");
 
 // Create list of filters in dropdown
 function populateFilters() {
-    // var tableHeadings = document.querySelectorAll("th"); // Needs specificity
-    // console.log(tableHeadings);
-    currentSearchFilters.forEach(function(sf) {
+    currentSearchFilters.forEach(function(filterName) {
         var li = document.createElement("li");
-        li.textContent = sf;
+        li.textContent = filterName;
         li.setAttribute("class", "mdl-menu__item");
         li.setAttribute("onclick", 'toggleFilter(this.textContent);');
         var cb = document.createElement('input');
         cb.type = 'checkbox';
-        // if (li.textContent !== 'ID') cb.checked = true;
+        cb.checked = true;
         li.appendChild(cb);
         searchBy.appendChild(li);
 
-        if(!filtersInitialized){
-            if (currentSearchFilters.indexOf(sf) === -1){
-                // if (th.textContent !== 'ID') currentSearchFilters.push(th.textContent);
-            }
-            // console.log(currentSearchFilters);
-        }
-
-
-        // console.log(li);
     });
-
-    filtersInitialized = true;
 
 }
 
@@ -426,13 +409,16 @@ function toggleFilter(filterName) {
 }
 
 // Check if a result should be shown based on whether or not its filter is currently active
-function isFiltered(currentCell, j){
-    var table = currentCell.closest('table');
-    // console.log(table.rows[0].cells[j].textContent);
-    var currentName = table.rows[0].cells[j].textContent;
-    var shouldBeShown = !(currentSearchFilters.indexOf(currentName) > -1);
-    // console.log(filtered);
-    return shouldBeShown;
+function shouldBeShown(i){
+    let table = reportDisplay;
+    // let reportTypeIndex = table.rows[0].cells.indexOf('reportType');
+    let reportTypeIndex = (function(){
+        for (let k = 0, cell; cell = table.rows[0].cells[k]; k++) {
+            if (cell.textContent === 'reportType') return k;
+        }
+    })();
+    let currentReportType = table.rows[i].cells[reportTypeIndex].textContent;
+    return (currentSearchFilters.indexOf(currentReportType) > -1);
 }
 
 // Iterates through table and hides those that shouldn't be shown, based on search term and filters
@@ -449,16 +435,16 @@ function searchCallback() {
         td = tr[i].getElementsByTagName("td");
         for (j = 0; j < td.length; j++) {
             if (td[j]) {
-                if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1 && !isFiltered(td[j], j)) {
+                if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1 && shouldBeShown(i)) {
                     tr[i].style.display = "";
-                    var report = allReports.find(o => o.id === td[td.length-1].innerHTML);
+                    var report = allReports.find(o => o.id === td.id);
                     if(currentReports.indexOf(report) === -1){
                         currentReports.push(report);
                     }
                     j = td.length; // If row should be shown, stop checking
                 } else {
                     tr[i].style.display = "none";
-                    var report = allReports.find(o => o.id === td[td.length-1].innerHTML);
+                    var report = allReports.find(o => o.id === td.id);
                     var index = currentReports.indexOf(report);
                     if(index > -1){
                         currentReports.splice(index, 1);
