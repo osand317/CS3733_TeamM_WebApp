@@ -1,38 +1,38 @@
 var lat = 0;
 var long = 0;
 document.querySelector('#checkInBtn').addEventListener('click', function () {
-    var startPos;
-    var geoOptions = {
-        // maximumAge: 5 * 60 * 1000,
-        timeout: 10 * 1000
-    };
-    var geoSuccess = function(position) {
-        startPos = position;
-        lat = startPos.coords.latitude;
-        long = startPos.coords.longitude;
-        // map.setAttribute("src", getMapUrl());
-        let loc = {
-            uid: userID,
-            timestamp: Date(),
-            latitude: lat,
-            longitude: long
+    if (navigator.onLine) {
+        var startPos;
+        var geoOptions = {
+            // maximumAge: 5 * 60 * 1000,
+            timeout: 10 * 1000
         };
-        // if (navigator.onLine){
+        var geoSuccess = function (position) {
+            startPos = position;
+            lat = startPos.coords.latitude;
+            long = startPos.coords.longitude;
+            // map.setAttribute("src", getMapUrl());
+            let loc = {
+                uid: userID,
+                timestamp: Date(),
+                latitude: lat,
+                longitude: long
+            };
             submitLocation(loc);
-        // }
-        // else {
-        //     store(loc);
-        // }
-    };
-    var geoError = function(error) {
-        console.log('Error occurred. Error code: ' + error.code);
-        // error.code can be:
-        //   0: unknown error
-        //   1: permission denied
-        //   2: position unavailable (error response from location provider)
-        //   3: timed out
-    };
-    navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
+        };
+        var geoError = function (error) {
+            console.log('Error occurred. Error code: ' + error.code);
+            // error.code can be:
+            //   0: unknown error
+            //   1: permission denied
+            //   2: position unavailable (error response from location provider)
+            //   3: timed out
+        };
+        navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
+    }
+    else {
+        document.querySelector('#output').textContent = 'Sorry, you\'re offline. Please take a picture to record your location.';
+    }
 });
 
 function submitLocation(data){
