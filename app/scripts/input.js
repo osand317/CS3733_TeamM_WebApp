@@ -17,7 +17,12 @@ form.addEventListener("submit", function(e) {
     let reportName = location.href.split("/").slice(-1).toString().split(".", 1).toString();
     data['reportType'] = reportName;
     console.log(data);
-    submitReport(data);
+    if (navigator.onLine){
+        submitReport(data);
+    }
+    else {
+        store(data);
+    }
     form.reset();
     document.querySelectorAll('.mdl-js-radio').forEach(el => el.MaterialRadio.checkToggleState());
     document.querySelectorAll('.mdl-js-checkbox').forEach(el => el.MaterialCheckbox.checkToggleState());
@@ -32,4 +37,16 @@ function getValue(el){
     else {
         return el.value;
     }
+}
+
+window.addEventListener("online", function(){
+    let data = JSON.parse(localStorage.getItem('toSubmit'));
+    submitReport(data);
+    alert("submitted");
+
+});
+
+function store(data){
+    console.log('storing locally');
+    localStorage.setItem('toSubmit', JSON.stringify(data));
 }
