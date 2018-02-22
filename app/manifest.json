@@ -1,0 +1,7 @@
+{
+  "short_name": "Rai",
+  "name": "Urmatt Rai App",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "orientation": "portrait"
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Visiting Record to Farmers' Paddy Field</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.green-light_green.min.css">
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-firestore.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body>
+
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <span class="mdl-layout-title">Forms</span>
+        <!-- Add spacer, to align navigation to the right -->
+        <div class="mdl-layout-spacer"></div>
+        <!-- Navigation. We hide it in small screens. -->
+        <nav class="mdl-navigation mdl-layout--large-screen-only">
+          <a class="mdl-navigation__link" href="">Menu</a>
+          <a class="mdl-navigation__link" href="">Link</a>
+          <a class="mdl-navigation__link" href="">Link</a>
+          <a class="mdl-navigation__link" href="">Link</a>
+        </nav>
+      </div>
+    </header>
+    <div class="mdl-layout__drawer">
+      <span class="mdl-layout-title">
+        <span class="mdl-layout-title">Menu</span>
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="">Link</a>
+        <a class="mdl-navigation__link" href="">Link</a>
+        <a class="mdl-navigation__link" href="">Link</a>
+        <a class="mdl-navigation__link" href="">Link</a>
+      </nav>
+    </div>
+    <main class="mdl-layout__content">
+      <div class="page-content">
+ 
+        <nav class="mdl-navigation mdl-layout--large-screen-only">
+          <h3>Visiting Farmers' Paddy Field</h3>
+        </nav>   
+
+        <form>
+          <div>
+            Date of Plantation
+            <input class="mdl-textfield__input" type="date" id="Plantation">
+            <label class="mdl-textfield__label" for="Plantation"></label>
+          </div>
+ 
+          <div >
+  	       Visit Farmer Date 
+            <input class="mdl-textfield__input" type="date" id="Farmer Visit">
+            <label class="mdl-textfield__label" for="Farmer Visit"></label>
+          </div>
+
+          <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="Height">
+            <label class="mdl-textfield__label" for="Height">Height (cm)</label>
+          </div>
+
+          <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="Clump">
+            <label class="mdl-textfield__label" for="Clump">Clump</label>
+          </div>
+
+          <div class="mdl-textfield mdl-js-textfield getmdl-select">
+            <input type="text" value="" class="mdl-textfield__input" id="grassfields" readonly>
+            <input type="hidden" value="" name="grassfields">
+            <label for="grassfields" class="mdl-textfield__label">Grass in the field</label>
+            <ul for="grassfields" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+              <li class="mdl-menu__item" data-val="YES">Yes</li>
+              <li class="mdl-menu__item" data-val="NO">No</li>
+            </ul>
+          </div>
+
+          <div class="mdl-textfield mdl-js-textfield getmdl-select">
+            <input type="text" value="" class="mdl-textfield__input" id="cutgrass" readonly>
+            <input type="hidden" value="" name="cutgrass">
+            <label for="cutgrass" class="mdl-textfield__label">Cut grass od dykes</label>
+            <ul for="cutgrass" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+              <li class="mdl-menu__item" data-val="YES">Yes</li>
+              <li class="mdl-menu__item" data-val="NO">No</li>
+            </ul>
+          </div>
+
+          <div class="mdl-textfield mdl-js-textfield getmdl-select">
+            <input type="text" value="" class="mdl-textfield__input" id="Insects" readonly>
+            <input type="hidden" value="" name="Insects">
+            <label for="Insects" class="mdl-textfield__label">Diseases/Insects</label>
+            <ul for="Insects" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+              <li class="mdl-menu__item" data-val="YES">Yes</li>
+              <li class="mdl-menu__item" data-val="NO">No</li>
+            </ul>
+          </div>
+
+          <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" type="text" id="Remark">
+            <label class="mdl-textfield__label" for="Remark">Water Level on the fields</label>
+          </div>
+
+          <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" type="text" id="Remark">
+            <label class="mdl-textfield__label" for="Remark">Remark</label>
+          </div>
+          <input type="submit">
+        </form>
+        </div>
+    </main>
+  </div>
+  <script src="scripts/database.js" charset="utf-8"></script>
+  <script src="scripts/material.min.js"></script>
+  <script src="scripts/header.js" charset="utf-8"></script>
+  <script src="scripts/input.js"></script>
+</body>
+</html>

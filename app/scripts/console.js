@@ -7,8 +7,6 @@ var map = document.querySelector("#map");
 // var searchBtn = document.querySelector("#searchBtn");
 // var form = document.querySelector("form");
 
-var filtersInitialized = false;
-
 var config = {
     apiKey: "AIzaSyCFWzxl0VLYePJ-5O8U5umWWNJLT7TG9Fo",
     authDomain: "urmatt-app.firebaseapp.com",
@@ -61,22 +59,22 @@ db.collection("reports").limit(50).onSnapshot(function(querySnapshot){
     });
     createTableHeading(reportDisplay);
     populateFilters();
+    searchCallback();
 });
 
-db.collection("users").limit(50).onSnapshot(function(querySnapshot){
-    allTableHeaders = [];
-    profileBody.innerHTML = "";
-    profileHeading.innerHTML = "";
-
-    querySnapshot.forEach(function (doc) {
-        getTableHeaders(doc);
-        createTableRow(profileDisplay, doc.data(), doc.id);
-        // currentReports.push(doc);
-        // allReports.push(doc);
-    });
-    createTableHeading(profileDisplay);
-    // populateFilters();
-});
+// db.collection("users").limit(50).onSnapshot(function(querySnapshot){
+//     allTableHeaders = [];
+//     profileBody.innerHTML = "";
+//     profileHeading.innerHTML = "";
+//
+//     querySnapshot.forEach(function (doc) {
+//         getTableHeaders(doc);
+//         createTableRow(profileDisplay, doc.data(), doc.id);
+//         // currentReports.push(doc);
+//         // allReports.push(doc);
+//     });
+//     createTableHeading(profileDisplay);
+// });
 
 
 function createTableRow(displayArea, data, id){
@@ -95,6 +93,9 @@ function createTableRow(displayArea, data, id){
             td.classList.add("mdl-data-table__cell--center");
             if (Object.keys(data).indexOf(header) > -1) {
                 td.textContent = data[header];
+                if (header === 'reportType' && currentSearchFilters.indexOf(data[header].toString()) === -1){
+                    currentSearchFilters.push(data[header].toString());
+                }
             }
             else {
                 td.textContent = "";
@@ -102,9 +103,10 @@ function createTableRow(displayArea, data, id){
             tr.appendChild(td);
         }
     });
-    let td = document.createElement('td');
-    td.textContent = id;
-    tr.appendChild(td);
+    // let td = document.createElement('td');
+    // td.textContent = id;
+    // tr.appendChild(td);
+    tr.setAttribute("id", id);
     tbody.appendChild(tr);
 }
 
@@ -122,9 +124,6 @@ function createTableHeading(displayArea) {
         // th.classList.add("full-width");
         tr.appendChild(th);
     });
-    let th = document.createElement('th');
-    th.textContent = 'ID';
-    tr.appendChild(th);
     thead.appendChild(tr);
 }
 
@@ -188,25 +187,25 @@ function getTableHeaders(doc){
 
 // ------------------------- Graphs ---------------------- //
 var ctx = document.getElementById('chart').getContext('2d');
-var times = [];
+// var times = [];
 var points = [];
 var dates = [];
 function getChartData(fieldToPlot) {
     db.collection("reports").orderBy('timestamp').get()
         .then(function (snapshot) {
-            times.length = 0;
+            // times.length = 0;
             points.length = 0;
             dates.length = 0;
             snapshot.forEach(function (doc) {
-                times.push(doc.data().timestamp);
-                console.log("going to push: ", Number(doc.data()[fieldToPlot]));
+                dates.push(doc.data().timestamp);
+                // console.log("going to push: ", Number(doc.data()[fieldToPlot]));
                 points.push(Number(doc.data()[fieldToPlot]));
-                console.log("points array: ", points);
+                // console.log("points array: ", points);
             });
-            times.forEach(t => dates.push(new Date(t * 1000)));
-            console.log(fieldToPlot);
-            console.log(dates);
-            console.log(points);
+            // times.forEach(t => dates.push(new Date(t * 1000)));
+            // console.log(fieldToPlot);
+            // console.log(dates);
+            // console.log(points);
             // dates.sort(function(a,b){
             //     return new Date(a) - new Date(b);
             // });
@@ -330,71 +329,58 @@ function downloadCSV(args) {
 
 // ------------------------- GPS ---------------------- //
 // Gets lat and long with geolocation api, sets map center to current location
-window.onload = function() {
-    var startPos;
-    var geoOptions = {
-        maximumAge: 5 * 60 * 1000,
-        timeout: 10 * 1000
-    };
-    var geoSuccess = function(position) {
-        startPos = position;
-        document.getElementById('startLat').innerHTML = startPos.coords.latitude;
-        document.getElementById('startLon').innerHTML = startPos.coords.longitude;
-        map.setAttribute("src", getMapUrl());
-    };
-    var geoError = function(error) {
-        console.log('Error occurred. Error code: ' + error.code);
-        // error.code can be:
-        //   0: unknown error
-        //   1: permission denied
-        //   2: position unavailable (error response from location provider)
-        //   3: timed out
-    };
-    navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
-};
-
-// Creates url to call Google Maps API
-function getMapUrl(){
-    var url = "https://www.google.com/maps/embed/v1/view?key=AIzaSyAskkxEXqXBV0mDVQgzoT3LTWbYhNgfe2w&center=" +
-        document.getElementById('startLat').innerHTML +
-        "," +
-        document.getElementById('startLon').innerHTML +
-
-        "&zoom=18&maptype=satellite";
-    // console.log(url);
-    return url;
-
-}
+// window.onload = function() {
+//     var startPos;
+//     var geoOptions = {
+//         maximumAge: 5 * 60 * 1000,
+//         timeout: 10 * 1000
+//     };
+//     var geoSuccess = function(position) {
+//         startPos = position;
+//         document.getElementById('startLat').innerHTML = startPos.coords.latitude;
+//         document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+//         map.setAttribute("src", getMapUrl());
+//     };
+//     var geoError = function(error) {
+//         console.log('Error occurred. Error code: ' + error.code);
+//         // error.code can be:
+//         //   0: unknown error
+//         //   1: permission denied
+//         //   2: position unavailable (error response from location provider)
+//         //   3: timed out
+//     };
+//     navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
+// };
+//
+// // Creates url to call Google Maps API
+// function getMapUrl(){
+//     var url = "https://www.google.com/maps/embed/v1/view?key=AIzaSyAskkxEXqXBV0mDVQgzoT3LTWbYhNgfe2w&center=" +
+//         document.getElementById('startLat').innerHTML +
+//         "," +
+//         document.getElementById('startLon').innerHTML +
+//
+//         "&zoom=18&maptype=satellite";
+//     // console.log(url);
+//     return url;
+//
+// }
 // ------------------------- Search Stuff ---------------------- //
 var searchBy = document.getElementById("searchByUL");
 
 // Create list of filters in dropdown
 function populateFilters() {
-    var tableHeadings = document.querySelectorAll("th"); // Needs specificity
-    // console.log(tableHeadings);
-    tableHeadings.forEach(function(th) {
+    currentSearchFilters.forEach(function(filterName) {
         var li = document.createElement("li");
-        li.textContent = th.textContent;
+        li.textContent = filterName;
         li.setAttribute("class", "mdl-menu__item");
         li.setAttribute("onclick", 'toggleFilter(this.textContent);');
         var cb = document.createElement('input');
         cb.type = 'checkbox';
-        if (li.textContent !== 'ID') cb.checked = true;
+        cb.checked = true;
         li.appendChild(cb);
         searchBy.appendChild(li);
 
-        if(!filtersInitialized){
-            if (currentSearchFilters.indexOf(th.textContent) === -1){
-                if (th.textContent !== 'ID') currentSearchFilters.push(th.textContent);
-            }
-            // console.log(currentSearchFilters);
-        }
-
-
-        // console.log(li);
     });
-
-    filtersInitialized = true;
 
 }
 
@@ -423,13 +409,16 @@ function toggleFilter(filterName) {
 }
 
 // Check if a result should be shown based on whether or not its filter is currently active
-function isFiltered(currentCell, j){
-    var table = currentCell.closest('table');
-    // console.log(table.rows[0].cells[j].textContent);
-    var currentName = table.rows[0].cells[j].textContent;
-    var shouldBeShown = !(currentSearchFilters.indexOf(currentName) > -1);
-    // console.log(filtered);
-    return shouldBeShown;
+function shouldBeShown(i){
+    let table = reportDisplay;
+    // let reportTypeIndex = table.rows[0].cells.indexOf('reportType');
+    let reportTypeIndex = (function(){
+        for (let k = 0, cell; cell = table.rows[0].cells[k]; k++) {
+            if (cell.textContent === 'reportType') return k;
+        }
+    })();
+    let currentReportType = table.rows[i].cells[reportTypeIndex].textContent;
+    return (currentSearchFilters.indexOf(currentReportType) > -1);
 }
 
 // Iterates through table and hides those that shouldn't be shown, based on search term and filters
@@ -446,16 +435,16 @@ function searchCallback() {
         td = tr[i].getElementsByTagName("td");
         for (j = 0; j < td.length; j++) {
             if (td[j]) {
-                if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1 && !isFiltered(td[j], j)) {
+                if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1 && shouldBeShown(i)) {
                     tr[i].style.display = "";
-                    var report = allReports.find(o => o.id === td[td.length-1].innerHTML);
+                    var report = allReports.find(o => o.id === td.id);
                     if(currentReports.indexOf(report) === -1){
                         currentReports.push(report);
                     }
                     j = td.length; // If row should be shown, stop checking
                 } else {
                     tr[i].style.display = "none";
-                    var report = allReports.find(o => o.id === td[td.length-1].innerHTML);
+                    var report = allReports.find(o => o.id === td.id);
                     var index = currentReports.indexOf(report);
                     if(index > -1){
                         currentReports.splice(index, 1);

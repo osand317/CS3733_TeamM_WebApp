@@ -13,6 +13,16 @@ workboxSW.router.registerRoute('https://fonts.googleapis.com/(.*)',
   })
 );
 
+workboxSW.router.registerRoute('https://fonts.gstatic.com/(.*)',
+    workboxSW.strategies.cacheFirst({
+        cacheName: 'gstatic',
+        cacheExpiration: {
+            maxEntries: 20
+        },
+        cacheableResponse: {statuses: [0, 200]}
+    })
+);
+
 workboxSW.router.registerRoute('https://code.getmdl.io/(.*)',
     workboxSW.strategies.cacheFirst({
         cacheName: 'mdl',

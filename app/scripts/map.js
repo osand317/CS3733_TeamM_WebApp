@@ -3,6 +3,7 @@ var markers = [];
 var marker;
 var coords = [];
 // var counter = 0;
+
 function initMap() {
 
   map = new google.maps.Map(document.getElementById('map'), {
@@ -60,6 +61,14 @@ function addMarker(location) {
   markers.push(marker);
 }
 
+
+function addPoint(location) {
+  var marker = new google.maps.Marker({
+    position: location,
+    map: map
+  });
+}
+
 function storeLocation() {
   console.log(markers[0].position);
   console.log(coords);
@@ -89,13 +98,18 @@ function drawCheckins() {
   checkInRef.get().then(
     window.eqfeed_callback = function (doc) {
       doc.forEach(function (coordinates) {
-        // counter++;
-        // console.log(counter);
-        var latLng = new google.maps.LatLng(coordinates.data().latitude, coordinates.data().longitude);
-        var marker = new google.maps.Marker({
-          position: latLng,
-          map: map
-        });
+        console.log(coordinates.data().timestamp);
+        if (Date.now() - Date.parse(coordinates.data().timestamp) <= 2419200000 && document.getElementById('monthBox').checked) {
+          counter++;
+          console.log(counter);
+          var latLng = new google.maps.LatLng(coordinates.data().latitude, coordinates.data().longitude);
+          addPoint(latLng);
+        } else if(Date.now() - Date.parse(coordinates.data().timestamp) <= 604800000 && document.getElementById('weekBox').checked){
+          counter++;
+          console.log(counter);
+          var latLng = new google.maps.LatLng(coordinates.data().latitude, coordinates.data().longitude);
+          addPoint(latLng);
+        }
       });
     }
   );

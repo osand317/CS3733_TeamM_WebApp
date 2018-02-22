@@ -12,11 +12,17 @@ form.addEventListener("submit", function(e) {
         let key = form.elements[i].id;
         let val = getValue(form.elements[i]);
         if (val != null && key != null && key) data[key] = val;
-        data['timestamp'] = Date.now();
-
     }
+    data['timestamp'] = Date();
+    let reportName = location.href.split("/").slice(-1).toString().split(".", 1).toString();
+    data['reportType'] = reportName;
     console.log(data);
-    submitReport(data);
+    if (navigator.onLine){
+        submitReport(data);
+    }
+    else {
+        store(data);
+    }
     form.reset();
     document.querySelectorAll('.mdl-js-radio').forEach(el => el.MaterialRadio.checkToggleState());
     document.querySelectorAll('.mdl-js-checkbox').forEach(el => el.MaterialCheckbox.checkToggleState());
@@ -31,4 +37,14 @@ function getValue(el){
     else {
         return el.value;
     }
+}
+
+window.addEventListener("online", function(){
+    let data = JSON.parse(localStorage.getItem('toSubmit'));
+    submitReport(data);
+    localStorage.removeItem('toSubmit');
+});
+
+function store(data){
+    localStorage.setItem('toSubmit', JSON.stringify(data));
 }

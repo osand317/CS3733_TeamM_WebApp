@@ -59,9 +59,9 @@
             <!-- Tabs -->
             <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
                 <a href="#fixed-tab-1" class="mdl-layout__tab is-active">Reports</a>
-                <a href="#fixed-tab-2" class="mdl-layout__tab">Profiles</a>
-                <a href="#fixed-tab-3" class="mdl-layout__tab">Analytics</a>
-                <a href="#fixed-tab-4" class="mdl-layout__tab">Test Tab</a>
+                <a href="#fixed-tab-2" class="mdl-layout__tab">Analytics</a>
+                <!--<a href="#fixed-tab-3" class="mdl-layout__tab">Analytics</a>-->
+                <!--<a href="#fixed-tab-4" class="mdl-layout__tab">Test Tab</a>-->
             </div>
         </header>
         <div class="mdl-layout__drawer">
@@ -93,7 +93,7 @@
                     </div>
                     <button onclick="getDataAndDownload()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Download as CSV</button>
 
-                    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="overflow-x: auto;" id="reportDisplay">
+                    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp tableContainer" style="overflow-x: auto;" id="reportDisplay">
                         <thead id="reportHeading"></thead>
                         <tbody id="reportBody"></tbody>
                     </table>
@@ -106,17 +106,17 @@
                     <!--<ul class="demo-list-item mdl-list" id="reportDisplay"></ul>-->
                 </div>
             </section>
-            <section class="mdl-layout__tab-panel" id="fixed-tab-2">
-                <div class="page-content">
-                    <!-- Your content goes here -->
-                    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id="profileDisplay">
-                        <thead id="profileHeading"></thead>
-                        <tbody id="profileBody"></tbody>
-                    </table>
+            <!--<section class="mdl-layout__tab-panel" id="fixed-tab-2">-->
+                <!--<div class="page-content">-->
+                    <!--&lt;!&ndash; Your content goes here &ndash;&gt;-->
+                    <!--<table class="mdl-data-table mdl-js-data-table mdl-shadow&#45;&#45;2dp" id="profileDisplay">-->
+                        <!--<thead id="profileHeading"></thead>-->
+                        <!--<tbody id="profileBody"></tbody>-->
+                    <!--</table>-->
 
-                </div>
-            </section>
-            <section class="mdl-layout__tab-panel" id="fixed-tab-3">
+                <!--</div>-->
+            <!--</section>-->
+            <section class="mdl-layout__tab-panel" id="fixed-tab-2">
                 <div class="page-content">
                     <!-- Your content goes here -->
                     <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="Yield">
@@ -130,22 +130,22 @@
                     <canvas id="chart"></canvas>
                 </div>
             </section>
-            <section class="mdl-layout__tab-panel" id="fixed-tab-4">
-                <div class="page-content">
-                    <!-- Your content goes here -->
-                    <p id="startLat"></p>
-                    <p id="startLon"></p>
-                    <iframe
-                            width="600"
-                            height="450"
-                            frameborder="0" style="border:0"
-                            src="https://www.google.com/maps/embed/v1/view?key=AIzaSyAskkxEXqXBV0mDVQgzoT3LTWbYhNgfe2w&center=-33.8569,151.2152&zoom=18&maptype=satellite"
-                            id="map">
-                    </iframe>
+            <!--<section class="mdl-layout__tab-panel" id="fixed-tab-4">-->
+                <!--<div class="page-content">-->
+                    <!--&lt;!&ndash; Your content goes here &ndash;&gt;-->
+                    <!--<p id="startLat"></p>-->
+                    <!--<p id="startLon"></p>-->
+                    <!--<iframe-->
+                            <!--width="600"-->
+                            <!--height="450"-->
+                            <!--frameborder="0" style="border:0"-->
+                            <!--src="https://www.google.com/maps/embed/v1/view?key=AIzaSyAskkxEXqXBV0mDVQgzoT3LTWbYhNgfe2w&center=-33.8569,151.2152&zoom=18&maptype=satellite"-->
+                            <!--id="map">-->
+                    <!--</iframe>-->
 
-                    <input type="file" accept="image/*" capture="camera">
-                </div>
-            </section>
+                    <!--<input type="file" accept="image/*" capture="camera">-->
+                <!--</div>-->
+            <!--</section>-->
         </main>
 
     </div>

@@ -1,6 +1,7 @@
 var previousPage = localStorage.getItem('Page');
 var btnCheckIn = document.getElementById('checkIn');
 
+
 firebase.auth().onAuthStateChanged(firebaseUser =>{
     if (firebaseUser){
         if (previousPage == '2') {
