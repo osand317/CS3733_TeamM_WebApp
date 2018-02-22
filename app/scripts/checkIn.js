@@ -11,8 +11,18 @@ document.querySelector('#checkInBtn').addEventListener('click', function () {
         lat = startPos.coords.latitude;
         long = startPos.coords.longitude;
         // map.setAttribute("src", getMapUrl());
-        console.log(lat,long);
-        storeLocation(lat, long);
+        let loc = {
+            uid: userID,
+            timestamp: Date(),
+            latitude: lat,
+            longitude: long
+        };
+        // if (navigator.onLine){
+            submitLocation(loc);
+        // }
+        // else {
+        //     store(loc);
+        // }
     };
     var geoError = function(error) {
         console.log('Error occurred. Error code: ' + error.code);
@@ -25,17 +35,11 @@ document.querySelector('#checkInBtn').addEventListener('click', function () {
     navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
 });
 
-function storeLocation(lat, long){
-    let obj = {
-        uid: userID,
-        timestamp: Date(),
-        latitude: lat,
-        longitude: long
-    };
-    firestore.collection("checkIns").add(obj).catch(function(error){
+function submitLocation(data){
+    firestore.collection("checkIns").add(data).catch(function(error){
         console.log(error);
     });
-    output(obj);
+    output(data);
 }
 
 function output(obj){
@@ -51,3 +55,15 @@ function output(obj){
     message += obj.timestamp;
     document.querySelector('#output').textContent = message;
 }
+
+// window.addEventListener("online", function(){
+//     let data = JSON.parse(localStorage.getItem('toSubmit'));
+//     submitLocation(data);
+//     localStorage.removeItem('toSubmit');
+//     alert('submitted');
+// });
+//
+// function store(data){
+//     console.log(data);
+//     localStorage.setItem('toSubmit', JSON.stringify(data));
+// }

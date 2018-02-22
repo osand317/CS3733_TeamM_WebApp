@@ -42,11 +42,9 @@ function getValue(el){
 window.addEventListener("online", function(){
     let data = JSON.parse(localStorage.getItem('toSubmit'));
     submitReport(data);
-    alert("submitted");
-
+    localStorage.removeItem('toSubmit');
 });
 
 function store(data){
-    console.log('storing locally');
     localStorage.setItem('toSubmit', JSON.stringify(data));
 }
