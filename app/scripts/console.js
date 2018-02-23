@@ -191,7 +191,7 @@ var ctx = document.getElementById('chart').getContext('2d');
 var points = [];
 var dates = [];
 function getChartData(fieldToPlot, startDate, endDate) {
-    console.log(startDate);
+    console.log(startDate, endDate);
     db.collection("reports").where('timestamp', '>=', startDate).where('timestamp', '<=', endDate).orderBy('timestamp').get()
         .then(function (snapshot) {
             // times.length = 0;
@@ -209,17 +209,6 @@ function getChartData(fieldToPlot, startDate, endDate) {
             chart.update();
         });
 }
-var startDate;
-var endDate;
-document.querySelector('#startDate').addEventListener('change', function(){
-    startDate = new Date(this.value);
-});
-document.querySelector('#endDate').addEventListener('change', function(){
-    endDate = new Date(this.value);
-});
-document.querySelector('#dateRangeBtn').addEventListener('click', function(){
-    getChartData('Height', startDate, endDate);
-});
 
 var chart = new Chart(ctx, {
     // The type of chart we want to create
@@ -242,6 +231,18 @@ var chart = new Chart(ctx, {
     options: {}
 });
 
+var startDate;
+var endDate;
+document.querySelector('#startDate').addEventListener('change', function(){
+    startDate = new Date(this.value);
+});
+document.querySelector('#endDate').addEventListener('change', function(){
+    endDate = new Date(this.value);
+});
+document.querySelector('#dateRangeBtn').addEventListener('click', function(){
+    getChartData('Height', startDate, endDate);
+});
+
 document.querySelector("#Yield").addEventListener("click", function(){
     getChartData('Yield');
     // addData(chart, dates, points);
@@ -250,6 +251,13 @@ document.querySelector("#Block-No").addEventListener("click", function(){
     getChartData('Block-No');
     // addData(chart, dates, points);
 });
+
+window.onload = function(){
+    let initialStartDate = new Date('0');
+    let initialEndDate = new Date(Date());
+    getChartData('Height', initialStartDate, initialEndDate);
+};
+
 
 // ------------------------- Download ---------------------- //
 function getDataAndDownload() {
