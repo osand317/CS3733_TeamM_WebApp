@@ -30,3 +30,16 @@
 	overflow-x: auto;
 	overflow-y: auto;
 }
+
+.homeGrid {
+	text-align: center;
+	justify-content: center;
+}
+
+.homeCol {
+	display: inline-block;
+}
+
+.mdl-card {
+	margin: 0 auto;
+}
