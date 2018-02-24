@@ -1,3 +1,7 @@
+body {
+	background-color: rgba(0, 0, 0, 0.05);
+}
+
 .page-content {
 	align-items: center;
   justify-content: center;
@@ -29,4 +33,63 @@
 	display: block;
 	overflow-x: auto;
 	overflow-y: auto;
+}
+
+.homeGrid {
+	text-align: center;
+	justify-content: center;
+}
+
+.homeCol {
+	display: inline-block;
+}
+
+.mdl-card {
+	margin: 0 auto;
+}
+
+.demo-card-image.mdl-card {
+	background-repeat: no-repeat;
+	background-position: 50% -85%;
+	background-color: #3c9187;
+}
+
+.demo-card-image > .mdl-card__actions {
+	height: 52px;
+	padding: 18px;
+	background: rgba(0, 0, 0, 0.2);
+}
+
+.demo-card-image__filename {
+	color: #fff;
+	font-size: 14px;
+	font-weight: 800;
+}
+
+#accountBtn.demo-card-image {
+	background-image: url(../images/account.svg);
+	background-size: 55%;
+	background-position: 50% -85%;
+
+}
+
+#consoleBtn.demo-card-image {
+	background-image: url(../images/chart.svg);
+	background-size: 45%;
+	background-position: 50% 0%;
+
+}
+
+#formsBtn.demo-card-image {
+	background-image: url(../images/form.svg);
+	background-size: 43%;
+	background-position: 50% 12%;
+
+}
+
+#checkInBtn.demo-card-image {
+	background-image: url(../images/check.svg);
+	background-size: 42%;
+	background-position: 50% 8%;
+
 }
