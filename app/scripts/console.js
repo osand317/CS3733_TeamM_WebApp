@@ -219,7 +219,7 @@ var chart = new Chart(ctx, {
         // labels: ["January", "February", "March", "April", "May", "June", "July"],
         labels: dates,
         datasets: [{
-            label: "Yield",
+            label: "Data",
             // backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(247, 170, 78)',
             // data: [0, 10, 5, 2, 20, 30, 45],
@@ -247,8 +247,8 @@ document.querySelector("#Yield").addEventListener("click", function(){
     getChartData('Yield');
     // addData(chart, dates, points);
 });
-document.querySelector("#Block-No").addEventListener("click", function(){
-    getChartData('Block-No');
+document.querySelector("#Height").addEventListener("click", function(){
+    getChartData('Height');
     // addData(chart, dates, points);
 });
 
