@@ -12,38 +12,50 @@
 </head>
 <body>
 
-  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    <header class="mdl-layout__header">
-      <div class="mdl-layout__header-row">
-        <!-- Title -->
-        <span class="mdl-layout-title">Forms</span>
-        <!-- Add spacer, to align navigation to the right -->
-        <div class="mdl-layout-spacer"></div>
-        <!-- Navigation. We hide it in small screens. -->
-        <nav class="mdl-navigation mdl-layout--large-screen-only">
-          <a class="mdl-navigation__link" href="">Menu</a>
-          <a class="mdl-navigation__link" href="">Link</a>
-          <a class="mdl-navigation__link" href="">Link</a>
-          <a class="mdl-navigation__link" href="">Link</a>
-        </nav>
-      </div>
-    </header>
-    <div class="mdl-layout__drawer">
-      <span class="mdl-layout-title">
-        <span class="mdl-layout-title">Menu</span>
-      <nav class="mdl-navigation">
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-      </nav>
-    </div>
-    <main class="mdl-layout__content">
-      <div class="page-content">
- 
+	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+		<header class="mdl-layout__header">
+			<div class="mdl-layout__header-row">
+				<!-- Title -->
+				<span class="mdl-layout-title">Template</span>
+				<!-- Add spacer, to align navigation to the right -->
+				<div class="mdl-layout-spacer"></div>
+				<!-- Navigation. We hide it in small screens. -->
+				<nav class="mdl-navigation">
+					<a id='labelUserProfile'> </a>
+					<a id='activeUserProfile'>
+						<button id="demo-menu-lower-right"
+										class="mdl-button mdl-js-button mdl-button--icon">
+										<i class="material-icons">account_circle</i>
+						</button>
+						<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+								for="demo-menu-lower-right">
+							<li class="mdl-menu__item" id="btnLogOut">Log Out</li>
+							<li class="mdl-menu__item" id="showProfile">Show Profile</li>
+							<li disabled class="mdl-menu__item">Disabled Action</li>
+							<li class="mdl-menu__item">Yet Another Action</li>
+						</ul>
+					</a>
+					<!-- Right aligned menu below button -->
+				</nav>
+			</div>
+		</header>
+		<!-- Navigation menu on the left  -->
+		<div class="mdl-layout__drawer">
+			<span class="mdl-layout-title">Urmatt App</span>
+			<nav class="mdl-navigation">
+				<a class="mdl-navigation__link" href="/index.html">Home</a>
+				<a class="mdl-navigation__link" onclick="accessManage();">Forms</a>
+				<a id="farmerAssign" class="mdl-navigation__link" href="/assignFarmer.html">Assign Farmer</a>
+				<a id="accountCreate" class="mdl-navigation__link" href="/profileCreation.html">Create Account</a>
+				<a class="mdl-navigation__link" href="/console.html">Console</a>
+			</nav>
+		</div>
+<main class="mdl-layout__content">
+	<div class="page-content">
+
         <nav class="mdl-navigation mdl-layout--large-screen-only">
           <h3>Visiting Farmers' Paddy Field</h3>
-        </nav>   
+        </nav>
 
         <form>
           <div>
@@ -51,9 +63,9 @@
             <input class="mdl-textfield__input" type="date" id="Plantation">
             <label class="mdl-textfield__label" for="Plantation"></label>
           </div>
- 
+
           <div >
-  	       Visit Farmer Date 
+  	       Visit Farmer Date
             <input class="mdl-textfield__input" type="date" id="Farmer Visit">
             <label class="mdl-textfield__label" for="Farmer Visit"></label>
           </div>
@@ -107,7 +119,8 @@
             <input class="mdl-textfield__input" type="text" id="Remark">
             <label class="mdl-textfield__label" for="Remark">Remark</label>
           </div>
-          <input type="submit">
+					<br>
+          <input class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit">
         </form>
         </div>
     </main>

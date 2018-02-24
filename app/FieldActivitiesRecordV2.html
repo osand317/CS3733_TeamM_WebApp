@@ -12,7 +12,7 @@
   <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
   <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-firestore.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
@@ -48,7 +48,7 @@
       <span class="mdl-layout-title">Rai App</span>
       <nav class="mdl-navigation">
         <a class="mdl-navigation__link" href="/index.html">Home</a>
-         <a class="mdl-navigation__link" href="/FieldActivitiesRecordV2.html">Data Entry</a>
+        <a class="mdl-navigation__link" onclick="accessManage();">Forms</a>
          <a id="farmerAssign" class="mdl-navigation__link" href="/assignFarmer.html">Assign Farmer</a>
          <a id="accountCreate" class="mdl-navigation__link" href="/profileCreation.html">Create Account</a>
         <a class="mdl-navigation__link" href="/console.html">Console</a>
@@ -219,7 +219,7 @@
               <label class="mdl-textfield__label" for="Notes">Notes</label>
               </div>
             <div>
-              <input type="submit">
+              <input class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit">
             </div>
           </form>
         </div>

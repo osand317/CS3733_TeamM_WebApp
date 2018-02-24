@@ -8,7 +8,7 @@ const newEmployee = document.getElementById("btnEmployee");
 
 
 newFarmer.addEventListener('click', function () {
-  window.location = 'farmerAccountCreation.html';
+  window.location = 'farmLocation.html';
 });
 
 newInspector.addEventListener('click', function() {

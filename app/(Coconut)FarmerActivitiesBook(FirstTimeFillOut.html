@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <title>Urmatt template</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-orange.min.css" />
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.green-light_green.min.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-firestore.js"></script>
@@ -42,56 +42,69 @@
   		</header>
   		<!-- Navigation menu on the left  -->
   		<div class="mdl-layout__drawer">
-  			<span class="mdl-layout-title">Rai App</span>
+  			<span class="mdl-layout-title">Urmatt App</span>
   			<nav class="mdl-navigation">
   				<a class="mdl-navigation__link" href="/index.html">Home</a>
           <a class="mdl-navigation__link" onclick="accessManage();">Forms</a>
-           <a id="farmerAssign" class="mdl-navigation__link" href="/assignFarmer.html">Assign Farmer</a>
+          <a id="farmerAssign" class="mdl-navigation__link" href="/assignFarmer.html">Assign Farmer</a>
   				<a id="accountCreate" class="mdl-navigation__link" href="/profileCreation.html">Create Account</a>
   				<a class="mdl-navigation__link" href="/console.html">Console</a>
   			</nav>
   		</div>
   <main class="mdl-layout__content">
     <div class="page-content">
-      <!-- Place page content here -->
-      <div >
-          <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored buttonFormat">
-            Farmer Internal Audit
-          </button>
-      </div>
-        <br>
-      <div>
-              <!-- Inspector button -->
-          <button id="btnInspector" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored buttonFormat">
-            Farmer Record
-          </button>
-      </div>
-      <br>
-      <div>
-            <!-- Urmatt Employee button -->
-        <button id="btnEmployee" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored buttonFormat">
-          HTO Ledger
-        </button>
-      </div>
-      <br>
-      <div>
-            <!-- Urmatt Employee button -->
-        <button id="btnEmployee" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored buttonFormat">
-          Sumaru Vavee Chicken Farm
-        </button>
-      </div>
-      <br>
-      <div>
-            <!-- Urmatt Employee button -->
-        <button id="btnEmployee" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored buttonFormat">
-          Risk Assessment for new farmers
-        </button>
-      </div>
-    </div>
-  </main>
-  </div>
+    <nav class="mdl-navigation mdl-layout--large-screen-only">
+		<h3>สมุดบันทึกการปฏิบัติงานในสวน</h3>
+	</nav>
+
+	<form action="/Farmer-Activities-Book-doc" method="post"></form>
+	<h4>Farm activities book</h4>
+
+
+		<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="PlantType">ชนิดพืช </label>
+			<input class="mdl-textfield__input" id="PlantType" type="text">
+		<!-- type of plant -->
+		</div>
+
+		<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="Varieties">Varieties</label>
+			<input class="mdl-textfield__input" id="Varieties" type="text">
+		</div>
+
+		<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="NameThai">ชื่อเกษตรกร/Name</label>
+			<input class="mdl-textfield__input" id="NameThai" type="text">
+		<!-- Name of farmer -->
+		</div>
+
+		<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="AddressThai">ที่อยู่/Address</label>
+			<input class="mdl-textfield__input" id="AddressThai" type="text">
+		</div>
+
+		<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="Code">รหัสแปลง/ Code</label>
+			<input class="mdl-textfield__input" id="Code" type="text">
+		</div>
+
+		<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="PlantationArea">พื้นที่ปลูก/ Plantation Area (ไร่/ Rai)</label>
+			<input class="mdl-textfield__input" id="PlantationArea" type="text">
+		</div>
+
+		<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="NameSurname">จำนวน/ Number of tree (ต้น/ Tree)</label>
+			<input class="mdl-textfield__input" id="NameSurname" type="text">
+		</div>
+    <br>
+    <input class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit">
+
+		</form>
+	</div>
+</main>
   <script src="scripts/database.js" charset="utf-8"></script>
   <script src="scripts/header.js" charset="utf-8"></script>
   <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-  </body>
+</body>
 </html>
