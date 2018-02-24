@@ -221,7 +221,7 @@ var chart = new Chart(ctx, {
         datasets: [{
             label: "Yield",
             // backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(247, 170, 78)',
             // data: [0, 10, 5, 2, 20, 30, 45],
             data: points,
         }]
