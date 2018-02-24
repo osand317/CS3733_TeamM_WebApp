@@ -40,7 +40,8 @@ gulp.task('bundle-sw', () => {
         'index.html',
         '**/*.js',
         '**/*.html',
-        '**/*.css'
+        '**/*.css',
+        'images/*'
     ]
   })
   .catch((err) => {
