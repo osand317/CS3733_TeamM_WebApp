@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Urmatt template</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.green-light_green.min.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-firestore.js"></script>
+  </head>
+  <body>
+
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  		<header class="mdl-layout__header">
+  			<div class="mdl-layout__header-row">
+  				<!-- Title -->
+  				<span class="mdl-layout-title">Template</span>
+  				<!-- Add spacer, to align navigation to the right -->
+  				<div class="mdl-layout-spacer"></div>
+  				<!-- Navigation. We hide it in small screens. -->
+  				<nav class="mdl-navigation">
+  					<a id='labelUserProfile'> </a>
+  					<a id='activeUserProfile'>
+  						<button id="demo-menu-lower-right"
+  										class="mdl-button mdl-js-button mdl-button--icon">
+  										<i class="material-icons">account_circle</i>
+  						</button>
+  						<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+  								for="demo-menu-lower-right">
+  							<li class="mdl-menu__item" id="btnLogOut">Log Out</li>
+  							<li class="mdl-menu__item" id="showProfile">Show Profile</li>
+  							<li disabled class="mdl-menu__item">Disabled Action</li>
+  							<li class="mdl-menu__item">Yet Another Action</li>
+  						</ul>
+  					</a>
+  					<!-- Right aligned menu below button -->
+  				</nav>
+  			</div>
+  		</header>
+  		<!-- Navigation menu on the left  -->
+  		<div class="mdl-layout__drawer">
+  			<span class="mdl-layout-title">Urmatt App</span>
+  			<nav class="mdl-navigation">
+  				<a class="mdl-navigation__link" href="/index.html">Home</a>
+          <a class="mdl-navigation__link" onclick="accessManage();">Forms</a>
+          <a id="farmerAssign" class="mdl-navigation__link" href="/assignFarmer.html">Assign Farmer</a>
+  				<a id="accountCreate" class="mdl-navigation__link" href="/profileCreation.html">Create Account</a>
+  				<a class="mdl-navigation__link" href="/console.html">Console</a>
+  			</nav>
+  		</div>
+  <main class="mdl-layout__content">
+    <div class="page-content">
+<!-- ************************************************************************** -->
+	<h3>สมุดบันทึก GAP</h3>
+    <!-- GAP Workbook -->
+    <h5>โครงการส่งเสริมการผลิตสินค้าเกษตรที่ปลอดภัยได้มาตรฐาน</h5>
+	<!-- Project of Promoting of Agricultural Production -->
+	<h6>กระทรวงเกษตรและสหกรณ์ อาหารปลอดภัย</h6>
+	<!-- Ministry of Agriculture and Cooperatives, Safe food -->
+	<h6>สำนักงานเกษตรอำเภอดำเนินสะดวก จังหวัดราชบุรี</h6>
+	<!-- Damnoen Saduak District Agricultural Office Ratchaburi Province -->
+	<h6>กรมส่งเสริมการเกษตร</h6>
+	<!-- Department of Agricultural Extension -->
+
+	<form action="/GAP-workbook" method="post">
+		<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="NameSurname">ปี </label>
+			<input class="mdl-textfield__input" id="NameSurname" type="text">
+			</div>
+			<!-- Year -->
+		<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="NameSurname">พืช</label>
+			<input class="mdl-textfield__input" id="NameSurname" type="text">
+			</div>
+			<!-- Type of plant -->
+		<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="NameSurname">พันธุ์</label>
+			<input class="mdl-textfield__input" id="NameSurname" type="text">
+			</div>
+			<!-- Variety -->
+
+		<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="NameSurname">รหัสแปลง</label>
+			<input class="mdl-textfield__input" id="NameSurname" type="text">
+			</div>
+			<!-- Plot code -->
+
+	<ol>
+	<b><li>ข้อมูลเกษตรกร</li></b>
+	<!-- Farmer's Information -->
+
+		<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox">
+  			<input type="checkbox" id="checkbox" class="mdl-checkbox__input">
+  			<span class="mdl-checkbox__label">นาย</span>
+  			<!-- Mr -->
+  		</label>
+  		<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox">
+  			<input type="checkbox" id="checkbox" class="mdl-checkbox__input">
+  			<span class="mdl-checkbox__label">นาง</span>
+  			<!-- Mrs -->
+  		</label>
+  		<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox">
+  			<input type="checkbox" id="checkbox" class="mdl-checkbox__input">
+  			<span class="mdl-checkbox__label">นางสาว</span>
+  			<!-- Miss -->
+  		</label>
+
+		<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="NameSurname">ชื่อเกษตรกร </label>
+			<input class="mdl-textfield__input" id="NameSurname" type="text">
+			</div>
+			<!-- Farmer name -->
+		<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="NameSurname">นามสกุล </label>
+			<input class="mdl-textfield__input" id="NameSurname" type="text">
+			</div>
+			<!-- Surname -->
+
+		<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="NameSurname">เลขประจำตัวประชาชน</label>
+			<input class="mdl-textfield__input" id="NameSurname" type="text">
+			</div>
+			<!-- Identification No -->
+		<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="NameSurname">เบอร์โทร</label>
+			<input class="mdl-textfield__input" id="NameSurname" type="text">
+			</div>
+			<!-- Tel no. -->
+
+		<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="NameSurname">เลขที่ </label>
+			<input class="mdl-textfield__input" id="NameSurname" type="text">
+			</div>
+			<!-- No. -->
+		<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="NameSurname">หมู่ที่ </label>
+			<input class="mdl-textfield__input" id="NameSurname" type="text">
+			</div>
+			<!-- Village No. (Moo) -->
+		<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="NameSurname">ตำบล</label>
+			<input class="mdl-textfield__input" id="NameSurname" type="text">
+			</div>
+			<!-- Sub-district -->
+
+		<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="NameSurname">อำเภอ</label>
+			<input class="mdl-textfield__input" id="NameSurname" type="text">
+			</div>
+			<!-- District -->
+		<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="NameSurname">จังหวัด</label>
+			<input class="mdl-textfield__input" id="NameSurname" type="text">
+			</div>
+			<!-- Province -->
+
+	<b><li>ข้อมูลประจำแปลง</li></b>
+	<!-- Plot data -->
+
+		<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="NameSurname">ปีที่ดำเนินการ</label>
+			<input class="mdl-textfield__input" id="NameSurname" type="text">
+			</div>
+			<!-- Cultivation Year -->
+
+		<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="NameSurname">ชื่อพืช</label>
+			<input class="mdl-textfield__input" id="NameSurname" type="text">
+			</div>
+			<!-- Plant Name -->
+		<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="NameSurname">พันธุ์</label>
+			<input class="mdl-textfield__input" id="NameSurname" type="text">
+			</div>
+			<!-- Variety -->
+
+	<table class="mdl-data-table mdl-js-data-table" border="1">
+		<tbody>
+			<tr>
+				<th>จำนวน</th>
+				<!-- Amount -->
+				<td>ต้น
+					<input class="mdl-textfield__input" type="text">
+					<label class="mdl-textfield__label" for="sample1"></label>
+				</td>
+				<!-- Trees -->
+			</tr>
+			<tr>
+				<th>ราคาหน่วยละ</th>
+				<!-- Unit price -->
+				<td>
+					<input class="mdl-textfield__input" type="text">
+					<label class="mdl-textfield__label" for="sample1"></label>
+				</td>
+			</tr>
+			<tr>
+				<th>รวม</th>
+					<!-- Total -->
+				<td>ต้น
+					<input class="mdl-textfield__input" type="text">
+					<label class="mdl-textfield__label" for="sample1"></label>
+				</td>
+					<!-- Trees -->
+			</tr>
+			<tr>
+				<th>เป็นเงิน</th>
+					<!-- Expected money -->
+				<td>บาท
+					<input class="mdl-textfield__input" type="text">
+					<label class="mdl-textfield__label" for="sample1"></label>
+				</td>
+					<!-- Baht -->
+			</tr>
+		</tbody>
+	</table>
+	<p>
+	<table class="mdl-data-table mdl-js-data-table" border="1">
+		<tbody>
+			<tr>
+				<th>พื้นที่ปลูก:</th>
+					<!-- Cultivation Area -->
+				<td>ไร่
+					<input class="mdl-textfield__input" type="text">
+					<label class="mdl-textfield__label" for="sample1"></label>
+				</td>
+					<!-- Rai -->
+				<td>งาน
+					<input class="mdl-textfield__input" type="text">
+					<label class="mdl-textfield__label" for="sample1"></label>
+				</td>
+					<!-- Ngan -->
+				<td>ตารางวา
+					<input class="mdl-textfield__input" type="text">
+					<label class="mdl-textfield__label" for="sample1"></label>
+				</td>
+					<!-- Square Wah -->
+			</tr>
+			<tr>
+				<th>สภาพพื้นที่:</th>
+					<!-- Area Condition -->
+				<td colspan="3">
+					<input class="mdl-textfield__input" type="text">
+					<label class="mdl-textfield__label" for="sample1"></label>
+				</td>
+			</tr>
+			<tr>
+				<th>จำนวนแรงงานในครอบครัว:</th>
+					<!-- No. of laborers in the family -->
+				<td colspan="3">คน
+					<input class="mdl-textfield__input" type="text">
+					<label class="mdl-textfield__label" for="sample1"></label>
+					<!-- person -->
+				</td>
+			</tr>
+			<tr>
+				<th>จำนวนแรงงานจ้าง:</th>
+					<!-- hire workers -->
+				<td colspan="3">คน
+					<input class="mdl-textfield__input" type="text">
+					<label class="mdl-textfield__label" for="sample1"></label>
+				</td>
+				<!-- person -->
+			</tr>
+			<tr>
+				<th>ระบบการให้น้ำ:</th>
+					<!-- Water distribution system -->
+				<td colspan="3">
+					<input class="mdl-textfield__input" type="text">
+					<label class="mdl-textfield__label" for="sample1"></label>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	</p>
+	</ol>
+  <br>
+  <input class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit">
+</form>
+</div>
+ </main>
+</div>
+  <script src="scripts/database.js" charset="utf-8"></script>
+  <script src="scripts/header.js" charset="utf-8"></script>
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+</body>
+</html>
