@@ -2,51 +2,32 @@
 var reportDisplay = document.querySelector("#reportDisplay");
 var reportBody = document.querySelector("#reportBody");
 var reportHeading = document.querySelector("#reportHeading");
-var profileDisplay = document.querySelector("#profileDisplay");
 var map = document.querySelector("#map");
 
-var config = {
-    apiKey: "AIzaSyCFWzxl0VLYePJ-5O8U5umWWNJLT7TG9Fo",
-    authDomain: "urmatt-app.firebaseapp.com",
-    databaseURL: "https://urmatt-app.firebaseio.com",
-    projectId: "urmatt-app",
-    storageBucket: "urmatt-app.appspot.com",
-    messagingSenderId: "523826665141"
-};
-if(!firebase.apps.length){
-    firebase.initializeApp(config);
-}
-var db = firebase.firestore();
-
 // ------------------------- Tables ---------------------- //
-// Update list of reports whenever the database changes
 var currentReports = [];
 var allReports = [];
 var allTableHeaders = [];
-db.collection("reports").limit(50).onSnapshot(function(querySnapshot){
+
+// Recreate table whenever report database updates
+firestore.collection("reports").limit(50).onSnapshot(function(querySnapshot){
     allTableHeaders = [];
     reportBody.innerHTML = "";
     reportHeading.innerHTML = "";
 
     querySnapshot.forEach(function (doc) {
         getTableHeaders(doc);
-        createTableRow(reportDisplay, doc.data(), doc.id);
+        createTableRow(doc.data(), doc.id);
         currentReports.push(doc);
         allReports.push(doc);
     });
-    createTableHeading(reportDisplay);
+    createTableHeading();
     populateFilters();
     searchCallback();
 });
 
-function createTableRow(displayArea, data, id){
-    if(displayArea === reportDisplay){
-        var tbody = document.querySelector("#reportBody");
-    }
-    else if(displayArea === profileDisplay){
-        var tbody = document.querySelector("#profileBody");
-    }
-    // let data = doc.data();
+function createTableRow(data, id){
+    var tbody = document.querySelector("#reportBody");
     let tr = document.createElement('tr');
 
     allTableHeaders.forEach(function(header){
@@ -55,6 +36,7 @@ function createTableRow(displayArea, data, id){
             td.classList.add("mdl-data-table__cell--center");
             if (Object.keys(data).indexOf(header) > -1) {
                 td.textContent = data[header];
+                //Get report types for use as filters
                 if (header === 'reportType' && currentSearchFilters.indexOf(data[header].toString()) === -1){
                     currentSearchFilters.push(data[header].toString());
                 }
@@ -69,13 +51,8 @@ function createTableRow(displayArea, data, id){
     tbody.appendChild(tr);
 }
 
-function createTableHeading(displayArea) {
-    if(displayArea === reportDisplay){
-        var thead = document.querySelector("#reportHeading");
-    }
-    else if(displayArea === profileDisplay){
-        var thead = document.querySelector("#profileHeading");
-    }
+function createTableHeading() {
+    var thead = document.querySelector("#reportHeading");
     let tr = document.createElement('tr');
     allTableHeaders.forEach(function(header){
         let th = document.createElement('th');
@@ -95,24 +72,21 @@ function getTableHeaders(doc){
 
 
 // ------------------------- Graphs ---------------------- //
+// Using chart.js
+
 var ctx = document.getElementById('chart').getContext('2d');
 var points = [];
 var dates = [];
 function getChartData(fieldToPlot, startDate, endDate) {
-    console.log(startDate, endDate);
-    db.collection("reports").where('timestamp', '>=', startDate).where('timestamp', '<=', endDate).orderBy('timestamp').get()
+    firestore.collection("reports").where('timestamp', '>=', startDate).where('timestamp', '<=', endDate).orderBy('timestamp').get()
         .then(function (snapshot) {
-            // times.length = 0;
             points.length = 0;
             dates.length = 0;
             snapshot.forEach(function (doc) {
                 let date = doc.data().timestamp.toString();
                 date = date.split(':')[0] + ':' + date.split(':')[1];
-                // console.log(date);
                 dates.push(date);
-                // console.log("going to push: ", Number(doc.data()[fieldToPlot]));
                 points.push(Number(doc.data()[fieldToPlot]));
-                // console.log("points array: ", points);
             });
             chart.update();
         });
@@ -160,6 +134,7 @@ document.querySelector("#Height").addEventListener("click", function(){
     // addData(chart, dates, points);
 });
 
+// Set default date ranges
 window.onload = function(){
     let initialStartDate = new Date('0');
     let initialEndDate = new Date(Date());
@@ -168,20 +143,10 @@ window.onload = function(){
 
 // ------------------------- Download ---------------------- //
 function getDataAndDownload() {
-    // console.log("getting data");
-    // db.collection("reports").get()
-    //     .then(function(snapshot){
-    //         var data = [];
-    //         snapshot.forEach(function(doc){
-    //             data.push(doc.data());
-    //             // console.log(doc.data());
-    //         });
-    //         downloadCSV({data: data, filename: "reports.csv"});
-    //     })
     var data = [];
     currentReports.forEach(function(doc){
         data.push(doc.data());
-    })
+    });
     downloadCSV({data: data, filename: "reports.csv"});
 }
 function convertArrayOfObjectsToCSV(args) {
@@ -263,7 +228,6 @@ function toggleFilter(filterName) {
     else {
         currentSearchFilters.splice(currentSearchFilters.indexOf(filterName), 1);
     }
-    // console.log(currentSearchFilters);
     searchCallback();
 }
 
