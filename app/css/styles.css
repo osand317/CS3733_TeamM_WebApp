@@ -73,6 +73,20 @@ body {
 
 }
 
+#inspectorProfilesbtn.demo-card-image {
+	background-image: url(../images/study.svg);
+	background-size: 35%;
+	background-position: 50% +20%;
+
+}
+
+#farmerProfilebtn.demo-card-image {
+	background-image: url(../images/farmer.svg);
+	background-size: 35%;
+	background-position: 50% +20%;
+
+}
+
 #consoleBtn.demo-card-image {
 	background-image: url(../images/chart.svg);
 	background-size: 45%;

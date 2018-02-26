@@ -1,5 +1,5 @@
 document.querySelector('#accountBtn').addEventListener('click', function(){
-    window.location = '/farmerProfiles.html';
+    window.location = '/profiles.html';
 });
 document.querySelector('#consoleBtn').addEventListener('click', function(){
     window.location = '/console.html';

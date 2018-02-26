@@ -1,5 +1,9 @@
 var map;
 var coords = [];
+var farms = [];
+var latitude = [];
+var longitude = [];
+var names = [];
 // var counter = 0;
 
 function initMap() {
@@ -25,18 +29,9 @@ function initMap() {
     if (localStorage.getItem('Page') == "CheckIn") {
       drawCheckins();
     }
-  drawFarms();
+  getFarms();
     // console.log(e.latLng.lng());
   };
-
-  // Create a <script> tag and set the USGS URL as the source.
-  // var script = document.createElement('script');
-  // // This example uses a local copy of the GeoJSON stored at
-  // // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
-  // script.src = 'https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js';
-  // document.getElementsByTagName('head')[0].appendChild(script);
-
-
 
 
 
@@ -55,20 +50,6 @@ function storeLocation() {
   console.log(localStorage);
   window.location = "farmerAccountCreation.html";
 };
-
-// Loop through the results array and place a marker for each
-// set of coordinates.
-// window.eqfeed_callback = function(results) {
-//   for (var i = 0; i < results.features.length; i++) {
-//     var coords = results.features[i].geometry.coordinates;
-//     var latLng = new google.maps.LatLng(coords[1],coords[0]);
-//     var marker = new google.maps.Marker({
-//       position: latLng,
-//       map: map
-//     });
-//   }
-// }
-
 
 
 function drawCheckins() {
@@ -93,18 +74,48 @@ function drawCheckins() {
   );
 };
 
-function drawFarms() {
-  var checkInRef = firestore.collection("users");
+function getFarms() {
+  var checkInRef = firestore.collection("users").where('longitude', '>', '0');
   checkInRef.get().then(
     window.eqfeed_callback = function (doc) {
       doc.forEach(function (coordinates) {
-        var latLng = new google.maps.LatLng(coordinates.data().latitude, coordinates.data().longitude);
-        var marker = new google.maps.Marker({
+        latitude.push(coordinates.data().latitude);
+        longitude.push(coordinates.data().longitude);
+        names.push(coordinates.data().firstName + ' ' + coordinates.data().lastName);
+        farms.push(coordinates.data().profileId);
+        });
+      drawMarkers();
+      });
+      console.log(farms);
+      console.log(names);
+
+    };
+
+
+
+function drawMarkers() {
+  var infowindow = new google.maps.InfoWindow();
+
+  for (var i = 0; i < farms.length; i++) {
+      var latLng = new google.maps.LatLng(latitude[i], longitude[i]);
+      var marker = new google.maps.Marker({
           position: latLng,
           map: map,
           icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
-        });
       });
+
+      google.maps.event.addListener(marker, 'click', (function (marker, i) {
+          return function () {
+              infowindow.setContent(names[i] +
+              "<br><input class='mdl-button mdl-js-button mdl-button--raised mdl-button--colored' onclick='goToProfile("+ '"'+ farms[i]+ '"' +");' type=button value='Profile'>");
+              infowindow.open(map, marker);
+          }
+      })(marker, i));
     }
-  );
+};
+
+function goToProfile(userID) {
+  localStorage.setItem("userID", userID);
+  localStorage.setItem("Page", '2');
+  window.location = 'profileView.html';
 };

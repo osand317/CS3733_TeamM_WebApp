@@ -49,31 +49,6 @@ function assignValue(info){
   window.location = "profileView.html";
 };
 
-// function checkForSelection() {
-//   var j =0;
-//   for (var i = 0; i < farmer.length; i++) {
-//     document.getElementById('box'+i).addEventListener('click', e=>{
-//       // profileuserID = farmer[i][5];
-//       console.log(e);
-//     });
-//     j++;
-  // console.log(selectedFarmers);
-// }
-// var documentRef = usersRef.doc(userDocument);
-// documentRef.update({
-//       inspectorID: selectedFarmers
-//     }).then(function () {
-//       console.log("Saved");
-//     })
-//     .catch(function (error) {
-//     console.log(error);
-//   });
-// };
-//
-// btn.addEventListener('click', e=>{
-//   checkForSelection();
-// });
-
 
 function searchCallback() {
     // Declare variables
