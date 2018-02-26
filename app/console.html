@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
 
-    <title>Consoles</title>
+    <title>Console</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-orange.min.css" />
@@ -119,19 +119,27 @@
             <section class="mdl-layout__tab-panel" id="fixed-tab-2">
                 <div class="page-content">
                     <!-- Your content goes here -->
-                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="Yield">
-                        <input type="radio" id="Yield" class="mdl-radio__button" name="options" value="2">
-                        <span class="mdl-radio__label">Yield</span>
-                    </label>
-                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="Block-No">
-                        <input type="radio" id="Block-No" class="mdl-radio__button" name="options" value="2">
-                        <span class="mdl-radio__label">Block-No</span>
-                    </label>
-                    <br>
-                    <h6>Select Date Range: </h6>
-                    <input id="startDate" type="date">
-                    <input id="endDate" type="date">
-                    <button id="dateRangeBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" >Apply</button>
+                    <div>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="Yield">
+                            <input type="radio" id="Yield" class="mdl-radio__button" name="options" value="2">
+                            <span class="mdl-radio__label">Yield</span>
+                        </label>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="Height">
+                            <input type="radio" id="Height" class="mdl-radio__button" name="options" value="2">
+                            <span class="mdl-radio__label">Height</span>
+                        </label>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="Eggs">
+                            <input type="radio" id="Eggs" class="mdl-radio__button" name="options" value="2">
+                            <span class="mdl-radio__label">Eggs</span>
+                        </label>
+                    </div>
+                    <div>
+                        <h6 style="display: inline-block;">Select Date Range: </h6>
+                        <input id="startDate" type="date">
+                        <input id="endDate" type="date">
+                        <button id="dateRangeBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" >Apply</button>
+                    </div>
+
                     <canvas id="chart"></canvas>
                 </div>
             </section>

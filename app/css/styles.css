@@ -52,6 +52,7 @@ body {
 	background-repeat: no-repeat;
 	background-position: 50% -85%;
 	background-color: #3c9187;
+	cursor: pointer;
 }
 
 .demo-card-image > .mdl-card__actions {

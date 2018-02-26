@@ -1,6 +1,7 @@
 var lat = 0;
 var long = 0;
 document.querySelector('#checkInBtn').addEventListener('click', function () {
+    // Using geolocation API
     if (navigator.onLine) {
         var startPos;
         var geoOptions = {
@@ -11,7 +12,6 @@ document.querySelector('#checkInBtn').addEventListener('click', function () {
             startPos = position;
             lat = startPos.coords.latitude;
             long = startPos.coords.longitude;
-            // map.setAttribute("src", getMapUrl());
             let loc = {
                 uid: userID,
                 timestamp: Date(),
@@ -55,15 +55,3 @@ function output(obj){
     message += obj.timestamp;
     document.querySelector('#output').textContent = message;
 }
-
-// window.addEventListener("online", function(){
-//     let data = JSON.parse(localStorage.getItem('toSubmit'));
-//     submitLocation(data);
-//     localStorage.removeItem('toSubmit');
-//     alert('submitted');
-// });
-//
-// function store(data){
-//     console.log(data);
-//     localStorage.setItem('toSubmit', JSON.stringify(data));
-// }
