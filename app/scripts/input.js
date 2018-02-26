@@ -16,6 +16,7 @@ form.addEventListener("submit", function(e) {
     data['timestamp'] = new Date(Date());
     let reportName = location.href.split("/").slice(-1).toString().split(".", 1).toString();
     data['reportType'] = reportName;
+    data['userID'] = userID;
     console.log(data);
     if (navigator.onLine){
         submitReport(data);
