@@ -166,7 +166,6 @@ window.onload = function(){
     getChartData('Height', initialStartDate, initialEndDate);
 };
 
-
 // ------------------------- Download ---------------------- //
 function getDataAndDownload() {
     // console.log("getting data");
@@ -246,14 +245,13 @@ function populateFilters() {
         li.textContent = filterName;
         li.setAttribute("class", "mdl-menu__item");
         var cb = document.createElement('input');
-        cb.setAttribute("onclick", 'toggleFilter(this.textContent);');
+        cb.setAttribute("onclick", 'toggleFilter(this.parentElement.textContent);');
         cb.type = 'checkbox';
         cb.checked = true;
         li.appendChild(cb);
         searchBy.appendChild(li);
 
     });
-
 }
 
 // Callback function to toggle a filter when it is clicked
