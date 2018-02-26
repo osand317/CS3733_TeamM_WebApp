@@ -4,8 +4,6 @@ var reportBody = document.querySelector("#reportBody");
 var reportHeading = document.querySelector("#reportHeading");
 var profileDisplay = document.querySelector("#profileDisplay");
 var map = document.querySelector("#map");
-// var searchBtn = document.querySelector("#searchBtn");
-// var form = document.querySelector("form");
 
 var config = {
     apiKey: "AIzaSyCFWzxl0VLYePJ-5O8U5umWWNJLT7TG9Fo",
@@ -19,27 +17,6 @@ if(!firebase.apps.length){
     firebase.initializeApp(config);
 }
 var db = firebase.firestore();
-
-// search for report with matching num of eggs
-// function searchDB(query){
-//     db.collection("reports").where("eggs", "==", query.toString()).get()
-//         .then(function(querySnapshot) {
-//             querySnapshot.forEach(function(doc) {
-//                 // doc.data() is never undefined for query doc snapshots
-//                 console.log(doc.id, " => ", doc.data());
-//             });
-//         })
-//         .catch(function(error) {
-//             console.log("Error getting documents: ", error);
-//         });
-// }
-//
-// searchBtn.addEventListener("click", function(e){
-//     e.preventDefault();
-//     var query = form.query.value;
-//     searchDB(query);
-//     form.reset();
-// });
 
 // ------------------------- Tables ---------------------- //
 // Update list of reports whenever the database changes
@@ -61,21 +38,6 @@ db.collection("reports").limit(50).onSnapshot(function(querySnapshot){
     populateFilters();
     searchCallback();
 });
-
-// db.collection("users").limit(50).onSnapshot(function(querySnapshot){
-//     allTableHeaders = [];
-//     profileBody.innerHTML = "";
-//     profileHeading.innerHTML = "";
-//
-//     querySnapshot.forEach(function (doc) {
-//         getTableHeaders(doc);
-//         createTableRow(profileDisplay, doc.data(), doc.id);
-//         // currentReports.push(doc);
-//         // allReports.push(doc);
-//     });
-//     createTableHeading(profileDisplay);
-// });
-
 
 function createTableRow(displayArea, data, id){
     if(displayArea === reportDisplay){
@@ -103,9 +65,6 @@ function createTableRow(displayArea, data, id){
             tr.appendChild(td);
         }
     });
-    // let td = document.createElement('td');
-    // td.textContent = id;
-    // tr.appendChild(td);
     tr.setAttribute("id", id);
     tbody.appendChild(tr);
 }
@@ -121,7 +80,6 @@ function createTableHeading(displayArea) {
     allTableHeaders.forEach(function(header){
         let th = document.createElement('th');
         th.textContent = header;
-        // th.classList.add("full-width");
         tr.appendChild(th);
     });
     thead.appendChild(tr);
@@ -132,62 +90,12 @@ function getTableHeaders(doc){
     let headers = Object.keys(data);
     headers.forEach(function(header){
         if (allTableHeaders.indexOf(header) === -1) allTableHeaders.push(header);
-        // if (header in allTableHeaders) allTableHeaders.push(header);
     })
 }
 
-// function createTableRow(parent){
-//     var tr = document.createElement('tr');
-//     parent.appendChild(tr);
-//     return tr;
-// }
-// function createTableEntry(value, tr){
-//     var td = document.createElement('td');
-//     td.classList.add("mdl-data-table__cell--center");
-//     tr.appendChild(td);
-//     td.textContent = value;
-// }
-// function createTableHeading(data, displayArea){
-//     if(displayArea === reportDisplay){
-//         var thead = document.querySelector("#reportHeading");
-//     }
-//     else if(displayArea === profileDisplay){
-//         var thead = document.querySelector("#profileHeading");
-//     }
-//     displayArea.appendChild(thead);
-//     var tr = createTableRow(thead);
-//     // Loops through all of the keys in the object, creating a table heading for each one
-//     var keyArray = Object.keys(data);
-//     keyArray.forEach(function (key) {
-//         var th = document.createElement('th');
-//         th.textContent = key;
-//         th.classList.add("full-width");
-//         tr.appendChild(th);
-//     });
-//     var th = document.createElement('th');
-//     th.textContent = 'ID';
-//     tr.appendChild(th);
-//
-// }
-// function createTableBody(data, displayArea, id){
-//     if(displayArea === reportDisplay){
-//         var tbody = document.querySelector("#reportBody");
-//     }
-//     else if(displayArea === profileDisplay){
-//         var tbody = document.querySelector("#profileBody");
-//     }
-//     var tr = createTableRow(tbody);
-//     // Loops through all of the values for the object, creating a table entry for each
-//     var valueArray = Object.values(data);
-//     valueArray.push(id);
-//     valueArray.forEach(function(val){
-//         createTableEntry(val, tr);
-//     });
-// }
 
 // ------------------------- Graphs ---------------------- //
 var ctx = document.getElementById('chart').getContext('2d');
-// var times = [];
 var points = [];
 var dates = [];
 function getChartData(fieldToPlot, startDate, endDate) {
@@ -328,43 +236,6 @@ function downloadCSV(args) {
     link.click();
 }
 
-// ------------------------- GPS ---------------------- //
-// Gets lat and long with geolocation api, sets map center to current location
-// window.onload = function() {
-//     var startPos;
-//     var geoOptions = {
-//         maximumAge: 5 * 60 * 1000,
-//         timeout: 10 * 1000
-//     };
-//     var geoSuccess = function(position) {
-//         startPos = position;
-//         document.getElementById('startLat').innerHTML = startPos.coords.latitude;
-//         document.getElementById('startLon').innerHTML = startPos.coords.longitude;
-//         map.setAttribute("src", getMapUrl());
-//     };
-//     var geoError = function(error) {
-//         console.log('Error occurred. Error code: ' + error.code);
-//         // error.code can be:
-//         //   0: unknown error
-//         //   1: permission denied
-//         //   2: position unavailable (error response from location provider)
-//         //   3: timed out
-//     };
-//     navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
-// };
-//
-// // Creates url to call Google Maps API
-// function getMapUrl(){
-//     var url = "https://www.google.com/maps/embed/v1/view?key=AIzaSyAskkxEXqXBV0mDVQgzoT3LTWbYhNgfe2w&center=" +
-//         document.getElementById('startLat').innerHTML +
-//         "," +
-//         document.getElementById('startLon').innerHTML +
-//
-//         "&zoom=18&maptype=satellite";
-//     // console.log(url);
-//     return url;
-//
-// }
 // ------------------------- Search Stuff ---------------------- //
 var searchBy = document.getElementById("searchByUL");
 
@@ -384,17 +255,6 @@ function populateFilters() {
     });
 
 }
-
-// function createSingleFilter(idNum){
-//     var cb = document.createElement('input');
-//     cb.type = 'checkbox';
-//     cb.checked = true;
-//     cb.id = 'checkbox' + idNum;
-//
-//
-//     var label = document.createElement('label');
-//
-// }
 
 // Callback function to toggle a filter when it is clicked
 var currentSearchFilters = [];
@@ -435,7 +295,6 @@ function searchCallback() {
     for (var i = 0; i < tr.length; i++) {
         td = tr[i].getElementsByTagName("td");
         for (var j = 0; j < td.length; j++) {
-            // if (td[j]) {
                 if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1 && shouldBeShown(i)) {
                     tr[i].style.display = "";
                     let reportID = tr[i].getAttribute('id');
@@ -448,14 +307,11 @@ function searchCallback() {
                     tr[i].style.display = "none";
                     let reportID = tr[i].getAttribute('id');
                     let report = allReports.find(o => o.id === reportID);
-                    // console.log(td[j].getAttribute('id'));
                     let index = currentReports.indexOf(report);
                     if(index > -1){
                         currentReports.splice(index, 1);
                     }
                 }
-            // }
         }
     }
-    // console.log(currentReports);
 }
