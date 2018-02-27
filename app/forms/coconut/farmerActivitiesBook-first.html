@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="../../css/styles.css">
     <title>Urmatt template</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-orange.min.css" />
@@ -54,31 +54,58 @@
   		</div>
   <main class="mdl-layout__content">
     <div class="page-content">
-<!-- ************************************************************************** -->
-	<form action="/GAP-Record-doc" method="post">
+    <nav class="mdl-navigation mdl-layout--large-screen-only">
+		<h3>สมุดบันทึกการปฏิบัติงานในสวน</h3>
+	</nav>
 
-	<h3>สมุดบันทึก GAP</h3>
-    <!-- GAP Workbook -->
-    <h5>แบบบันทึกการปฏิบัติงานในแปลง</h5>
-	<!-- Record of performance in the field -->
+	<form action="/Farmer-Activities-Book-doc" method="post"></form>
+	<h4>Farm activities book</h4>
 
-	<div class="mdl-textfield mdl-js-textfield">
-    	<input class="mdl-textfield__input" type="text" id="Date">
-    	<label class="mdl-textfield__label" for="Date">วัน/เดือน/ปี</label>
-  	</div>
 
-  	<div class="mdl-textfield mdl-js-textfield">
-    	<input class="mdl-textfield__input" type="text" id="performancerecord">
-    	<label class="mdl-textfield__label" for="performancerecord">บันทึกการปฏิบัติงาน</label>
-  	</div>
+		<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="PlantType">ชนิดพืช </label>
+			<input class="mdl-textfield__input" id="PlantType" type="text">
+		<!-- type of plant -->
+		</div>
+
+		<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="Varieties">Varieties</label>
+			<input class="mdl-textfield__input" id="Varieties" type="text">
+		</div>
+
+		<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="NameThai">ชื่อเกษตรกร/Name</label>
+			<input class="mdl-textfield__input" id="NameThai" type="text">
+		<!-- Name of farmer -->
+		</div>
+
+		<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="AddressThai">ที่อยู่/Address</label>
+			<input class="mdl-textfield__input" id="AddressThai" type="text">
+		</div>
+
+		<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="Code">รหัสแปลง/ Code</label>
+			<input class="mdl-textfield__input" id="Code" type="text">
+		</div>
+
+		<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="PlantationArea">พื้นที่ปลูก/ Plantation Area (ไร่/ Rai)</label>
+			<input class="mdl-textfield__input" id="PlantationArea" type="text">
+		</div>
+
+		<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="NameSurname">จำนวน/ Number of tree (ต้น/ Tree)</label>
+			<input class="mdl-textfield__input" id="NameSurname" type="text">
+		</div>
     <br>
     <input class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit">
-  </form>
-</div>
+
+		</form>
+	</div>
 </main>
-</div>
-      <script src="scripts/database.js" charset="utf-8"></script>
-  <script src="scripts/header.js" charset="utf-8"></script>
+  <script src="../../scripts/database.js" charset="utf-8"></script>
+  <script src="../../scripts/header.js" charset="utf-8"></script>
   <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </body>
 </html>
