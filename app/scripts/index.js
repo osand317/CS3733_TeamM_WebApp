@@ -12,7 +12,7 @@ consoleBtn.addEventListener('click', function(){
     window.location = '/console.html';
 });
 formsBtn.addEventListener('click', function(){
-    window.location = '/fillform.html';
+    accessManage();
 });
 checkInBtn.addEventListener('click', function(){
     window.location = '/checkIn.html';
