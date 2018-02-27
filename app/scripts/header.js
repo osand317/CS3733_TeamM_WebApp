@@ -2,6 +2,7 @@
     const btnProfile = document.getElementById('showProfile');
     const btnFarmerAssign = document.getElementById('farmerAssign');
     const btnAccountCreate = document.getElementById('accountCreate');
+    const btnFormFill = document.getElementById('fillForm');
     var currentUser = '';
     var userDocument = '';
     var userType = '';
@@ -63,6 +64,9 @@ function displayOption() {
   } else if (userType == 'Inspector') {
     btnAccountCreate.classList.add('disabled');
     btnAccountCreate.style.display = "none";
+  } else {
+    btnFormFill.classList.add('disabled');
+    btnFormFill.style.display = "none";
   }
 };
 

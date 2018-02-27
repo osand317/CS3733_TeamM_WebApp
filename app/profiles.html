@@ -47,7 +47,8 @@
   			<span class="mdl-layout-title">Rai App</span>
   			<nav class="mdl-navigation">
   				<a class="mdl-navigation__link" href="/index.html">Home</a>
-          <a class="mdl-navigation__link" onclick="accessManage();">Forms</a>
+          <a id="fillForm" class="mdl-navigation__link" onclick="accessManage();">Forms</a>
+
           <a id="farmerAssign" class="mdl-navigation__link" href="/assignFarmer.html">Assign Farmer</a>
   				<a id="accountCreate" class="mdl-navigation__link" href="/profileCreation.html">Create Account</a>
   				<a class="mdl-navigation__link" href="/console.html">Console</a> <a class="mdl-navigation__link" href="/viewMap.html">Map View</a>
@@ -63,6 +64,11 @@
             <div class="mdl-card__actions">
               <span class="demo-card-image__filename">Inspectors</span>
             </div>
+            <div class="mdl-card__menu">
+              <button id="newInspector" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                <i class="material-icons">add</i>
+              </button>
+            </div>
           </div>
         </div>
         <div class="mdl-cell mdl-cell--6-col homeCol">
@@ -70,6 +76,11 @@
             <div class="mdl-card__title mdl-card--expand"></div>
             <div class="mdl-card__actions">
               <span class="demo-card-image__filename">Farmers</span>
+            </div>
+            <div class="mdl-card__menu">
+              <button id="newFarmer" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                <i class="material-icons">add</i>
+              </button>
             </div>
           </div>
         </div>
@@ -80,11 +91,27 @@
 
   <script type="text/javascript">
     document.querySelector('#inspectorProfilesbtn').addEventListener('click', function(){
-        window.location = 'inspectorProfiles.html';
+      window.location = 'inspectorProfiles.html';
     });
     document.querySelector('#farmerProfilebtn').addEventListener('click', function(){
-        window.location = 'farmerProfiles.html';
+      window.location = 'farmerProfiles.html';
     });
+
+    document.querySelector('#newFarmer').addEventListener('click', function(e){
+      e.stopPropagation();
+      if (userType == 'Employee') {
+        window.location = 'mapPage.html';
+      }
+    });
+
+    document.querySelector('#newInspector').addEventListener('click', function(b){
+      b.stopPropagation();
+      if (userType == 'Employee') {
+        window.location = 'inspectorAccountCreation.html';
+      }
+    });
+
+
   </script>
 
   <script src="scripts/database.js" charset="utf-8"></script>

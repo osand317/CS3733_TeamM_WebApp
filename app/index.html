@@ -96,7 +96,7 @@ limitations under the License.
         <a class="mdl-navigation__link" href="/index.html">Home</a>
 
          <!--<a class="mdl-navigation__link" href="/FieldActivitiesRecordV2.html">Data Entry</a>-->
-         <a class="mdl-navigation__link" onclick="accessManage();">Forms</a>
+         <a id="fillForm" class="mdl-navigation__link" onclick="accessManage();">Forms</a>
         <a class="mdl-navigation__link" id="farmerAssign" href="/assignFarmer.html">Assign Farmer</a>
         <a class="mdl-navigation__link" id="accountCreate" href="/profileCreation.html">Create Account</a>
         <a class="mdl-navigation__link" href="/console.html">Console</a> <a class="mdl-navigation__link" href="/viewMap.html">Map View</a>
@@ -112,6 +112,11 @@ limitations under the License.
               <div class="mdl-card__title mdl-card--expand"></div>
               <div class="mdl-card__actions">
                 <span class="demo-card-image__filename">Accounts</span>
+              </div>
+              <div class="mdl-card__menu">
+                <button id="newAccount" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                  <i class="material-icons" href = "/profileCreation.html">add</i>
+                </button>
               </div>
             </div>
           </div>
