@@ -10,7 +10,7 @@ var allReports = [];
 var allTableHeaders = [];
 
 // Recreate table whenever report database updates
-firestore.collection("reports").limit(50).onSnapshot(function(querySnapshot){
+firestore.collection("reports").onSnapshot(function(querySnapshot){
     allTableHeaders = [];
     reportBody.innerHTML = "";
     reportHeading.innerHTML = "";
