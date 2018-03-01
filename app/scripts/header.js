@@ -41,6 +41,7 @@
             const userProfileName = doc.data().firstName;
             userDocument = doc.id;
             userType = doc.data().profileType;
+            localStorage.setItem("userType", userType);
             if (userType == 'Farmer') {
               console.log('Farmer');
               productType = doc.data().farmerType;

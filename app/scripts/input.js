@@ -2,8 +2,9 @@ var form = document.querySelector("form");
 var submitBtn = document.querySelector("#submitBtn");
 
 function submitReport(data){
-    firestore.collection("reports").add(data);
-}
+    data = inspectorField(data);
+    console.log(data);
+};
 
 form.addEventListener("submit", function(e) {
     e.preventDefault();
@@ -49,3 +50,28 @@ window.addEventListener("online", function(){
 function store(data){
     localStorage.setItem('toSubmit', JSON.stringify(data));
 }
+
+
+function inspectorField(data) {
+  var farmersArray = [];
+  if (userType == 'Inspector') {
+    data['inspectorID'] == userID;
+  } else if (userType == 'Farmer') {
+    var usersRef = firestore.collection("users");
+    var query = usersRef.where("profileType", '==', 'Inspector')
+    .get()
+    .then(function (snapShot) {
+      snapShot.forEach(function (doc) {
+        farmersArray = doc.data().farmersID;
+        console.log(farmersArray);
+        if(farmersArray.indexOf(userID) > -1){
+          console.log(doc.data().profileId);
+          data['inspectorID'] = doc.data().profileId;
+          console.log(data['inspectorID']);
+          console.log(data);
+          firestore.collection("reports").add(data);
+        }
+      })
+    })
+  }
+};

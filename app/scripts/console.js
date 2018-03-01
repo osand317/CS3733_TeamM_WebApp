@@ -8,13 +8,20 @@ var map = document.querySelector("#map");
 var currentReports = [];
 var allReports = [];
 var allTableHeaders = [];
+var reportsRef;
 
 // Recreate table whenever report database updates
-firestore.collection("reports").onSnapshot(function(querySnapshot){
+if (localStorage.getItem("userType") == 'Farmer') {
+  reportsRef = firestore.collection("reports").where("userID", '==', localStorage.getItem("currentUser"));
+} else if (localStorage.getItem("userType") == 'Inspector') {
+  reportsRef = firestore.collection("reports").where("inspectorID", '==', localStorage.getItem("currentUser"));
+} else {
+  reportsRef = firestore.collection("reports");
+}
+reportsRef.onSnapshot(function(querySnapshot){
     allTableHeaders = [];
     reportBody.innerHTML = "";
     reportHeading.innerHTML = "";
-
     querySnapshot.forEach(function (doc) {
         getTableHeaders(doc);
         createTableRow(doc.data(), doc.id);
