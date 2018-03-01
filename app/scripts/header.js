@@ -3,13 +3,14 @@
     const btnFarmerAssign = document.getElementById('farmerAssign');
     const btnAccountCreate = document.getElementById('accountCreate');
     const btnFormFill = document.getElementById('fillForm');
-    var currentUser = '';
-    var userDocument = '';
-    var userType = '';
+    const btnFamilyInfo = document.getElementById("btnFamilyInfo");
+    var currentUser = localStorage.getItem("currentUser");
+    var userDocument = localStorage.getItem("userDocument");
+    var userType = localStorage.getItem("userType");
     var userID = '';
-    var productType = '';
+    var productType = localStorage.getItem("productType");
     var waitingVariable = false;
-
+    var usersRef = firestore.collection("users");
 
     btnProfile.addEventListener('click', e=>{
       localStorage.setItem('Page', '1');
@@ -17,13 +18,19 @@
     });
 
     btnLogOut.addEventListener('click', e=> {
+        localStorage.clear();
         firebase.auth().signOut();
+    });
+
+    btnFamilyInfo.addEventListener('click', e=>{
+      window.location = "familyInfo.html";
     });
 
     firebase.auth().onAuthStateChanged(firebaseUser =>{
         if (firebaseUser){
             // console.log(firebaseUser);
             currentUser = firebaseUser;
+            localStorage.setItem("currentUser",currentUser);
             currentUserInfo(firebaseUser);
         }else {
             console.log('Not logged in');
@@ -40,12 +47,16 @@
         querySnapShot.forEach(function(doc) {
             const userProfileName = doc.data().firstName;
             userDocument = doc.id;
+            localStorage.setItem("userDocument",userDocument);
             userType = doc.data().profileType;
+            localStorage.setItem("userType", userType);
             if (userType == 'Farmer') {
               console.log('Farmer');
               productType = doc.data().farmerType;
+              localStorage.setItem("productType",productType);
             }else if (userType == 'Inspector') {
               productType = doc.data().inspectorType;
+              localStorage.setItem("productType",productType);
             }
             displayOption();
             waitingVariable = true;

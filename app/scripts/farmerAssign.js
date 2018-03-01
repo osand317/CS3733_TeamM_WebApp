@@ -52,6 +52,7 @@ documentRef.update({
       farmersID: selectedFarmers
     }).then(function () {
       console.log("Saved");
+      window.location = "index.html";
     })
     .catch(function (error) {
     console.log(error);

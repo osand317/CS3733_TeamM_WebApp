@@ -23,7 +23,15 @@ btnLogIn.addEventListener('click', e=> {
     const promise = auth.signInWithEmailAndPassword(email, pass);
     promise.then(function () {
       console.log("Log In successful");
-      window.location = 'index.html'
+      firebase.auth().onAuthStateChanged(firebaseUser =>{
+          if (firebaseUser){
+            localStorage.setItem("currentUser", firebaseUser.uid);
+            window.location = "index.html";
+          }else {
+              console.log('Not logged in');
+              window.location = 'login.html'
+          }
+      });
     });
     promise.catch(e=> console.log(e.message));
       // window.location.href='main.html';
