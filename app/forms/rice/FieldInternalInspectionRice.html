@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="../../css/styles.css">
-    <title>Field Inspection - Rai</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Field Internal Inspection - Rai</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-orange.min.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -17,7 +17,7 @@
   		<header class="mdl-layout__header">
   			<div class="mdl-layout__header-row">
   				<!-- Title -->
-  				<span class="mdl-layout-title">Form</span>
+  				<span class="mdl-layout-title">Field Internal Inspection Rice</span>
   				<!-- Add spacer, to align navigation to the right -->
   				<div class="mdl-layout-spacer"></div>
   				<!-- Navigation. We hide it in small screens. -->
@@ -42,14 +42,13 @@
   		</header>
   		<!-- Navigation menu on the left  -->
   		<div class="mdl-layout__drawer">
-  			<span class="mdl-layout-title">Rai App</span>
+  			<span class="mdl-layout-title">Urmatt App</span>
   			<nav class="mdl-navigation">
   				<a class="mdl-navigation__link" href="/index.html">Home</a>
-          <a id="fillForm" class="mdl-navigation__link" onclick="accessManage();">Forms</a>
-
+          <a class="mdl-navigation__link" onclick="accessManage();">Forms</a>
           <a id="farmerAssign" class="mdl-navigation__link" href="/assignFarmer.html">Assign Farmer</a>
   				<a id="accountCreate" class="mdl-navigation__link" href="/profileCreation.html">Create Account</a>
-  				<a class="mdl-navigation__link" href="/console.html">Console</a> <a class="mdl-navigation__link" href="/viewMap.html">Map View</a>
+  				<a class="mdl-navigation__link" href="/console.html">Console</a>
   			</nav>
   		</div>
   <main class="mdl-layout__content">
@@ -58,93 +57,93 @@
         <nav class="mdl-navigation mdl-layout--large-screen-only">
           <h3>Field Internal Inspection</h3>
         </nav>
-        <form action="/Field-internal-inspection-doc" method="post">
+        <form>
 
         <div class="mdl-textfield mdl-js-textfield">
-          <input class="mdl-textfield__input" type="text" id="date">
-          <label class="mdl-textfield__label" for="date">Date</label>
+          <input class="mdl-textfield__input" type="text" id="วันที่/date">
+          <label class="mdl-textfield__label" for="วันที่/date">วันที่/Date</label>
         </div>
 
         <div class="mdl-textfield mdl-js-textfield">
-          <input class="mdl-textfield__input" type="text" id="farmer-code">
-          <label class="mdl-textfield__label" for="farmer-code">Farmer's Code</label>
+          <input class="mdl-textfield__input" type="text" id="รหัสเกษตรกร/farmer-code">
+          <label class="mdl-textfield__label" for="รหัสเกษตรกร/farmer-code">รหัสเกษตรกร/Farmer's Code</label>
         </div>
 
         <div class="mdl-textfield mdl-js-textfield">
-          <input class="mdl-textfield__input" type="text" id="farmer-name">
-          <label class="mdl-textfield__label" for="farmer-name">Farmer's Name</label>
+          <input class="mdl-textfield__input" type="text" id="ชื่อเกษตรกร/farmer-name">
+          <label class="mdl-textfield__label" for="ชื่อเกษตรกร/farmer-name">ชื่อเกษตรกร/Farmer's Name</label>
         </div>
 
         <div class="mdl-textfield mdl-js-textfield">
-          <input class="mdl-textfield__input" type="text" id="Inspector">
-          <label class="mdl-textfield__label" for="Inspector">Organic Field Inspector</label>
+          <input class="mdl-textfield__input" type="text" id="=ชื่อผู้ตรวจฟาร์ม/Inspector">
+          <label class="mdl-textfield__label" for="=ชื่อผู้ตรวจฟาร์ม/Inspector">=ชื่อผู้ตรวจฟาร์ม/Organic Field Inspector</label>
         </div>
 
         <div class="mdl-textfield mdl-js-textfield">
-          <input class="mdl-textfield__input" type="text" id="date-farmer-registration">
-          <label class="mdl-textfield__label" for="date-farmer-registration">Date of farmer's registration</label>
+          <input class="mdl-textfield__input" type="text" id="วันที่เกษตรกรได้ลงทะเบียน/date-farmer-registration">
+          <label class="mdl-textfield__label" for="วันที่เกษตรกรได้ลงทะเบียน/date-farmer-registration">วันที่เกษตรกรได้ลงทะเบียน/Date of farmer's registration</label>
         </div>
         <div>
           <h6>Field map available?</h6>
           <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="Yes">
             <input type="radio" id="Yes" class="mdl-radio__button" name="map-available" value="1">
-            <span class="mdl-radio__label">Yes</span>
+            <span class="mdl-radio__label">ใช่/Yes</span>
           </label>
 
-          <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="No">
-            <input type="radio" id="No" class="mdl-radio__button" name="map-available" value="2">
-            <span class="mdl-radio__label">No</span>
+          <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="ไม่/No">
+            <input type="radio" id="ไม่/No" class="mdl-radio__button" name="map-available" value="2">
+            <span class="mdl-radio__label">ไม่/No</span>
           </label>
         </div>
         <br>
 
         <div class="mdl-textfield mdl-js-textfield">
-            <input class="mdl-textfield__input" type="text" id="Organic Field Crops">
-            <label class="mdl-textfield__label" for="Organic Field Crops">Organic Field Crops</label>
+            <input class="mdl-textfield__input" type="text" id="ชนิดของแปลงนาอินทรีย์/Organic Field Crops">
+            <label class="mdl-textfield__label" for="ชนิดของแปลงนาอินทรีย์/Organic Field Crops">ชนิดของแปลงนาอินทรีย์/Organic Field Crops</label>
         </div>
         <div class="mdl-textfield mdl-js-textfield">
           <input class="mdl-textfield__input" type="text" id="Seeding date">
           <label class="mdl-textfield__label" for="Seeding date">Seeding date</label>
         </div>
         <div class="mdl-textfield mdl-js-textfield">
-          <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="Area">
-          <label class="mdl-textfield__label" for="Area">Area (Rai)</label>
+          <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="จำนวนพื้นที่/Area">
+          <label class="mdl-textfield__label" for="จำนวนพื้นที่/Area">จำนวนพื้นที่/Area (Rai)</label>
           <span class="mdl-textfield__error">Input is not a number!</span>
         </div>
         <div class="mdl-textfield mdl-js-textfield">
-          <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="Yield/Rai">
-          <label class="mdl-textfield__label" for="Yield/Rai">Yield/Rai</label>
+          <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="ผลผลิตต่อไร่/Yield/Rai">
+          <label class="mdl-textfield__label" for="ผลผลิตต่อไร่/Yield/Rai">ผลผลิตต่อไร่/Yield/Rai</label>
           <span class="mdl-textfield__error">Input is not a number!</span>
         </div>
         <div class="mdl-textfield mdl-js-textfield">
-          <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="Total/Yield">
-          <label class="mdl-textfield__label" for="Total/Yield">Total/Yield</label>
+          <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="จำนวนผลผลิตทั้งหมด/Total/Yield">
+          <label class="mdl-textfield__label" for="จำนวนผลผลิตทั้งหมด/Total/Yield">จำนวนผลผลิตทั้งหมด/Total/Yield</label>
           <span class="mdl-textfield__error">Input is not a number!</span>
         </div>
         <div class="mdl-textfield mdl-js-textfield">
-          <input class="mdl-textfield__input" type="text" id="Seed">
-          <label class="mdl-textfield__label" for="Seed">Seed</label>
+          <input class="mdl-textfield__input" type="text" id="จำนวนเมล็ตพันธุ์/Seed">
+          <label class="mdl-textfield__label" for="จำนวนเมล็ตพันธุ์/Seed">จำนวนเมล็ตพันธุ์ (กก.)/Seed (Kg.)</label>
         </div>
         <div class="mdl-textfield mdl-js-textfield">
-          <input class="mdl-textfield__input" type="text" id="Remark">
-          <label class="mdl-textfield__label" for="Remark">Remark</label>
+          <input class="mdl-textfield__input" type="text" id="หมายเหตุ/Remark">
+          <label class="mdl-textfield__label" for="หมายเหตุ/Remark">หมายเหตุ/Remark</label>
         </div>
         <br>
         <div>
-          <h6>Farmer applied organic fertilizer</h6>
+          <h6>เกษตรกรใช้ปุ๋ยอินทรีย์หรือไม่/Farmer applied organic fertilizer</h6>
           <div>
-            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="Yes-2">
-              <input type="radio" id="Yes-2" class="mdl-radio__button" name="fertilizer-applied" value="1">
-              <span class="mdl-radio__label">Yes</span>
+            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="ใช่/Yes-2">
+              <input type="radio" id="ใช่/Yes-2" class="mdl-radio__button" name="fertilizer-applied" value="1">
+              <span class="mdl-radio__label">ใช่/Yes</span>
             </label>
 
-            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="No-2">
-              <input type="radio" id="No-2" class="mdl-radio__button" name="fertilizer-applied" value="2">
-              <span class="mdl-radio__label">No</span>
+            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="ไม่/No-2">
+              <input type="radio" id="ไม่/No-2" class="mdl-radio__button" name="fertilizer-applied" value="2">
+              <span class="mdl-radio__label">ไม่/No</span>
             </label>
           </div>
           <br>
-          <h6> Kind of Fertilizer </h6>
+          <h6> ชนิดของปุ๋ยอินทรีย์/Kind of Fertilizer </h6>
           <br>
           <div class="mdl-textfield mdl-js-textfield getmdl-select">
             <input type="text" value="" class="mdl-textfield__input" id="typeoffertilizer" readonly>
@@ -158,7 +157,7 @@
           <div class="mdl-textfield mdl-js-textfield getmdl-select">
             <input type="text" value="" class="mdl-textfield__input" id="plotnumber" readonly>
             <input type="hidden" value="" name="plotnumber">
-            <label for="plotnumber" class="mdl-textfield__label">Plot</label>
+            <label for="plotnumber" class="mdl-textfield__label">แปลง/Plot</label>
             <ul for="plotnumber" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
               <li class="mdl-menu__item" data-val="1">1</li>
               <li class="mdl-menu__item" data-val="2">2</li>
@@ -170,12 +169,12 @@
             </ul>
           </div>
           <div class="mdl-textfield mdl-js-textfield">
-            <input class="mdl-textfield__input" type="text" id="Date-applied">
-            <label class="mdl-textfield__label" for="Date-applied">Date Applied</label>
+            <input class="mdl-textfield__input" type="text" id="วันที่/Date-applied">
+            <label class="mdl-textfield__label" for="วันที่/Date-applied">วันที่/Date Applied</label>
           </div>
           <div class="mdl-textfield mdl-js-textfield">
-            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="Quantity">
-            <label class="mdl-textfield__label" for="Quantity">Quantity (Kg.)</label>
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="จำนวน/Quantity">
+            <label class="mdl-textfield__label" for="จำนวน/Quantity">จำนวน/Quantity (Kg.)</label>
             <span class="mdl-textfield__error">Input is not a number!</span>
           </div>
         </div>
@@ -186,6 +185,8 @@
     </div>
 		<script src="../../scripts/database.js" charset="utf-8"></script>
 		<script src="../../scripts/header.js" charset="utf-8"></script>
+		<script src="../../scripts/input.js" charset="utf-8"></script>
+
 		<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
   </body>
 </html>

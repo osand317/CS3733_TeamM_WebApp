@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Field Activity - Rai</title>
+  <title></title>
   <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.teal-orange.min.css">
   <!-- Font Awesome CSS -->
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
@@ -12,7 +12,7 @@
   <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
   <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-firestore.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
@@ -48,176 +48,180 @@
       <span class="mdl-layout-title">Rai App</span>
       <nav class="mdl-navigation">
         <a class="mdl-navigation__link" href="/index.html">Home</a>
-        <a id="fillForm" class="mdl-navigation__link" onclick="accessManage();">Forms</a>
-
+        <a class="mdl-navigation__link" onclick="accessManage();">Forms</a>
          <a id="farmerAssign" class="mdl-navigation__link" href="/assignFarmer.html">Assign Farmer</a>
          <a id="accountCreate" class="mdl-navigation__link" href="/profileCreation.html">Create Account</a>
-        <a class="mdl-navigation__link" href="/console.html">Console</a> <a class="mdl-navigation__link" href="/viewMap.html">Map View</a>
+        <a class="mdl-navigation__link" href="/console.html">Console</a>
       </nav>
     </div>
     <main class="mdl-layout__content">
       <div class="page-content">
 
  	      <nav class="mdl-navigation mdl-layout--large-screen-only">
-		      <h3>Field activities record </h3>
+		      <h3>คู่มือประจำตัวเกษตรกร/Field activities record </h3>
         </nav>
-        <h5>Production activities</h5>
+        <h5>กิจกรรมในกระบวนการปลูกข้าวอินทรีย์/Production activities</h5>
 
         <form>
           <div class="mdl-textfield mdl-js-textfield">
-            <input class="mdl-textfield__input" type="text" id="year">
-            <label class="mdl-textfield__label" for="year">Year</label>
+            <input class="mdl-textfield__input" type="text" id="ปี/year">
+            <label class="mdl-textfield__label" for="ปี/year">ปี พ.ศ./Year</label>
           </div>
           <div>
-            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="wet-season">
-            <input type="radio" id="wet-season" class="mdl-radio__button" name="seasons">
-            <span class="mdl-radio__label">Wet Season</span></label>
-            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="dry-season">
-            <input type="radio" id="dry-season" class="mdl-radio__button" name="seasons" value="2">
-            <span class="mdl-radio__label">Dry Season</span></label>
+            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="นาปี/wet-season">
+            <input type="radio" id="นาปี/wet-season" class="mdl-radio__button" name="seasons">
+            <span class="mdl-radio__label">นาปี/Wet Season</span></label>
+            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="นาปรัง/dry-season">
+            <input type="radio" id="นาปรัง/dry-season" class="mdl-radio__button" name="seasons" value="2">
+            <span class="mdl-radio__label">นาปรัง/Dry Season</span></label>
           </div>
 
           <div class="mdl-textfield mdl-js-textfield">
-            <input class="mdl-textfield__input" type="text" id="Block-No">
-            <label class="mdl-textfield__label" for="Block-No">Block No.</label>
+            <input class="mdl-textfield__input" type="text" id="แปลงที่/Block-No">
+            <label class="mdl-textfield__label" for="แปลงที่/Block-No">แปลงที่/Block No.</label>
           </div>
 
           <div class="mdl-textfield mdl-js-textfield">
-            <input class="mdl-textfield__input" type="text" id="Farm-Area">
-            <label class="mdl-textfield__label" for="Farm-Area">Area</label>
+            <input class="mdl-textfield__input" type="text" id="พื้นที่/Farm-Area">
+            <label class="mdl-textfield__label" for="พื้นที่/Farm-Area">พื้นที่/Area</label>
           </div>
 
           <div class="mdl-textfield mdl-js-textfield">
-            <input class="mdl-textfield__input" type="text" id="Variety">
-            <label class="mdl-textfield__label" for="Variety">Varierty</label>
+            <input class="mdl-textfield__input" type="text" id="พันธุ์ข้าว/Variety">
+            <label class="mdl-textfield__label" for="พันธุ์ข้าว/Variety">พันธุ์ข้าว/Varierty</label>
           </div>
-          <h5>Soil Preparation</h5>
+          <h5>การเตรียมดิน Soil Preparation</h5>
           <div>
-            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="Plowing">
-            <input type="checkbox" id="Plowing" class="mdl-checkbox__input">
-            <span class="mdl-checkbox__label">Plowing</span></label>
-          </div>
-          <div>
-            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="BE-Applied">
-            <input type="checkbox" id="BE-Applied" class="mdl-checkbox__input">
-            <span class="mdl-checkbox__label">BE Applied</span></label>
+            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="ไถกลบตอซัง/Plowing">
+            <input type="checkbox" id="ไถกลบตอซัง/Plowing" class="mdl-checkbox__input">
+            <span class="mdl-checkbox__label">ไถกลบตอซัง/Plowing</span></label>
           </div>
           <div>
-            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="Soil-Compost">
-            <input type="checkbox" id="Soil-Compost" class="mdl-checkbox__input">
-            <span class="mdl-checkbox__label">Soil Compost</span></label>
+            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="ใส่สารสลายตอซัง/BE-Applied">
+            <input type="checkbox" id="ใส่สารสลายตอซัง/BE-Applied" class="mdl-checkbox__input">
+            <span class="mdl-checkbox__label">ใส่สารสลายตอซัง/BE Applied</span></label>
           </div>
           <div>
-            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="Compost-Applied">
-            <input type="checkbox" id="Compost-Applied" class="mdl-checkbox__input">
-            <span class="mdl-checkbox__label">Compost Applied</span></label>
+            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="หมักดิน20วัน/Soil-Compost">
+            <input type="checkbox" id="หมักดิน20วัน/Soil-Compost" class="mdl-checkbox__input">
+            <span class="mdl-checkbox__label">หมักดิน 20 วัน/Soil Compost</span></label>
+          </div>
+          <div>
+            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="หว่านปุ๋ยอินทรีย์/Compost-Applied">
+            <input type="checkbox" id="หว่านปุ๋ยอินทรีย์/Compost-Applied" class="mdl-checkbox__input">
+            <span class="mdl-checkbox__label">หว่านปุ๋ยอินทรีย์/Compost Applied</span></label>
+          </div>
+          <div>
+            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="ไถพรวนดิน/Plowing-2">
+            <input type="checkbox" id="ไถพรวนดิน/Plowing-2" class="mdl-checkbox__input">
+            <span class="mdl-checkbox__label">ไถพรวนดิน/Plowing</span></label>
           </div>
           <div >
-            <label >Date</label>
-            <input type="date" id="Visit-Date">
+            <label >วันที่/Date</label>
+            <input type="date" id="วันที่/Visit-Date">
           </div>
-          <h5>Cultural Practice</h5>
+          <h5>การปลูก/ดูแลรักษา Cultural Practice</h5>
           <div>
-            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="Socking">
-            <input type="checkbox" id="Socking" class="mdl-checkbox__input">
-            <span class="mdl-checkbox__label">Socking</span></label>
-          </div>
-          <div>
-            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="Spun">
-            <input type="checkbox" id="Spun" class="mdl-checkbox__input">
-            <span class="mdl-checkbox__label">Spun</span></label>
+            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="แช่ข้าว/หว่านข้าว/Socking">
+            <input type="checkbox" id="แช่ข้าว/หว่านข้าว/Socking" class="mdl-checkbox__input">
+            <span class="mdl-checkbox__label">แช่ข้าว/หว่านข้าว/Socking</span></label>
           </div>
           <div>
-            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="BE-Applied-2">
-            <input type="checkbox" id="BE-Applied-2" class="mdl-checkbox__input">
-            <span class="mdl-checkbox__label">BE Applied</span></label>
+            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="ไถปั่น/Spun">
+            <input type="checkbox" id="ไถปั่น/Spun" class="mdl-checkbox__input">
+            <span class="mdl-checkbox__label">ไถปั่น/Spun</span></label>
           </div>
           <div>
-            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="Growing">
-            <input type="checkbox" id="Growing" class="mdl-checkbox__input">
-            <span class="mdl-checkbox__label">Growing</span></label>
+            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="พ่นสาร/BE-Applied-2">
+            <input type="checkbox" id="พ่นสาร/BE-Applied-2" class="mdl-checkbox__input">
+            <span class="mdl-checkbox__label">พ่นสาร/BE Applied</span></label>
           </div>
           <div>
-            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="Cutting-Grass">
-            <input type="checkbox" id="Cutting-Grass" class="mdl-checkbox__input">
-            <span class="mdl-checkbox__label">Cutting Grass</span></label>
+            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="ปลูกข้าว/หว่านข้าว/Growing">
+            <input type="checkbox" id="ปลูกข้าว/หว่านข้าว/Growing" class="mdl-checkbox__input">
+            <span class="mdl-checkbox__label">ปลูกข้าว/หว่านข้าว/Growing</span></label>
           </div>
           <div>
-            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="Irrigation">
-            <input type="checkbox" id="Irrigation" class="mdl-checkbox__input">
-            <span class="mdl-checkbox__label">Irrigation</span></label>
+            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="ตัดหญ้า/Cutting-Grass">
+            <input type="checkbox" id="ตัดหญ้า/Cutting-Grass" class="mdl-checkbox__input">
+            <span class="mdl-checkbox__label">ตัดหญ้า/Cutting Grass</span></label>
           </div>
           <div>
-            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="Compost-Applied-2">
-            <input type="checkbox" id="Compost-Applied-2" class="mdl-checkbox__input">
-            <span class="mdl-checkbox__label">Compost Applied</span></label>
+            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="เอาน้ำเข้าแปลงนาข้าว/Irrigation">
+            <input type="checkbox" id="เอาน้ำเข้าแปลงนาข้าว/Irrigation" class="mdl-checkbox__input">
+            <span class="mdl-checkbox__label">เอาน้ำเข้าแปลงนาข้าว/Irrigation</span></label>
           </div>
           <div>
-	         Date <input type="date" id="date">
+            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="หว่านปุ๋ยอินทรีย์/Compost-Applied-2">
+            <input type="checkbox" id="หว่านปุ๋ยอินทรีย์/Compost-Applied-2" class="mdl-checkbox__input">
+            <span class="mdl-checkbox__label">หว่านปุ๋ยอินทรีย์/Compost Applied</span></label>
+          </div>
+          <div>
+	         วันที่/Date <input type="date" id="วันที่/date">
           </div>
 
-          <h5>Pest & Disease</h5>
+          <h5>การตรวจประเมินโรคและแมลง/Pest & Disease</h5>
 
-          <div>Monitoring</div>
+          <div>ตรวจประเมินโรคและแมลง/Monitoring</div>
           <div class="mdl-textfield mdl-js-textfield getmdl-select">
-            <input type="text" value="" class="mdl-textfield__input" id="Monitoring" readonly>
+            <input type="text" value="" class="mdl-textfield__input" id="ตรวจประเมินโรคและแมลง/Monitoring" readonly>
             <input type="hidden" value="" name="sample1">
-            <label for="Monitoring" class="mdl-textfield__label">Monitoring</label>
+            <label for="ตรวจประเมินโรคและแมลง/Monitoring" class="mdl-textfield__label">ตรวจประเมินโรคและแมลง/Monitoring</label>
             <ul for="sample1" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
               <li class="mdl-menu__item" data-val="First-Monitoring">First Monitoring</li>
               <li class="mdl-menu__item" data-val="Second-Monitoring">Second Monitoring</li>
             </ul>
           </div>
             <div>
-              <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
-                <input type="radio" id="option-1" class="mdl-radio__button" name="options">
-                <span class="mdl-radio__label">Option 1</span>
+              <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="ไม่พบอาการ/option-1">
+                <input type="radio" id="ไม่พบอาการ/option-1" class="mdl-radio__button" name="options">
+                <span class="mdl-radio__label">ไม่พบอาการ</span>
               </label>
-              <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
-                <input type="radio" id="option-2" class="mdl-radio__button" name="options" value="2">
-                <span class="mdl-radio__label">Option 2</span>
-              </label>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield">
-              <input class="mdl-textfield__input" type="text" id="Type">
-              <label class="mdl-textfield__label" for="Type">Type</label>
-            </div>
-
-            <h5>Harvesting</h5>
-
-            <div>
-              <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="Water-Draining">
-                <input type="checkbox" id="Water-Draining" class="mdl-checkbox__input">
-                <span class="mdl-checkbox__label">Water Draining</span>
-              </label>
-            </div>
-            <div>
-              <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="Harvesting">
-                <input type="checkbox" id="Harvesting" class="mdl-checkbox__input">
-                <span class="mdl-checkbox__label">Harvesting</span>
+              <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="พบอาการ/option-2">
+                <input type="radio" id="พบอาการ/option-2" class="mdl-radio__button" name="options" value="2">
+                <span class="mdl-radio__label">พบอาการ</span>
               </label>
             </div>
             <div class="mdl-textfield mdl-js-textfield">
-              <input class="mdl-textfield__input" type="text" id="Yield">
-              <label class="mdl-textfield__label" for="Yield">Yield</label>
+              <input class="mdl-textfield__input" type="text" id="ใช้สาร/Type">
+              <label class="mdl-textfield__label" for="ใช้สาร/Type">ใช้สาร/Type</label>
             </div>
 
-            <h5>Field Internal Audit</h5>
+            <h5>การเก็บเกี่ยว/Harvesting</h5>
+
+            <div>
+              <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="ระบายน้ำออกจากนา/Water-Draining">
+                <input type="checkbox" id="ระบายน้ำออกจากนา/Water-Draining" class="mdl-checkbox__input">
+                <span class="mdl-checkbox__label">ระบายน้ำออกจากนา/Water Draining</span>
+              </label>
+            </div>
+            <div>
+              <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="เก็บเกี่ยว/Harvesting">
+                <input type="checkbox" id="เก็บเกี่ยว/Harvesting" class="mdl-checkbox__input">
+                <span class="mdl-checkbox__label">เก็บเกี่ยว/Harvesting</span>
+              </label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield">
+              <input class="mdl-textfield__input" type="text" id="ผลผลิตรวม/Yield">
+              <label class="mdl-textfield__label" for="ผลผลิตรวม/Yield">ผลผลิตรวม/Yield</label>
+            </div>
+
+            <h5>การตรวจเยี่ยมของเจ้าหน้าที่/Field Internal Audit</h5>
 
 	          <div class="mdl-textfield mdl-js-textfield">
               <input class="mdl-textfield__input" type="text" id="Inspector">
               <label class="mdl-textfield__label" for="Inspector">Inspector</label>
             </div>
             <div>
-              Date
-              <input type="date" id="visitDate">
+              วันที่ตรวจเยี่ยมแปลง/Field Visit Date
+              <input type="date" id="วันที่ตรวจเยี่ยมแปลง/visitDate">
             </div>
 
-            <h5>Notes</h5>
+            <h5>บันทึกเพิ่มเติม/Notes</h5>
 
 	          <div class="mdl-textfield mdl-js-textfield">
-              <input class="mdl-textfield__input" type="text" id="Notes">
-              <label class="mdl-textfield__label" for="Notes">Notes</label>
+              <input class="mdl-textfield__input" type="text" id="บันทึกเพิ่มเติม/Notes">
+              <label class="mdl-textfield__label" for="บันทึกเพิ่มเติม/Notes">บันทึกเพิ่มเติม/Notes</label>
               </div>
             <div>
               <input class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit">

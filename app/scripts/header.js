@@ -73,12 +73,12 @@ function displayOption() {
 
 function accessManage() {
   if (productType == 'Rice') {
-    window.location = "riceForm.html";
+    window.location = "/riceForm.html";
   } else if (productType == 'Chia Seed') {
-    window.location = "chiaForm.html";
+    window.location = "/chiaForm.html";
   } else if (productType == 'Egg') {
-    window.location = "eggForm.html";
+    window.location = "/eggForm.html";
   } else if (productType == 'Coconut') {
-    window.location = "coconutForm.html";
+    window.location = "/coconutForm.html";
   }
 };
