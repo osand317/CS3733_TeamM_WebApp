@@ -30,12 +30,20 @@ function profileViewUserInfo(userID) {
         const email = doc.data().userEmail;
         const mobile = doc.data().mobile;
         const profileType = doc.data().profileType;
+        const familySize = doc.data().familySize;
+        const maritalStatus = doc.data().maritalStatus;
+        const numElderly = doc.data().numElderly;
+        const numChildren = doc.data().numChildren;
         document.getElementById('userImage').src = userImage;
         document.getElementById('profileType').textContent = profileType;
         document.getElementById('firstName').textContent = userProfileName;
         document.getElementById('lastName').textContent = lastName;
         document.getElementById('email').textContent = email;
         document.getElementById('mobile').textContent = mobile;
+        document.getElementById('maritalStatus').textContent = maritalStatus;
+        document.getElementById('familySize').textContent = familySize;
+        document.getElementById('numElderly').textContent = numElderly;
+        document.getElementById('numChildren').textContent = numChildren;
         if ((profileType == 'Inspector') && (userType == 'Employee')) {
           btnCheckIn.innerHTML = "<input class='mdl-button mdl-js-button mdl-button--raised mdl-button--colored' onclick='viewCheckIn();' type=button value='Show Check-in'>";
         }

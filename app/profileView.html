@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
   		<header class="mdl-layout__header">
   			<div class="mdl-layout__header-row">
   				<!-- Title -->
@@ -35,45 +35,68 @@
   							<li class="mdl-menu__item" id="btnLogOut">Log Out</li>
   							<li class="mdl-menu__item" id="showProfile">Show Profile</li>
   							<li disabled class="mdl-menu__item">Disabled Action</li>
-  							<li class="mdl-menu__item">Yet Another Action</li>
+  							<li class="mdl-menu__item" id="btnFamilyInfo">Update Family Info</li>
+
   						</ul>
   					</a>
   					<!-- Right aligned menu below button -->
   				</nav>
   			</div>
+        <!-- Tabs -->
+        <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+            <a href="#fixed-tab-1" class="mdl-layout__tab is-active">Contact Info</a>
+            <a href="#fixed-tab-2" class="mdl-layout__tab">Personal Info</a>
+        </div>
   		</header>
+
   		<!-- Navigation menu on the left  -->
   		<div class="mdl-layout__drawer">
   			<span class="mdl-layout-title">Rai App</span>
   			<nav class="mdl-navigation">
   				<a class="mdl-navigation__link" href="/index.html">Home</a>
           <a id="fillForm" class="mdl-navigation__link" onclick="accessManage();">Forms</a>
-
            <a id="farmerAssign" class="mdl-navigation__link" href="/assignFarmer.html">Assign Farmer</a>
            <a id="accountCreate" class="mdl-navigation__link" href="/profileCreation.html">Create Account</a>
   				<a class="mdl-navigation__link" href="/console.html">Console</a> <a class="mdl-navigation__link" href="/viewMap.html">Map View</a>
   			</nav>
   		</div>
-    <div class="wrapper">
-      <img id="userImage" src="" alt="" class="image--cover" />
-      <br>
-      <div>
-        <label for="profileType">Account type:</label>
-        <p id="profileType" ></p>
-        <label for="firstName">First name:</label>
-        <p id="firstName" ></p>
-        <label for="lastName">Last name:</label>
-        <p id="lastName" ></p>
-        <label for="email">Email:</label>
-        <p id="email" ></p>
-        <label for="mobile">Mobile:</label>
-        <p id="mobile" ></p>
-      </div>
-      <div id="checkIn">
 
+    <main class="mdl-layout__content">
+      <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
+        <div id="wrapper" class="page-content">
+            <img id="userImage" src="" alt="" class="image--cover" />
+            <br>
+            <div>
+              <label for="profileType">Account type:</label>
+              <p id="profileType" ></p>
+              <label for="firstName">First name:</label>
+              <p id="firstName" ></p>
+              <label for="lastName">Last name:</label>
+              <p id="lastName" ></p>
+              <label for="email">Email:</label>
+              <p id="email" ></p>
+              <label for="mobile">Mobile:</label>
+              <p id="mobile" ></p>
+            </div>
+            <div id="checkIn"></div>
       </div>
-
-  </div>
+    </section>
+    <section class="mdl-layout__tab-panel" id="fixed-tab-2">
+        <div id="wrapper2" class="page-content">
+            <!-- Your content goes here -->
+            <div>
+              <label for="maritalStatus">Marital status:</label>
+              <p id="maritalStatus"></p>
+              <label for="familySize">Family size:</label>
+              <p id="familySize"></p>
+              <label for="numElderly">Number of elderly:</label>
+              <p id="numElderly"></p>
+              <label for="numChildren">Number of children:</label>
+              <p id="numChildren"></p>
+            </div>
+        </div>
+    </section>
+  </main>
   <script src="scripts/database.js" charset="utf-8"></script>
   <script src="scripts/header.js" charset="utf-8"></script>
   <script src="scripts/profileView.js" charset="utf-8"></script>

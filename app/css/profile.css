@@ -1,5 +1,6 @@
-.wrapper {
+#wrapper, #wrapper2 {
   padding: 50px;
+  text-align: center;
 }
 
 .image--cover {
