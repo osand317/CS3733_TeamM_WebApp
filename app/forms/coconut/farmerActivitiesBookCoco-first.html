@@ -3,13 +3,15 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css">
-    <title>Urmatt template</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <title>Farm Activities - Rai</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-orange.min.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-firestore.js"></script>
+  <link rel="stylesheet" href="../../css/styles.css">
+
   </head>
   <body>
 
@@ -17,7 +19,7 @@
   		<header class="mdl-layout__header">
   			<div class="mdl-layout__header-row">
   				<!-- Title -->
-  				<span class="mdl-layout-title">Template</span>
+  				<span class="mdl-layout-title">Farm Activities (First Time)</span>
   				<!-- Add spacer, to align navigation to the right -->
   				<div class="mdl-layout-spacer"></div>
   				<!-- Navigation. We hide it in small screens. -->
@@ -55,40 +57,59 @@
   		</div>
   <main class="mdl-layout__content">
     <div class="page-content">
-
     <nav class="mdl-navigation mdl-layout--large-screen-only">
-		<h4>แบบบันทึกการปฏิบัติงาน</h4>
-		<!-- Record farm activities -->
+		<h3>สมุดบันทึกการปฏิบัติงานในสวน</h3>
 	</nav>
-	<h4>Record Farm Activities</h4>
-<form >
-  <div class="mdl-textfield mdl-js-textfield">
-    	<input class="mdl-textfield__input" type="text" id="Date">
-    	<label class="mdl-textfield__label" for="Date">วัน เดือน ปี/ Date</label>
-	</div>
 
-	<div class="mdl-textfield mdl-js-textfield">
-    	<input class="mdl-textfield__input" type="text" id="Activity">
-    	<label class="mdl-textfield__label" for="Activity">บันทึกการปฏิบัติงาน/ Activity details</label>
-	</div>
+	<form>
+	<h4>Farm activities book</h4>
 
-	<div class="mdl-textfield mdl-js-textfield">
-    	<input class="mdl-textfield__input" type="text" id="Inspector">
-    	<label class="mdl-textfield__label" for="Inspector">เจ้าหน้าที่ส่งเสริม/ Inspector</label>
-	</div>
 
-	<div class="mdl-textfield mdl-js-textfield">
-    	<input class="mdl-textfield__input" type="text" id="Inspector">
-    	<label class="mdl-textfield__label" for="Inspector">เกษตรกร</label>
-	</div>
-</div>
-<br>
-<input class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit">
-</form>
+		<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="PlantType">ชนิดพืช </label>
+			<input class="mdl-textfield__input" id="PlantType" type="text">
+		<!-- type of plant -->
+		</div>
 
+		<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="Varieties">Varieties</label>
+			<input class="mdl-textfield__input" id="Varieties" type="text">
+		</div>
+
+		<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="NameThai">ชื่อเกษตรกร/Name</label>
+			<input class="mdl-textfield__input" id="NameThai" type="text">
+		<!-- Name of farmer -->
+		</div>
+
+		<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="AddressThai">ที่อยู่/Address</label>
+			<input class="mdl-textfield__input" id="AddressThai" type="text">
+		</div>
+
+		<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="Code">รหัสแปลง/ Code</label>
+			<input class="mdl-textfield__input" id="Code" type="text">
+		</div>
+
+		<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="PlantationArea">พื้นที่ปลูก/ Plantation Area (ไร่/ Rai)</label>
+			<input class="mdl-textfield__input" id="PlantationArea" type="text">
+		</div>
+
+		<div class="mdl-textfield mdl-js-textfield">
+			<label class="mdl-textfield__label" for="NameSurname">จำนวน/ Number of tree (ต้น/ Tree)</label>
+			<input class="mdl-textfield__input" id="NameSurname" type="text">
+		</div>
+    <br>
+    <input class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit">
+
+		</form>
+	</div>
 </main>
-        <script src="scripts/database.js" charset="utf-8"></script>
-  <script src="scripts/header.js" charset="utf-8"></script>
-  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  <script src="../../scripts/database.js" charset="utf-8"></script>
+  <script src="../../scripts/header.js" charset="utf-8"></script>
+	<script src="../../scripts/input.js" charset="utf-8"></script>
+	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </body>
 </html>
