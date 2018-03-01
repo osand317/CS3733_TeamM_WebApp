@@ -85,8 +85,10 @@ function getChartData(fieldToPlot, startDate, endDate) {
             snapshot.forEach(function (doc) {
                 let date = doc.data().timestamp.toString();
                 date = date.split(':')[0] + ':' + date.split(':')[1];
-                dates.push(date);
-                points.push(Number(doc.data()[fieldToPlot]));
+                if (doc.data()[fieldToPlot]) {
+                    dates.push(date);
+                    points.push(Number(doc.data()[fieldToPlot]));
+                }
             });
             chart.update();
         });
@@ -125,20 +127,19 @@ document.querySelector('#dateRangeBtn').addEventListener('click', function(){
     getChartData('Height', startDate, endDate);
 });
 
-document.querySelector("#Yield").addEventListener("click", function(){
-    getChartData('Yield');
-    // addData(chart, dates, points);
+document.querySelector("#yield-rice").addEventListener("click", function(){
+    getChartData('ผลผลิตรวม/Yield');
 });
-document.querySelector("#Height").addEventListener("click", function(){
-    getChartData('Height');
-    // addData(chart, dates, points);
-});
+// document.querySelector("#height-chia").addEventListener("click", function(){
+//     getChartData('Height');
+//     // addData(chart, dates, points);
+// });
 
 // Set default date ranges
 window.onload = function(){
     let initialStartDate = new Date('0');
     let initialEndDate = new Date(Date());
-    getChartData('Height', initialStartDate, initialEndDate);
+    getChartData('ผลผลิตรวม/Yield', initialStartDate, initialEndDate);
 };
 
 // ------------------------- Download ---------------------- //
