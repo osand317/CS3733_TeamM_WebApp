@@ -1,3 +1,5 @@
+// App shell functionality. Should be included on every page.
+
     const btnLogOut = document.getElementById("btnLogOut");
     const btnProfile = document.getElementById('showProfile');
     const btnFarmerAssign = document.getElementById('farmerAssign');

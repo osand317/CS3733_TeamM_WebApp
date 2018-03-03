@@ -1,3 +1,4 @@
+// Access to firebase cloud firestore database
   var config = {
       apiKey: "AIzaSyCFWzxl0VLYePJ-5O8U5umWWNJLT7TG9Fo",
       authDomain: "urmatt-app.firebaseapp.com",
