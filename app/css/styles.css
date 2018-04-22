@@ -51,7 +51,7 @@ body {
 .demo-card-image.mdl-card {
 	background-repeat: no-repeat;
 	background-position: 50% -85%;
-	background-color: #3c9187;
+	background-color: #3664b4;
 	cursor: pointer;
 }
 
@@ -67,29 +67,29 @@ body {
 	font-weight: 800;
 }
 
-#accountBtn.demo-card-image {
+#usersBtn.demo-card-image {
 	background-image: url(../images/account.svg);
 	background-size: 55%;
 	background-position: 50% -85%;
 
 }
 
-#inspectorProfilesbtn.demo-card-image {
-	background-image: url(../images/study.svg);
+#requestsBtn.demo-card-image {
+	background-image: url(../images/requests.svg);
 	background-size: 35%;
 	background-position: 50% +20%;
 
 }
 
-#farmerProfilebtn.demo-card-image {
-	background-image: url(../images/farmer.svg);
+#logsBtn.demo-card-image {
+	background-image: url(../images/logs.svg);
 	background-size: 35%;
 	background-position: 50% +20%;
 
 }
 
-#consoleBtn.demo-card-image {
-	background-image: url(../images/chart.svg);
+#emergencyBtn.demo-card-image {
+	background-image: url(../images/emergency.svg);
 	background-size: 45%;
 	background-position: 50% 0%;
 

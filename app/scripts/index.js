@@ -1,23 +1,21 @@
-var accountBtn = document.querySelector('#accountBtn');
-var consoleBtn = document.querySelector('#consoleBtn');
-var formsBtn = document.querySelector('#formsBtn');
-var checkInBtn = document.querySelector('#checkInBtn');
+var usersBtn = document.querySelector('#usersBtn');
+var requestsBtn = document.querySelector('#requestsBtn');
+var logsBtn = document.querySelector('#logsBtn');
+var emergencyBtn = document.querySelector('#emergencyBtn');
 var plusAccount = document.querySelector('#newAccount');
 
-document.querySelector('#accountBtn').addEventListener('click', function(){
-    window.location = '/profiles.html';
-
+usersBtn.addEventListener('click', function(){
+    window.location = '/users.html';
 });
-consoleBtn.addEventListener('click', function(){
-    window.location = '/console.html';
+requestsBtn.addEventListener('click', function(){
+    window.location = '/requests.html';
 });
-formsBtn.addEventListener('click', function(){
+logsBtn.addEventListener('click', function(){
     accessManage();
 });
-checkInBtn.addEventListener('click', function(){
-    window.location = '/checkIn.html';
+emergencyBtn.addEventListener('click', function(){
+    window.location = '/emergency.html';
 });
-
 
 plusAccount.addEventListener('click', function (e) {
   e.stopPropagation();

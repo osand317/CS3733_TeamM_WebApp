@@ -17,7 +17,7 @@ limitations under the License.
 <html>
 <head>
 
-  <meta name="description" content="Rai App" />
+  <meta name="description" content="B&W App" />
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
   <meta charset="utf-8">
   <link rel="stylesheet" href="css/styles.css">
@@ -48,7 +48,7 @@ limitations under the License.
 
   <!--<base target="_blank">-->
 
-  <title>Rai App</title>
+  <title>B&W App</title>
 
   <!--<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">-->
   <!--<link rel="stylesheet" href="css/main.css" />-->
@@ -56,7 +56,7 @@ limitations under the License.
   <link rel="manifest" href="/manifest.json">
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-orange.min.css" />
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-yellow.min.css" />
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -67,7 +67,7 @@ limitations under the License.
     <header class="mdl-layout__header">
       <div class="mdl-layout__header-row">
         <!-- Title -->
-        <span class="mdl-layout-title">Rai App</span>
+        <span class="mdl-layout-title">B&W App</span>
         <!-- Add spacer, to align navigation to the right -->
         <div class="mdl-layout-spacer"></div>
         <!-- Navigation. We hide it in small screens. -->
@@ -92,15 +92,13 @@ limitations under the License.
       </div>
     </header>
     <div class="mdl-layout__drawer">
-      <span class="mdl-layout-title">Rai App</span>
+      <span class="mdl-layout-title">B&W App</span>
       <nav class="mdl-navigation">
         <a class="mdl-navigation__link" href="/index.html">Home</a>
-
-         <!--<a class="mdl-navigation__link" href="/FieldActivitiesRecord.html">Data Entry</a>-->
-         <a id="fillForm" class="mdl-navigation__link" onclick="accessManage();">Forms</a>
-        <a class="mdl-navigation__link" id="farmerAssign" href="/assignFarmer.html">Assign Farmer</a>
-        <a class="mdl-navigation__link" id="accountCreate" href="/profileCreation.html">Create Account</a>
-        <a class="mdl-navigation__link" href="/console.html">Console</a> <a class="mdl-navigation__link" href="/viewMap.html">Map View</a>
+        <a class="mdl-navigation__link" href="/users.html">Users</a>
+        <a class="mdl-navigation__link" href="/requests.html">Requests</a>
+        <a class="mdl-navigation__link" href="/emergency.html">Emergency</a>
+        <a class="mdl-navigation__link" href="/logs.html">Logs</a>
       </nav>
     </div>
     <main class="mdl-layout__content">
@@ -109,10 +107,10 @@ limitations under the License.
 
         <div class="mdl-grid homeGrid">
           <div class="mdl-cell mdl-cell--6-col homeCol">
-            <div class="demo-card-image mdl-card mdl-shadow--2dp" id="accountBtn">
+            <div class="demo-card-image mdl-card mdl-shadow--2dp" id="usersBtn">
               <div class="mdl-card__title mdl-card--expand"></div>
               <div class="mdl-card__actions">
-                <span class="demo-card-image__filename">Accounts</span>
+                <span class="demo-card-image__filename">Users</span>
               </div>
               <div class="mdl-card__menu">
                 <button id="newAccount" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
@@ -122,28 +120,29 @@ limitations under the License.
             </div>
           </div>
           <div class="mdl-cell mdl-cell--6-col homeCol">
-            <div class="demo-card-image mdl-card mdl-shadow--2dp" id="consoleBtn">
+            <div class="demo-card-image mdl-card mdl-shadow--2dp" id="requestsBtn">
               <div class="mdl-card__title mdl-card--expand"></div>
               <div class="mdl-card__actions">
-                <span class="demo-card-image__filename">Console</span>
+                <span class="demo-card-image__filename">Requests</span>
               </div>
             </div>
+
           </div>
         <!--</div>-->
         <!--<div class="mdl-grid homeGrid">-->
           <div class="mdl-cell mdl-cell--6-col homeCol">
-            <div class="demo-card-image mdl-card mdl-shadow--2dp" id="formsBtn" onclick="accessManage();">
+            <div class="demo-card-image mdl-card mdl-shadow--2dp" id="emergencyBtn" onclick="accessManage();">
               <div class="mdl-card__title mdl-card--expand"></div>
               <div class="mdl-card__actions">
-                <span class="demo-card-image__filename">Forms</span>
+                <span class="demo-card-image__filename">Emergency</span>
               </div>
             </div>
           </div>
           <div class="mdl-cell mdl-cell--6-col homeCol">
-            <div class="demo-card-image mdl-card mdl-shadow--2dp" id="checkInBtn">
+            <div class="demo-card-image mdl-card mdl-shadow--2dp" id="logsBtn">
               <div class="mdl-card__title mdl-card--expand"></div>
               <div class="mdl-card__actions">
-                <span class="demo-card-image__filename">Check In</span>
+                <span class="demo-card-image__filename">Logs</span>
               </div>
             </div>
           </div>
@@ -176,7 +175,6 @@ limitations under the License.
   <!-- <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase-firestore.js"></script> -->
   <script src="scripts/database.js" charset="utf-8"></script>
   <script src="scripts/material.min.js"></script>
-  <script src="scripts/header.js" charset="utf-8"></script>
   <script src="scripts/index.js" charset="utf-8"></script>
 
 </body>
