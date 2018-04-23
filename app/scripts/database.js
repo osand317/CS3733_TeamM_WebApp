@@ -1,15 +1,16 @@
-// Access to firebase cloud firestore database
-  var config = {
-      apiKey: "AIzaSyCFWzxl0VLYePJ-5O8U5umWWNJLT7TG9Fo",
-      authDomain: "urmatt-app.firebaseapp.com",
-      databaseURL: "https://urmatt-app.firebaseio.com",
-      projectId: "urmatt-app",
-      storageBucket: "urmatt-app.appspot.com",
-      messagingSenderId: "523826665141"
-  };
-    firebase.initializeApp(config);
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyCwp4N4mIkw8MqzegINZTY77iFawihuw20",
+    authDomain: "cs3733-web-app.firebaseapp.com",
+    databaseURL: "https://cs3733-web-app.firebaseio.com",
+    projectId: "cs3733-web-app",
+    storageBucket: "cs3733-web-app.appspot.com",
+    messagingSenderId: "52508509145"
+};
+firebase.initializeApp(config);
 
-    var secondaryApp = firebase.initializeApp(config, "Secondary");
+const firestore = firebase.firestore();
+const settings = {timestampsInSnapshots: true};
+firestore.settings(settings);
 
-    var firestore = firebase.firestore();
-    var storage = firebase.storage().ref();
+// var storage = firebase.storage().ref();
