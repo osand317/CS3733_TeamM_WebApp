@@ -1,4 +1,4 @@
-var userLists = document.querySelector("#userList");
+var userList = document.querySelector("#userList");
 
 var usersRef;
 usersRef = firestore.collection("users");
@@ -21,45 +21,68 @@ function createUserListEntry(data){
 
     let sp = document.createElement('span');
     sp.classList.add("mdl-list__item-primary-content");
-    sp.onclick = function(){
-        remove();
+
+    // let icon = document.createElement('i');
+    // icon.classList.add("material-icons");
+    // icon.classList.add("mdl-list__item-icon");
+    //
+    // icon.innerText = "person";
+    //
+    // sp.appendChild(icon);
+
+    // let cbsp = document.createElement('span');
+    // cbsp.classList.add("mdl-list__item-secondary-action");
+    //
+    // let cblb = document.createElement('label');
+    // cblb.htmlFor = "cb-" + name;
+    // cblb.classList.add("mdl-checkbox");
+    // cblb.classList.add("mdl-js-checkbox");
+    // cblb.classList.add("mdl-js-ripple-effect");
+    //
+    // let cb = document.createElement('input');
+    // cb.type = 'checkbox';
+    // cb.classList.add("mdl-checkbox__input");
+    // cb.id = "cb-" + name;
+    // cblb.appendChild(cb);
+    // cbsp.appendChild(cblb);
+
+
+
+
+    let delBtn = document.createElement('button');
+    delBtn.classList.add("mdl-button", "mdl-js-button", "mdl-button--icon");
+
+    let delIcon = document.createElement('i');
+    delIcon.classList.add("material-icons");
+    delIcon.innerText = "delete";
+
+    delBtn.onclick = function(){
+        alert("remove");
     };
+    delBtn.appendChild(delIcon);
 
-    let icon = document.createElement('i');
-    icon.classList.add("material-icons");
-    icon.classList.add("mdl-list__item-icon");
+    let editBtn = document.createElement('button');
+    editBtn.classList.add("mdl-button", "mdl-js-button", "mdl-button--icon");
 
-    icon.innerText = "person";
+    let editIcon = document.createElement('i');
+    editIcon.classList.add("material-icons");
+    editIcon.innerText = "mode_edit";
 
-    sp.appendChild(icon);
+    editBtn.onclick = function(){
+        alert("edit");
+    };
+    editBtn.appendChild(editIcon);
 
-    let cbsp = document.createElement('span');
-    cbsp.classList.add("mdl-list__item-secondary-action");
 
-    let cblb = document.createElement('label');
-    cblb.htmlFor = "cb-" + name;
-    cblb.classList.add("mdl-checkbox");
-    cblb.classList.add("mdl-js-checkbox");
-    cblb.classList.add("mdl-js-ripple-effect");
-
-    let cb = document.createElement('input');
-    cb.type = 'checkbox';
-    cb.classList.add("mdl-checkbox__input");
-    cb.id = "cb-" + name;
-    cblb.appendChild(cb);
-    cbsp.appendChild(cblb);
-
+    sp.appendChild(delBtn);
+    sp.appendChild(editBtn);
 
     sp.innerHTML += name;
-
     li.appendChild(sp);
-    li.appendChild(cbsp);
+    // li.appendChild(cbsp);
     userList.appendChild(li);
 }
 
-function remove(){
-    alert("removed");
-}
 
 // ---------------------- Search ------------------//
 function searchCallback() {
