@@ -12,7 +12,7 @@ var allReports = [];
 var allTableHeaders = [];
 var requestsRef;
 
-requestsRef = firestore.collection("request");
+requestsRef = firestore.collection("requests");
 
 requestsRef.onSnapshot(function(querySnapshot){
     tableCallback(querySnapshot, openTable);
@@ -24,7 +24,9 @@ function tableCallback(querySnapshot, selector){
     clearTable(selector);
     querySnapshot.forEach(function (doc) {
         getTableHeaders(doc);
-        createTableRow(doc.data(), selector);
+        if (shouldBeShown(doc.data(), selector)){
+            createTableRow(doc.data(), selector);
+        }
         // currentReports.push(doc);
         // allReports.push(doc);
     });
@@ -82,6 +84,19 @@ function getTableHeaders(doc){
 function clearTable(selector){
     selector.getElementsByTagName("tbody")[0].innerHTML = "";
     selector.getElementsByTagName("thead")[0].innerHTML = "";
+}
+
+function shouldBeShown(data, selector){
+    let result;
+    switch(selector){
+        case openTable:
+            result = data.isComplete === false;
+            break;
+        case closedTable:
+            result = data.isComplete === true;
+            break;
+    }
+    return result;
 }
 
 function clearAllTables(){
