@@ -5,6 +5,8 @@ var closedTable = document.querySelector("#closedTable");
 var closedTableHeading = document.querySelector("#closedTableHeading");
 var closedTableBody = document.querySelector("#closedTableBody");
 
+
+
 var currentReports = [];
 var allReports = [];
 var allTableHeaders = [];
@@ -13,22 +15,27 @@ var requestsRef;
 requestsRef = firestore.collection("requests");
 
 requestsRef.onSnapshot(function(querySnapshot){
-    console.log("updating");
+    tableCallback(querySnapshot, openTable);
+    tableCallback(querySnapshot, closedTable);
+});
+
+function tableCallback(querySnapshot, selector){
     allTableHeaders = [];
-    clearTables();
+    clearTable(selector);
     querySnapshot.forEach(function (doc) {
         getTableHeaders(doc);
-        createTableRow(doc.data(), doc.id);
+        createTableRow(doc.data(), selector);
         // currentReports.push(doc);
         // allReports.push(doc);
     });
-    createTableHeading();
+    createTableHeading(selector);
     // populateFilters();
     // searchCallback();
-});
+}
 
-function createTableRow(data, id){
-    var tbody = document.querySelector("#openTableBody");
+function createTableRow(data, selector){
+    // var tbody = document.querySelector(selector + "Body");
+    var tbody = selector.getElementsByTagName("tbody")[0];
     let tr = document.createElement('tr');
 
     allTableHeaders.forEach(function(header){
@@ -52,8 +59,9 @@ function createTableRow(data, id){
     tbody.appendChild(tr);
 }
 
-function createTableHeading() {
-    var thead = document.querySelector("#openTableHeading");
+function createTableHeading(selector) {
+    // var thead = document.querySelector(selector + "Heading");
+    var thead = selector.getElementsByTagName("thead")[0];
     let tr = document.createElement('tr');
     allTableHeaders.forEach(function(header){
         let th = document.createElement('th');
@@ -71,9 +79,14 @@ function getTableHeaders(doc){
     })
 }
 
-function clearTables(){
-    openTableBody.innerHTML = "";
-    openTableHeading.innerHTML = "";
-    closedTableBody.innerHTML = "";
-    closedTableHeading.innerHTML = "";
+function clearTable(selector){
+    selector.getElementsByTagName("tbody")[0].innerHTML = "";
+    selector.getElementsByTagName("thead")[0].innerHTML = "";
+}
+
+function clearAllTables(){
+    openTable.getElementsByTagName("tbody")[0].innerHTML = "";
+    openTable.getElementsByTagName("thead")[0].innerHTML = "";
+    closedTable.getElementsByTagName("tbody")[0].innerHTML = "";
+    closedTable.getElementsByTagName("thead")[0].innerHTML = "";
 }
