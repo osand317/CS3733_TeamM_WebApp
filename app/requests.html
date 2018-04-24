@@ -33,6 +33,8 @@ limitations under the License.
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-yellow.min.css" />
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.3/Chart.bundle.min.js"></script>
+
 </head>
 
 <body>
@@ -68,9 +70,9 @@ limitations under the License.
 
         </div>
         <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
-            <a href="#scroll-tab-1" class="mdl-layout__tab is-active">Open Requests</a>
-            <a href="#scroll-tab-2" class="mdl-layout__tab">Closed Requests</a>
-            <a href="#scroll-tab-3" class="mdl-layout__tab">Statistics</a>
+            <a href="#fixed-tab-1" class="mdl-layout__tab is-active">Open Requests</a>
+            <a href="#fixed-tab-2" class="mdl-layout__tab">Closed Requests</a>
+            <a href="#fixed-tab-3" class="mdl-layout__tab">Statistics</a>
             <!--<a href="#scroll-tab-4" class="mdl-layout__tab">Tab 4</a>-->
             <!--<a href="#scroll-tab-5" class="mdl-layout__tab">Tab 5</a>-->
             <!--<a href="#scroll-tab-6" class="mdl-layout__tab">Tab 6</a>-->
@@ -88,29 +90,39 @@ limitations under the License.
     </div>
     <main class="mdl-layout__content">
 
-        <div class="page-content">
-            <!-- Your content goes here -->
-            <section class="mdl-layout__tab-panel is-active" id="scroll-tab-1">
+
+        <!-- Your content goes here -->
+        <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
+            <div class="page-content">
                 <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp tableContainer" style="overflow-x: auto;" id="openTable">
                     <thead id="openTableHeading"></thead>
                     <tbody id="openTableBody"></tbody>
                 </table>
-            </section>
-
-            <section class="mdl-layout__tab-panel is-active" id="scroll-tab-2">
+            </div>
+        </section>
+        <section class="mdl-layout__tab-panel is-active" id="fixed-tab-2">
+            <div class="page-content">
                 <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp tableContainer" style="overflow-x: auto;" id="closedTable">
                     <thead id="closedTableHeading"></thead>
                     <tbody id="closedTableBody"></tbody>
                 </table>
-            </section>
+            </div>
+        </section>
+        <section class="mdl-layout__tab-panel is-active" id="fixed-tab-3">
+            <div class="page-content">
+                <canvas id="pie-chart" width="800" height="450"></canvas>
+            </div>
+        </section>
 
         </div>
     </main>
 </div>
 
 <script src="scripts/database.js" charset="utf-8"></script>
-<script src="scripts/requests.js" charset="utf-8"></script>
+<script src="scripts/requests.js" type="module" charset="utf-8"></script>
+<script src="scripts/util.js" charset="utf-8"></script>
 <script src="scripts/material.min.js"></script>
+
 <!--<script src="scripts/index.js" charset="utf-8"></script>-->
 
 </body>

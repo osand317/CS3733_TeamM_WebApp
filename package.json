@@ -5,6 +5,7 @@
   "main": "gulpfile.js",
   "dependencies": {
     "browser-sync": "^2.18.12",
+    "chart.js": "^2.7.2",
     "del": "^2.2.2",
     "firebase": "^4.13.0",
     "firebase-admin": "^5.8.2",

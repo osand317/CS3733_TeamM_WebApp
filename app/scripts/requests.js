@@ -12,7 +12,7 @@ var allReports = [];
 var allTableHeaders = [];
 var requestsRef;
 
-requestsRef = firestore.collection("requests");
+requestsRef = firestore.collection("request");
 
 requestsRef.onSnapshot(function(querySnapshot){
     tableCallback(querySnapshot, openTable);
@@ -90,3 +90,23 @@ function clearAllTables(){
     closedTable.getElementsByTagName("tbody")[0].innerHTML = "";
     closedTable.getElementsByTagName("thead")[0].innerHTML = "";
 }
+
+// ------------------------ Statistics ------------------------ //
+
+new Chart(document.getElementById("pie-chart"), {
+    type: 'pie',
+    data: {
+        labels: ["Majority", "Minority"],
+        datasets: [{
+            label: "Chart",
+            backgroundColor: ["#3e95cd", "#8e5ea2"],
+            data: [90, 10]
+        }]
+    },
+    options: {
+        title: {
+            display: true,
+            text: ''
+        }
+    }
+});
