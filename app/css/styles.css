@@ -122,3 +122,8 @@ body {
 	background-position: 50% -85%;
 
 }
+
+.mdl-list {
+	display: inline-flex;
+	flex-direction: column;
+}

@@ -1,11 +1,28 @@
 function messageToFirestore(){
-    let sMessage = "{\"Type\":\"request\",\"Data\":[{\"password\":\"help\",\"requestType\":\"help\",\"requestID\":\"1\",\"adminConfirm\":false,\"messageID\":\"1\",\"startTime\":\"2018-04-13 01:23:23:0\",\"endTime\":\"2018-04-15 02:15:23:0\",\"priority\":3,\"nodeID\":\"GHALL00201\",\"isComplete\":false},{\"password\":\"nurseReq\",\"requestType\":\"nurseReq\",\"requestID\":\"2\",\"adminConfirm\":true,\"messageID\":\"2\",\"startTime\":\"2018-04-05 02:10:23:0\",\"endTime\":\"2018-04-06 07:43:10:0\",\"priority\":5,\"nodeID\":\"WHALL00101\",\"isComplete\":false}],\"Operation\":\"retrieve\"}"
-    let oMessage = JSON.parse(sMessage);
+    let messageString = "{\"Type\":\"user\",\"Data\":[{\"firstName\":\"Andrew\",\"lastName\":\"Morrison\",\"middleName\":\"\",\"language\":\"English\",\"userType\":\"1\",\"userID\":\"1\"},{\"firstName\":\"Edward\",\"lastName\":\"Jang\",\"middleName\":\"\",\"language\":\"Korean\",\"userType\":\"2\",\"userID\":\"2\"},{\"firstName\":\"Christian\",\"lastName\":\"Cedrone\",\"middleName\":\"\",\"language\":\"Spanish\",\"userType\":\"3\",\"userID\":\"3\"},{\"firstName\":\"Oliver\",\"lastName\":\"Sanderson\",\"middleName\":\"\",\"language\":\"English\",\"userType\":\"4\",\"userID\":\"4\"},{\"firstName\":\"Peter\",\"lastName\":\"Christakos\",\"middleName\":\"\",\"language\":\"German\",\"userType\":\"5\",\"userID\":\"5\"},{\"firstName\":\"Joseph\",\"lastName\":\"Yuen\",\"middleName\":\"\",\"language\":\"Italian\",\"userType\":\"6\",\"userID\":\"6\"},{\"firstName\":\"Zachary\",\"lastName\":\"Emil\",\"middleName\":\"G\",\"language\":\"French\",\"userType\":\"7\",\"userID\":\"7\"},{\"firstName\":\"Jared\",\"lastName\":\"Grimm\",\"middleName\":\"\",\"language\":\"Chinese\",\"userType\":\"8\",\"userID\":\"8\"},{\"firstName\":\"Andre\",\"lastName\":\"Imperiali\",\"middleName\":\"\",\"language\":\"Russian\",\"userType\":\"9\",\"userID\":\"9\"},{\"firstName\":\"Rohit\",\"lastName\":\"Unnam\",\"middleName\":\"\",\"language\":\"Indian\",\"userType\":\"10\",\"userID\":\"10\"},{\"firstName\":\"Ebenezer\",\"lastName\":\"Ampiah\",\"middleName\":\"\",\"language\":\"Greek\",\"userType\":\"11\",\"userID\":\"11\"},{\"firstName\":\"Roger\",\"lastName\":\"Rolfes\",\"middleName\":\"\",\"language\":\"Swedish\",\"userType\":\"12\",\"userID\":\"12\"}],\"Operation\":\"retrieve\"}";
+    let messageObject = JSON.parse(messageString);
 
-    let collection = oMessage.Type.toString();
+    let type = messageObject.Type.toString();
 
-    oMessage.Data.forEach(function (obj){
-        firestore.collection(collection).add(obj);
-    });
+    switch(type){
+        case 'request':
+            messageObject.Data.forEach(function (obj){
+                let id = obj.requestID.toString();
+                firestore.collection("requests").doc(id).set(obj);
+            });
+            break;
+        case 'user':
+            messageObject.Data.forEach(function (obj){
+                let id = obj.userID.toString();
+                firestore.collection("users").doc(id).set(obj);
+            });
+            break;
+        case 'log':
+            messageObject.Data.forEach(function (obj){
+                let id = obj.logID.toString();
+                firestore.collection("logs").doc(id).set(obj);
+            });
+            break;
+    }
 
 }
