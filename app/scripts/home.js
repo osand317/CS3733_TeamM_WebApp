@@ -11,7 +11,7 @@ requestsBtn.addEventListener('click', function(){
     window.location = '/requests.html';
 });
 logsBtn.addEventListener('click', function(){
-    accessManage();
+    window.location = '/logs.html';
 });
 emergencyBtn.addEventListener('click', function(){
     window.location = '/emergency.html';
