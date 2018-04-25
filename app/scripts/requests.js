@@ -99,7 +99,7 @@ function createChart() {
             labels: ["High", "Medium", "Low"],
             datasets: [{
                 label: "Request Priority Breakdown",
-                backgroundColor: ["#ff0000", "#ffff00", "#00ff00"],
+                backgroundColor: ["#FF595E", "#FCF05C", "#CFFFB3"],
                 data: chartProportions
             }]
         },
