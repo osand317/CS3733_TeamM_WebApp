@@ -52,7 +52,10 @@ function genUserID(data){
             });
             let docID = maxId + 1;
             let user = convertFormDataToUser(data, docID);
-            usersRef.doc(docID.toString()).set(user);
+            usersRef.doc(docID.toString()).set(user).then(function(){
+                window.location = '../addUser.html';
+            });
+
 
         });
 }
