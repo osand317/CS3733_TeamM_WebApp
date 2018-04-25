@@ -1,4 +1,4 @@
-# Urmatt Rai App
+# CS3733 Team M Companion Web App
 #### First Time Setup
 1. Clone the repository
 2. Install Node.js and Node Package Manager (NPM)
@@ -12,4 +12,4 @@ See gulpfile.js for details.
 
 #### Deploying the App
 Run `firebase deploy` to deploy the app. 
-To access the app after deploying, visit [https://urmatt-app.firebaseapp.com]
+To access the app after deploying, visit [https://cs3733-web-app.firebaseapp.com]

@@ -1,25 +1,14 @@
-var usersBtn = document.querySelector('#usersBtn');
-var requestsBtn = document.querySelector('#requestsBtn');
-var logsBtn = document.querySelector('#logsBtn');
-var emergencyBtn = document.querySelector('#emergencyBtn');
-var plusAccount = document.querySelector('#newAccount');
+var userEmail = document.querySelector("#userEmail");
+var password = document.querySelector("#userpass");
 
-usersBtn.addEventListener('click', function(){
-    window.location = '/users.html';
-});
-requestsBtn.addEventListener('click', function(){
-    window.location = '/requests.html';
-});
-logsBtn.addEventListener('click', function(){
-    accessManage();
-});
-emergencyBtn.addEventListener('click', function(){
-    window.location = '/emergency.html';
-});
+const LOGIN = "admin";
+const PASS = "admin";
 
-plusAccount.addEventListener('click', function (e) {
-  e.stopPropagation();
-  if (userType == 'Employee') {
-    window.location = 'profileCreation.html';
-  }
-})
+function auth(){
+    if(userEmail.value === LOGIN && password.value === PASS){
+        window.location = "/home.html";
+    }
+    else {
+        alert("Wrong username/password!");
+    }
+}

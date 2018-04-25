@@ -95,16 +95,35 @@ body {
 
 }
 
-#formsBtn.demo-card-image {
-	background-image: url(../images/form.svg);
-	background-size: 43%;
-	background-position: 50% 12%;
+#fireBtn.demo-card-image {
+	background-image: url(../images/account.svg);
+	background-size: 55%;
+	background-position: 50% -85%;
 
 }
 
-#checkInBtn.demo-card-image {
-	background-image: url(../images/check.svg);
-	background-size: 42%;
-	background-position: 50% 8%;
+#shooterBtn.demo-card-image {
+	background-image: url(../images/account.svg);
+	background-size: 55%;
+	background-position: 50% -85%;
 
+}
+
+#bombBtn.demo-card-image {
+	background-image: url(../images/account.svg);
+	background-size: 55%;
+	background-position: 50% -85%;
+
+}
+
+#otherBtn.demo-card-image {
+	background-image: url(../images/account.svg);
+	background-size: 55%;
+	background-position: 50% -85%;
+
+}
+
+.mdl-list {
+	display: inline-flex;
+	flex-direction: column;
 }
