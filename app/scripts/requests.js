@@ -115,6 +115,11 @@ window.onload = function(){
         document.getElementById("pie-chart").style.display = "block";
         console.log("hello");
     });
+
+    document.getElementById("fixed-tab-2-a").addEventListener("click",function(){
+        document.getElementById("closedTable").style.display = "block";
+        console.log("hello");
+    });
 };
 
 addRequestBtn.addEventListener('click', function(){
