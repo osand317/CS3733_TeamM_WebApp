@@ -17,7 +17,7 @@ function createUserListEntry(data){
     let name = data.firstName + " " + data.lastName;
     let li = document.createElement('li');
     li.classList.add("mdl-list__item");
-
+    li.setAttribute('id', data.userID);
 
     let sp = document.createElement('span');
     sp.classList.add("mdl-list__item-primary-content");
@@ -56,7 +56,7 @@ function createUserListEntry(data){
     delIcon.innerText = "delete";
 
     delBtn.onclick = function(){
-        remove();
+        remove(this);
     };
     delBtn.appendChild(delIcon);
 
@@ -83,8 +83,12 @@ function createUserListEntry(data){
     userList.appendChild(li);
 }
 
-function remove(){
-    alert("rem");
+function remove(el){
+    let id = el.parentElement.parentElement.id;
+    el.style.display = "none";
+    el.parentElement.style.display = "none";
+    el.parentElement.parentElement.style.display = "none";
+    usersRef.doc(id).delete();
 }
 
 function edit(){
