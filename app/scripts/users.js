@@ -56,7 +56,7 @@ function createUserListEntry(data){
     delIcon.innerText = "delete";
 
     delBtn.onclick = function(){
-        alert("remove");
+        remove();
     };
     delBtn.appendChild(delIcon);
 
@@ -68,7 +68,7 @@ function createUserListEntry(data){
     editIcon.innerText = "mode_edit";
 
     editIcon.onclick = function(){
-        alert("edit");
+        edit();
     };
     editBtn.appendChild(editIcon);
 
@@ -81,6 +81,14 @@ function createUserListEntry(data){
     li.appendChild(sp);
     // li.appendChild(cbsp);
     userList.appendChild(li);
+}
+
+function remove(){
+    alert("rem");
+}
+
+function edit(){
+    alert("ed");
 }
 
 
