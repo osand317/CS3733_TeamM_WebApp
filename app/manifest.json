@@ -1,6 +1,6 @@
 {
-  "short_name": "Rai",
-  "name": "Urmatt Rai App",
+  "short_name": "B&W",
+  "name": "Brigham and Women's Web App",
   "start_url": "/index.html",
   "display": "standalone",
   "orientation": "portrait"
