@@ -125,3 +125,11 @@ new Chart(document.getElementById("pie-chart"), {
         }
     }
 });
+
+window.onload = function(){
+    console.log("onload");
+    document.getElementById("fixed-tab-3-a").addEventListener("click",function(){
+        document.getElementById("pie-chart").style.display = "block";
+        console.log("hello");
+    });
+}
