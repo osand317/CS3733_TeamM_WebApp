@@ -82,6 +82,11 @@ limitations under the License.
 
 
         <!-- Your content goes here -->
+        <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" type="text" id="searchFilter" onkeyup="searchCallback()" placeholder="Search">
+            <label class="mdl-textfield__label" for="searchFilter">Text...</label>
+        </div>
+
         <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp tableContainer" style="overflow-x: auto;" id="logTable">
             <thead id="logTableHeading"></thead>
             <tbody id="logTableBody"></tbody>
@@ -93,8 +98,8 @@ limitations under the License.
 
 <script src="scripts/database.js" charset="utf-8"></script>
 <script src="scripts/header.js" charset="utf-8"></script>
+<script src="scripts/logs.js" charset="utf-8"></script>
 <script src="scripts/util.js" charset="utf-8"></script>
-<script src="scripts/logs.js" type="module" charset="utf-8"></script>
 <script src="scripts/material.min.js"></script>
 
 

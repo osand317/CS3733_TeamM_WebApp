@@ -84,3 +84,24 @@ function shouldBeShown(data, selector){
     return true;
 }
 
+// ------------------------- Search -------------------- //
+function searchCallback() {
+    let input = document.getElementById("searchFilter").value.toUpperCase();
+    let tableRows = document.getElementById("logTable").getElementsByTagName("tr");
+
+    for (let i = 0; i < tableRows.length; i++) {
+        let cellList = tableRows[i].getElementsByTagName("td");
+        for(let j = 0; j < cellList.length; j++){
+            if(cellList[j].innerHTML.toUpperCase().indexOf(input) > -1){
+                tableRows[i].style.display = "";
+                j = cellList.length;
+            }
+            else {
+                tableRows[i].style.display = "none";
+            }
+
+        }
+    }
+
+}
+
