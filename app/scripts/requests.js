@@ -1,22 +1,18 @@
 var openTable = document.querySelector("#openTable");
-var openTableHeading = document.querySelector("#openTableHeading");
-var openTableBody = document.querySelector("#openTableBody");
 var closedTable = document.querySelector("#closedTable");
-var closedTableHeading = document.querySelector("#closedTableHeading");
-var closedTableBody = document.querySelector("#closedTableBody");
 
+var addRequestBtn = document.querySelector("#addRequestBtn");
 
-
-var currentReports = [];
-var allReports = [];
 var allTableHeaders = [];
 var requestsRef;
+var chartProportions = [];
 
 requestsRef = firestore.collection("requests");
 
 requestsRef.onSnapshot(function(querySnapshot){
     tableCallback(querySnapshot, openTable);
     tableCallback(querySnapshot, closedTable);
+    chartCallback(querySnapshot);
 });
 
 function tableCallback(querySnapshot, selector){
@@ -27,16 +23,11 @@ function tableCallback(querySnapshot, selector){
         if (shouldBeShown(doc.data(), selector)){
             createTableRow(doc.data(), selector);
         }
-        // currentReports.push(doc);
-        // allReports.push(doc);
     });
     createTableHeading(selector);
-    // populateFilters();
-    // searchCallback();
 }
 
 function createTableRow(data, selector){
-    // var tbody = document.querySelector(selector + "Body");
     var tbody = selector.getElementsByTagName("tbody")[0];
     let tr = document.createElement('tr');
 
@@ -46,10 +37,6 @@ function createTableRow(data, selector){
             td.classList.add("mdl-data-table__cell--center");
             if (Object.keys(data).indexOf(header) > -1) {
                 td.textContent = data[header];
-                //Get report types for use as filters
-                // if (header === 'reportType' && currentSearchFilters.indexOf(data[header].toString()) === -1){
-                //     currentSearchFilters.push(data[header].toString());
-                // }
             }
             else {
                 td.textContent = "";
@@ -57,12 +44,10 @@ function createTableRow(data, selector){
             tr.appendChild(td);
         }
     });
-    // tr.setAttribute("id", id);
     tbody.appendChild(tr);
 }
 
 function createTableHeading(selector) {
-    // var thead = document.querySelector(selector + "Heading");
     var thead = selector.getElementsByTagName("thead")[0];
     let tr = document.createElement('tr');
     allTableHeaders.forEach(function(header){
@@ -107,21 +92,62 @@ function clearAllTables(){
 }
 
 // ------------------------ Statistics ------------------------ //
-
-new Chart(document.getElementById("pie-chart"), {
-    type: 'pie',
-    data: {
-        labels: ["Majority", "Minority"],
-        datasets: [{
-            label: "Chart",
-            backgroundColor: ["#3e95cd", "#8e5ea2"],
-            data: [90, 10]
-        }]
-    },
-    options: {
-        title: {
-            display: true,
-            text: ''
+function createChart() {
+    new Chart(document.getElementById("pie-chart"), {
+        type: 'pie',
+        data: {
+            labels: ["High", "Medium", "Low"],
+            datasets: [{
+                label: "Request Priority Breakdown",
+                backgroundColor: ["#ff0000", "#ffff00", "#00ff00"],
+                data: chartProportions
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: ''
+            }
         }
-    }
+    });
+}
+
+function chartCallback(querySnapshot){
+    let high = 0;
+    let med = 0;
+    let low = 0;
+    querySnapshot.forEach(function(doc){
+        let pri = doc.data().priority;
+        if(pri === 3){
+            low += 1;
+        }
+        else if (pri === 2){
+            med += 1;
+        }
+        else if (pri === 1){
+            high += 1;
+        }
+
+    });
+    chartProportions = [high, med, low];
+    createChart();
+}
+
+// ----------------- Misc ------------- //
+
+window.onload = function(){
+    console.log("onload");
+    document.getElementById("fixed-tab-3-a").addEventListener("click",function(){
+        document.getElementById("pie-chart").style.display = "block";
+        console.log("hello");
+    });
+
+    document.getElementById("fixed-tab-2-a").addEventListener("click",function(){
+        document.getElementById("closedTable").style.display = "block";
+        console.log("hello");
+    });
+};
+
+addRequestBtn.addEventListener('click', function(){
+    window.location = '../createRequest.html';
 });
