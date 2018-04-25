@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta name="description" content="B&W App" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-firestore.js"></script>
+
+    <title>B&W App</title>
+
+    <link rel="manifest" href="/manifest.json">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-yellow.min.css" />
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title">B&W App</span>
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation. We hide it in small screens. -->
+            <nav class="mdl-navigation">
+                <a id='labelUserProfile'> </a>
+                <a id='activeUserProfile'>
+                    <button id="demo-menu-lower-right"
+                            class="mdl-button mdl-js-button mdl-button--icon">
+                        <i class="material-icons">account_circle</i>
+                    </button>
+                    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+                        for="demo-menu-lower-right">
+                        <li class="mdl-menu__item" id="btnLogOut">Log Out</li>
+                        <li class="mdl-menu__item" id="showProfile">Show Profile</li>
+
+                    </ul>
+                </a>
+                <!-- Right aligned menu below button -->
+            </nav>
+        </div>
+    </header>
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">B&W App</span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="/home.html">Home</a>
+            <a class="mdl-navigation__link" href="/users.html">Users</a>
+            <a class="mdl-navigation__link" href="/requests.html">Requests</a>
+            <a class="mdl-navigation__link" href="/emergency.html">Emergency</a>
+            <a class="mdl-navigation__link" href="/logs.html">Logs</a>
+        </nav>
+    </div>
+    <main class="mdl-layout__content">
+        <div class="page-content">
+            <!-- Your content goes here -->
+            <form>
+              <h3>Add User</h3>
+                <div><!-- Sender Textfield -->
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="txtFirstName">
+                        <label class="mdl-textfield__label" for="txtFirstName">First Name...</label>
+                    </div>
+                </div>
+                    <div><!-- Sender Textfield -->
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" id="txtMiddleName">
+                            <label class="mdl-textfield__label" for="txtMiddleName">Middle Name...</label>
+                        </div>
+                    </div>
+                <div><!-- Sender Textfield -->
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="txtLastName">
+                        <label class="mdl-textfield__label" for="txtLastName">Last Name...</label>
+                    </div>
+                </div><br><br><br>
+                <!-- Request Type Check Boxes -->
+                <div>
+                <h4>User Type</h4>
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radVisitor">
+                    <input type="radio" id="radVisitor" class="mdl-radio__button" name="options" value="visitor" >
+                    <span class="mdl-radio__label">Visitor</span>
+                </label><br>
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radJan">
+                        <input type="radio" id="radJan" class="mdl-radio__button" name="options" value="janitor" >
+                        <span class="mdl-radio__label">Janitor</span>
+                    </label><br>
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radInterp">
+                        <input type="radio" id="radInterp" class="mdl-radio__button" name="options" value="interpreter" >
+                        <span class="mdl-radio__label">Interpreter</span>
+                    </label><br>
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radSecurity">
+                        <input type="radio" id="radSecurity" class="mdl-radio__button" name="options" value="security" >
+                        <span class="mdl-radio__label">Security</span>
+                </label><br>
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radDoctor">
+                          <input type="radio" id="radDoctor" class="mdl-radio__button" name="options" value="Doctor" >
+                         <span class="mdl-radio__label">Doctor</span>
+                     </label><br>
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radNurse">
+                    <input type="radio" id="radNurse" class="mdl-radio__button" name="options" value="nurse" >
+                    <span class="mdl-radio__label">Nurse</span>
+                </label><br>
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radPatient">
+                    <input type="radio" id="radPatient" class="mdl-radio__button" name="options" value="patient" >
+                    <span class="mdl-radio__label">Patient</span>
+                </label><br>
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radAdmin">
+                    <input type="radio" id="radAdmin" class="mdl-radio__button" name="options" value="admin" >
+                    <span class="mdl-radio__label">Administrator</span>
+                </label><br>
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radStaff">
+                    <input type="radio" id="radStaff" class="mdl-radio__button" name="options" value="admin" >
+                    <span class="mdl-radio__label">Staff</span>
+                </label>
+                <br><br><br>
+                 </div>
+                <div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <label for="userName">Create Username</label>
+                    <input class="mdl-textfield__input" type="text" id="userName" required/>
+                </div>
+                <br>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <label for="userpass">Create Password</label>
+                    <input class="mdl-textfield__input" type="password" id="userPass" required/>
+                </div>
+                </div><br>
+                    <!-- Submit raised button with ripple -->
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="btnSubmit">
+                        Add User
+                    </button>
+                    <div id="demo-toast-example" class="mdl-js-snackbar mdl-snackbar">
+                        <div class="mdl-snackbar__text"></div>
+                        <button class="mdl-snackbar__action" type="button"></button>
+                    </div>
+                    <script>
+                        (function() {
+                            'use strict';
+                            var snackbarContainer = document.querySelector('#demo-toast-example');
+                            var submitButton = document.querySelector('#btnSubmit');
+                            submitButton.addEventListener('click', function() {
+                                'use strict';
+                                var data = {message: 'Request Submitted'};
+                                    snackbarContainer.MaterialSnackbar.showSnackbar(data);
+                            });
+                        }());
+                    </script>
+            </form>
+        </div>
+    </main>
+</div>
+
+<script src="scripts/database.js" charset="utf-8"></script>
+<script src="scripts/header.js" charset="utf-8"></script>
+<script src="scripts/addUser.js" charset="utf-8"></script>
+<script src="scripts/util.js" charset="utf-8"></script>
+<script src="scripts/material.min.js"></script>
+<!--<script src="scripts/index.js" charset="utf-8"></script>-->
+
+</body>
+</html>
