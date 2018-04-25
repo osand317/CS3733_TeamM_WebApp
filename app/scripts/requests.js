@@ -5,12 +5,14 @@ var addRequestBtn = document.querySelector("#addRequestBtn");
 
 var allTableHeaders = [];
 var requestsRef;
+var chartProportions = [];
 
 requestsRef = firestore.collection("requests");
 
 requestsRef.onSnapshot(function(querySnapshot){
     tableCallback(querySnapshot, openTable);
     tableCallback(querySnapshot, closedTable);
+    chartCallback(querySnapshot);
 });
 
 function tableCallback(querySnapshot, selector){
@@ -90,24 +92,48 @@ function clearAllTables(){
 }
 
 // ------------------------ Statistics ------------------------ //
-
-new Chart(document.getElementById("pie-chart"), {
-    type: 'pie',
-    data: {
-        labels: ["Majority", "Minority"],
-        datasets: [{
-            label: "Chart",
-            backgroundColor: ["#3e95cd", "#8e5ea2"],
-            data: [90, 10]
-        }]
-    },
-    options: {
-        title: {
-            display: true,
-            text: ''
+function createChart() {
+    new Chart(document.getElementById("pie-chart"), {
+        type: 'pie',
+        data: {
+            labels: ["High", "Medium", "Low"],
+            datasets: [{
+                label: "Request Priority Breakdown",
+                backgroundColor: ["#ff0000", "#ffff00", "#00ff00"],
+                data: chartProportions
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: ''
+            }
         }
-    }
-});
+    });
+}
+
+function chartCallback(querySnapshot){
+    let high = 0;
+    let med = 0;
+    let low = 0;
+    querySnapshot.forEach(function(doc){
+        let pri = doc.data().priority;
+        if(pri === 3){
+            low += 1;
+        }
+        else if (pri === 2){
+            med += 1;
+        }
+        else if (pri === 1){
+            high += 1;
+        }
+
+    });
+    chartProportions = [high, med, low];
+    createChart();
+}
+
+// ----------------- Misc ------------- //
 
 window.onload = function(){
     console.log("onload");
