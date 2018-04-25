@@ -21,6 +21,8 @@ function createUserListEntry(data){
 
     let sp = document.createElement('span');
     sp.classList.add("mdl-list__item-primary-content");
+    let sp2 = document.createElement('span');
+    sp.classList.add("mdl-list__item-secondary-action");
 
     // let icon = document.createElement('i');
     // icon.classList.add("material-icons");
@@ -46,9 +48,6 @@ function createUserListEntry(data){
     // cblb.appendChild(cb);
     // cbsp.appendChild(cblb);
 
-
-
-
     let delBtn = document.createElement('button');
     delBtn.classList.add("mdl-button", "mdl-js-button", "mdl-button--icon");
 
@@ -68,15 +67,16 @@ function createUserListEntry(data){
     editIcon.classList.add("material-icons");
     editIcon.innerText = "mode_edit";
 
-    editBtn.onclick = function(){
+    editIcon.onclick = function(){
         alert("edit");
     };
     editBtn.appendChild(editIcon);
 
 
-    sp.appendChild(delBtn);
-    sp.appendChild(editBtn);
+    sp2.appendChild(delBtn);
+    sp2.appendChild(editBtn);
 
+    li.appendChild(sp2);
     sp.innerHTML += name;
     li.appendChild(sp);
     // li.appendChild(cbsp);
