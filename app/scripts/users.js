@@ -60,21 +60,21 @@ function createUserListEntry(data){
     };
     delBtn.appendChild(delIcon);
 
-    let editBtn = document.createElement('button');
-    editBtn.classList.add("mdl-button", "mdl-js-button", "mdl-button--icon");
-
-    let editIcon = document.createElement('i');
-    editIcon.classList.add("material-icons");
-    editIcon.innerText = "mode_edit";
-
-    editIcon.onclick = function(){
-        edit();
-    };
-    editBtn.appendChild(editIcon);
+    // let editBtn = document.createElement('button');
+    // editBtn.classList.add("mdl-button", "mdl-js-button", "mdl-button--icon");
+    //
+    // let editIcon = document.createElement('i');
+    // editIcon.classList.add("material-icons");
+    // editIcon.innerText = "mode_edit";
+    //
+    // editIcon.onclick = function(){
+    //     edit();
+    // };
+    // editBtn.appendChild(editIcon);
 
 
     sp2.appendChild(delBtn);
-    sp2.appendChild(editBtn);
+    // sp2.appendChild(editBtn);
 
     li.appendChild(sp2);
     sp.innerHTML += name;
@@ -109,3 +109,10 @@ function searchCallback() {
     }
 
 }
+
+// -------------------- Misc ---------------- //
+var addUserButton = document.querySelector("#addUserBtn");
+
+addUserButton.addEventListener('click', function(){
+   window.location = '../addUser.html';
+});

@@ -26,7 +26,7 @@
     <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
             <!-- Title -->
-            <span class="mdl-layout-title">B&W App</span>
+            <span class="mdl-layout-title">Add User</span>
             <!-- Add spacer, to align navigation to the right -->
             <div class="mdl-layout-spacer"></div>
             <!-- Navigation. We hide it in small screens. -->
@@ -61,78 +61,77 @@
     <main class="mdl-layout__content">
         <div class="page-content">
             <!-- Your content goes here -->
-            <form>
-              <h3>Add User</h3>
+            <form id="addUserForm">
                 <div><!-- Sender Textfield -->
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="txtFirstName">
-                        <label class="mdl-textfield__label" for="txtFirstName">First Name...</label>
+                        <input class="mdl-textfield__input" type="text" id="firstName">
+                        <label class="mdl-textfield__label" for="firstName">First Name...</label>
                     </div>
                 </div>
                     <div><!-- Sender Textfield -->
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="text" id="txtMiddleName">
-                            <label class="mdl-textfield__label" for="txtMiddleName">Middle Name...</label>
+                            <input class="mdl-textfield__input" type="text" id="middleName">
+                            <label class="mdl-textfield__label" for="middleName">Middle Name...</label>
                         </div>
                     </div>
                 <div><!-- Sender Textfield -->
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="txtLastName">
-                        <label class="mdl-textfield__label" for="txtLastName">Last Name...</label>
+                        <input class="mdl-textfield__input" type="text" id="lastName">
+                        <label class="mdl-textfield__label" for="lastName">Last Name...</label>
                     </div>
-                </div><br><br><br>
+                </div>
                 <!-- Request Type Check Boxes -->
                 <div>
                 <h4>User Type</h4>
-                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radVisitor">
-                    <input type="radio" id="radVisitor" class="mdl-radio__button" name="options" value="visitor" >
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="visitor">
+                    <input type="radio" id="visitor" class="mdl-radio__button" name="options" value="visitor" >
                     <span class="mdl-radio__label">Visitor</span>
                 </label><br>
-                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radJan">
-                        <input type="radio" id="radJan" class="mdl-radio__button" name="options" value="janitor" >
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="janitor">
+                        <input type="radio" id="janitor" class="mdl-radio__button" name="options" value="janitor" >
                         <span class="mdl-radio__label">Janitor</span>
                     </label><br>
-                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radInterp">
-                        <input type="radio" id="radInterp" class="mdl-radio__button" name="options" value="interpreter" >
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="interpreter">
+                        <input type="radio" id="interpreter" class="mdl-radio__button" name="options" value="interpreter" >
                         <span class="mdl-radio__label">Interpreter</span>
                     </label><br>
-                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radSecurity">
-                        <input type="radio" id="radSecurity" class="mdl-radio__button" name="options" value="security" >
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="security">
+                        <input type="radio" id="security" class="mdl-radio__button" name="options" value="security" >
                         <span class="mdl-radio__label">Security</span>
                 </label><br>
-                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radDoctor">
-                          <input type="radio" id="radDoctor" class="mdl-radio__button" name="options" value="Doctor" >
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="doctor">
+                          <input type="radio" id="doctor" class="mdl-radio__button" name="options" value="Doctor" >
                          <span class="mdl-radio__label">Doctor</span>
                      </label><br>
-                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radNurse">
-                    <input type="radio" id="radNurse" class="mdl-radio__button" name="options" value="nurse" >
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="nurse">
+                    <input type="radio" id="nurse" class="mdl-radio__button" name="options" value="nurse" >
                     <span class="mdl-radio__label">Nurse</span>
                 </label><br>
-                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radPatient">
-                    <input type="radio" id="radPatient" class="mdl-radio__button" name="options" value="patient" >
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="patient">
+                    <input type="radio" id="patient" class="mdl-radio__button" name="options" value="patient" >
                     <span class="mdl-radio__label">Patient</span>
                 </label><br>
-                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radAdmin">
-                    <input type="radio" id="radAdmin" class="mdl-radio__button" name="options" value="admin" >
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="admin">
+                    <input type="radio" id="admin" class="mdl-radio__button" name="options" value="admin" >
                     <span class="mdl-radio__label">Administrator</span>
                 </label><br>
-                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radStaff">
-                    <input type="radio" id="radStaff" class="mdl-radio__button" name="options" value="admin" >
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="staff">
+                    <input type="radio" id="staff" class="mdl-radio__button" name="options" value="admin" >
                     <span class="mdl-radio__label">Staff</span>
                 </label>
                 <br><br><br>
                  </div>
-                <div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <label for="userName">Create Username</label>
-                    <input class="mdl-textfield__input" type="text" id="userName" required/>
-                </div>
-                <br>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <label for="userpass">Create Password</label>
-                    <input class="mdl-textfield__input" type="password" id="userPass" required/>
-                </div>
-                </div><br>
+                <!--<div>-->
+                <!--<div class="mdl-textfield mdl-js-textfield mdl-textfield&#45;&#45;floating-label">-->
+                    <!--<label for="userName">Create Username</label>-->
+                    <!--<input class="mdl-textfield__input" type="text" id="userName" required/>-->
+                <!--</div>-->
+                <!--<br>-->
+                <!--<div class="mdl-textfield mdl-js-textfield mdl-textfield&#45;&#45;floating-label">-->
+                    <!--<label for="userpass">Create Password</label>-->
+                    <!--<input class="mdl-textfield__input" type="password" id="userPass" required/>-->
+                <!--</div>-->
+                <!--</div><br>-->
                     <!-- Submit raised button with ripple -->
                     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="btnSubmit">
                         Add User
