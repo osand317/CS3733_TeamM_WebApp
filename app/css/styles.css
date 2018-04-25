@@ -118,30 +118,30 @@ body:after {
 }
 
 #fireBtn.demo-card-image {
-	background-image: url(../images/account.svg);
-	background-size: 55%;
-	background-position: 50% -85%;
+	background-image: url(../images/fire.svg);
+	background-size: 40%;
+	background-position: 50% 10%;
 
 }
 
 #shooterBtn.demo-card-image {
-	background-image: url(../images/account.svg);
-	background-size: 55%;
-	background-position: 50% -85%;
+	background-image: url(../images/gun.svg);
+	background-size: 45%;
+	background-position: 50% 0%;
 
 }
 
 #bombBtn.demo-card-image {
-	background-image: url(../images/account.svg);
-	background-size: 55%;
-	background-position: 50% -85%;
+	background-image: url(../images/bomb.svg);
+	background-size: 40%;
+	background-position: 50% 10%;
 
 }
 
 #otherBtn.demo-card-image {
-	background-image: url(../images/account.svg);
-	background-size: 55%;
-	background-position: 50% -85%;
+	background-image: url(../images/question-sign.svg);
+	background-size: 40%;
+	background-position: 50% 12%;
 
 }
 
