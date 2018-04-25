@@ -76,25 +76,22 @@ limitations under the License.
     <main class="mdl-layout__content">
         <div class="page-content">
             <!-- Your content goes here -->
-
-            <div class="mdl-textfield mdl-js-textfield">
-                <input class="mdl-textfield__input" type="text" id="searchFilter" onkeyup="searchCallback()" placeholder="Search">
-                <label class="mdl-textfield__label" for="searchFilter">Text...</label>
+            <div class="mdl-grid">
+                <div class="mdl-layout-spacer"></div>
+                <div class="mdl-cell mdl-cell--4-col">
+                    <div id="users">
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input" type="text" id="searchFilter" onkeyup="searchCallback()" placeholder="Search">
+                            <label class="mdl-textfield__label" for="searchFilter">Text...</label>
+                        </div>
+                        <div id="userListContainer">
+                            <ul class="demo-list-icon mdl-list" id="userList"></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdl-layout-spacer"></div>
             </div>
 
-
-            <!--<div>-->
-                <!--<button id="addUserBtn" class="mdl-button mdl-js-button mdl-button&#45;&#45;raised mdl-js-ripple-effect mdl-button&#45;&#45;colored">-->
-                    <!--Add-->
-                <!--</button>-->
-                <!--<button id="removeUserBtn" class="mdl-button mdl-js-button mdl-button&#45;&#45;raised mdl-js-ripple-effect mdl-button&#45;&#45;colored">-->
-                    <!--Remove Selected-->
-                <!--</button>-->
-            <!--</div>-->
-
-            <div id="userListContainer">
-                <ul class="demo-list-icon mdl-list" id="userList"></ul>
-            </div>
             <button id="addUserBtn" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
                 <i class="material-icons">add</i>
             </button>

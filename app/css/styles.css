@@ -150,6 +150,11 @@ body:after {
 	flex-direction: column;
 }
 
+#logTable {
+	display: inline-block;
+	flex-direction: column;
+}
+
 .mdl-button--fab {
 	/*float: right;*/
 	position:fixed;
@@ -161,3 +166,8 @@ body:after {
 	width: 100%;
 	margin: 0 auto;
 }
+
+/*#users {*/
+	/*background: rgba(0, 0, 0, 0.2);*/
+/*}*/
+
