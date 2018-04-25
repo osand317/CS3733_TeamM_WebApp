@@ -1,14 +1,8 @@
 var openTable = document.querySelector("#openTable");
-var openTableHeading = document.querySelector("#openTableHeading");
-var openTableBody = document.querySelector("#openTableBody");
 var closedTable = document.querySelector("#closedTable");
-var closedTableHeading = document.querySelector("#closedTableHeading");
-var closedTableBody = document.querySelector("#closedTableBody");
 
+var addRequestBtn = document.querySelector("#addRequestBtn");
 
-
-var currentReports = [];
-var allReports = [];
 var allTableHeaders = [];
 var requestsRef;
 
@@ -27,16 +21,11 @@ function tableCallback(querySnapshot, selector){
         if (shouldBeShown(doc.data(), selector)){
             createTableRow(doc.data(), selector);
         }
-        // currentReports.push(doc);
-        // allReports.push(doc);
     });
     createTableHeading(selector);
-    // populateFilters();
-    // searchCallback();
 }
 
 function createTableRow(data, selector){
-    // var tbody = document.querySelector(selector + "Body");
     var tbody = selector.getElementsByTagName("tbody")[0];
     let tr = document.createElement('tr');
 
@@ -46,10 +35,6 @@ function createTableRow(data, selector){
             td.classList.add("mdl-data-table__cell--center");
             if (Object.keys(data).indexOf(header) > -1) {
                 td.textContent = data[header];
-                //Get report types for use as filters
-                // if (header === 'reportType' && currentSearchFilters.indexOf(data[header].toString()) === -1){
-                //     currentSearchFilters.push(data[header].toString());
-                // }
             }
             else {
                 td.textContent = "";
@@ -57,12 +42,10 @@ function createTableRow(data, selector){
             tr.appendChild(td);
         }
     });
-    // tr.setAttribute("id", id);
     tbody.appendChild(tr);
 }
 
 function createTableHeading(selector) {
-    // var thead = document.querySelector(selector + "Heading");
     var thead = selector.getElementsByTagName("thead")[0];
     let tr = document.createElement('tr');
     allTableHeaders.forEach(function(header){
@@ -132,4 +115,8 @@ window.onload = function(){
         document.getElementById("pie-chart").style.display = "block";
         console.log("hello");
     });
-}
+};
+
+addRequestBtn.addEventListener('click', function(){
+    window.location = '../createRequest.html';
+});
